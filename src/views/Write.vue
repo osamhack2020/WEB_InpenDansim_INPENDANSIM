@@ -1,22 +1,46 @@
 <template>
   <div class="write">
-    <h1>This is a write page for {{ this.soldier }}</h1>
-    <div v-if="loggedIn">You are logged in.</div>
+    <div class="write__utility-bar">Utility componenets area</div>
+    <div class="write__writing-area">
+      <div class="write__meta">
+        <span class="write__reciever-name-label">이름</span>
+        <input class="write__reciever-name" type="text" />
+        <span class="write__reciever-type-label">군종</span>
+        <select class="write__reciever-type" v-model="armyType">
+          <option value="army">육군</option>
+          <option value="navy">해군</option>
+          <option value="air">공군</option>
+          <option value="marine">해병대</option>
+        </select>
+      </div>
+      <div class="write__text">
+        <textarea :value="mailText" @input="mailText = $event.target.value"></textarea>
+        <span>{{`${textCounter}/${textMaxLength}`}}</span>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
 
 export default {
   data() {
     return {
-      soldier: this.$route.params.soldier
+      mailText: "",
+      armyType: "army"
     };
   },
   computed: {
-    ...mapState(["userProfile"]),
-    loggedIn() {
-      return Object.keys(this.userProfile).length > 0;
+    textCounter: function() {
+      return this.mailText.length;
+    },
+    textMaxLength: function() {
+      switch(this.armyType) {
+        case "army" : return 120;
+        case "navy" : return 1000;
+        case "air" : return 1200;
+        case "marine" : return 500;
+      }
+      return 0;
     }
   }
 };

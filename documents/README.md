@@ -4,30 +4,30 @@
 
 ### 1.1. Fork to My Github Repository
 
-<https://github.com/Chokoty/Inpen-Dansim-OSAM2020> 에서 fork 합니다.
+<https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM> 에서 fork 합니다.
 
 ### 1.2. Clone to VSCS Local Environment
 
 ```bash
 // 루트 디렉토리에서 클론
-~/workspace$  git clone https://github.com/본인계정/Inpen-Dansim-OSAM2020.git
-~/workspace$  cd Inpen-Dansim-OSAM2020
+~/workspace$  git clone https://github.com/본인계정/WEB_InpenDansim_INPENDANSIM.git
+~/workspace$  cd WEB_InpenDansim_INPENDANSIM
 
 // 원본 repo 를 upstream으로 등록
-~/workspace/Inpen-Dansim-OSAM2020$  git remote add upstream https://github.com/Chokoty/Inpen-Dansim-OSAM2020.git
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git remote add upstream https://github.com/Chokoty/WEB_InpenDansim_INPENDANSIM.git
 
 // 등록된 remote repo 확인
-~/workspace/Inpen-Dansim-OSAM2020$  git remote -v
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git remote -v
 
 // 필요한 라이브러리 받기
-~/workspace/Inpen-Dansim-OSAM2020$  npm install
+~/workspace/WEB_InpenDansim_INPENDANSIM$  npm install
 ```
 
 ### 1.3. Create `develop` Branch
 
 ```bash
-// 가급적 별도의 branch에서 작업한 이후, `master` 브랜치로 merge 하기를 권장합니다.
-~/workspace/Inpen-Dansim-OSAM2020$  git checkout -b develop
+// 가급적 별도의 branch에서 작업한 이후, `main` 브랜치로 merge 하기를 권장합니다.
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git checkout -b develop
 ```
 
 ### 1.4. Pull from Remote Repository
@@ -36,41 +36,43 @@
 
 ```bash
 // 작업하기 전 github 체크, pull 하는 습관을 들입시다.
-~/workspace/Inpen-Dansim-OSAM2020$  git fetch upstream
-~/workspace/Inpen-Dansim-OSAM2020$  git merge upstream/master
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git fetch upstream
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git merge upstream/main
 
 // fetch + merge = pull
-~/workspace/Inpen-Dansim-OSAM2020$  git pull
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git pull
 ```
 
 ### 1.5. Add & Commit & Push to Local Repository
 
 ```bash
 // 변경된 파일 & staged 된 파일 확인
-~/workspace/Inpen-Dansim-OSAM2020$  git status
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git status
 
 // 일괄적으로 stage
-~/workspace/Inpen-Dansim-OSAM2020$  git add .
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git add .
 
 // **local repo** 로 commit
-~/workspace/Inpen-Dansim-OSAM2020$  git commit -m "ADD: newfile.js"
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git commit -m "ADD: newfile.js"
 
 // Stage + Commit 한번에
-~/workspace/Inpen-Dansim-OSAM2020$  git commit -a -m "FIX: fixed error: page not opening"
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git commit -a -m "FIX: 페이지 안열림 에러 수정"
 
 // **본인의 remote repo** 로 push
-~/workspace/Inpen-Dansim-OSAM2020$  git push origin develop
+~/workspace/WEB_InpenDansim_INPENDANSIM$  git push origin develop
 ```
 
 ### 1.6. PR (Pull Request)
 
-<https://github.com/Chokoty/Inpen-Dansim-OSAM2020> 로 PR을 보냅니다.
+<https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM> 로 PR을 보냅니다.
 
 ### 1.7. Reference
 
-[Git을 이용한 협업 워크플로우](https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/)
+Basic : [Git을 이용한 협업 워크플로우](https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/)
 
-[Git 공식 문서](https://git-scm.com/book/ko/v2)
+Advanced : [Git 협업 가이드](https://velog.io/@jinuku/Git-%ED%98%91%EC%97%85-%EA%B0%80%EC%9D%B4%EB%93%9C)
+
+Documents : [Git 공식 문서](https://git-scm.com/book/ko/v2)
 
 ## 2. Database Information
 
