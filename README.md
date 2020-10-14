@@ -49,7 +49,7 @@ $ yarn start or npm run start
 ## 팀 정보 (Team Information)
 - Kim tae yoon (chokokty0816@gmail.com), Github Id: Chokoty
 - Lee eun sang (dmstkdrmatkd@naver.com), Github Id: jxchlee
-- Yu heong ho (dbwjdgh03@ajou.ac.kr), Github Id: WebPr0grammer
+- Yu jeong ho (dbwjdgh03@ajou.ac.kr), Github Id: WebPr0grammer
 - Ji woo suk (woosukji@snu.ac.kr), Github Id: woosukji
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
