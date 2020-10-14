@@ -4,7 +4,8 @@ module.exports = {
     disableHostCheck: true
   },
   publicPath:
-    process.env.NODE_ENV === "production" ? "/WEB_InpenDansim-INPENDANSIM/" : "/",
-  outputDir: "docs",
-  transpileDependencies: ["vuetify"]
+    process.env.NODE_ENV === "production"
+      ? "/WEB_InpenDansim_INPENDANSIM/"
+      : "/",
+  outputDir: "docs"
 };

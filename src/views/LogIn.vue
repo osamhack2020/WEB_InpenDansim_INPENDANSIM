@@ -1,5 +1,5 @@
 <template>
-  <!-- <div id="login">
+  <div id="login">
     <section>
       <div :class="{ 'signup-form': !showLoginForm }" class="col2">
         <form v-if="showLoginForm" @submit.prevent>
@@ -63,51 +63,7 @@
         </form>
       </div>
     </section>
-  </div> -->
-  <v-container id="login">
-    <v-form v-if="showLoginForm" @submit.prevent>
-      <h1>Welcome Back!</h1>
-      <v-text-field
-        v-model.trim="loginForm.email"
-        type="text"
-        placeholder="you@email.com"
-        label="Email"
-      />
-      <v-text-field
-        v-model.trim="loginForm.password"
-        type="password"
-        placeholder="******"
-        label="Password"
-      />
-      <v-btn type="submit" @click="login()" class="button">Log In</v-btn>
-      <div class="extras">
-        <v-btn @click="toggleForm()">
-          <span>Create an Account</span>
-        </v-btn>
-      </div>
-    </v-form>
-    <v-form v-else @submit.prevent>
-      <h1>Get Started</h1>
-      <v-text-field
-        v-model.trim="signupForm.name"
-        type="text"
-        label="your name"
-      />
-      <v-text-field v-model.trim="signupForm.email" type="text" label="Email" />
-      <v-text-field
-        v-model.trim="signupForm.password"
-        type="password"
-        label="Password"
-        :rules="rules"
-      />
-      <v-btn @click="signup()" class="button">Sign Up</v-btn>
-      <div class="extras">
-        <v-btn @click="toggleForm()">
-          <span>Back to Log In</span>
-        </v-btn>
-      </div>
-    </v-form>
-  </v-container>
+  </div>
 </template>
 
 <script>
