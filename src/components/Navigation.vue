@@ -25,4 +25,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style></style>
+<style scoped>
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1rem;
+    background: #cbb;
+
+  }
+</style>
