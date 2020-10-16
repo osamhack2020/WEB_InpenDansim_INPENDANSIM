@@ -1,4 +1,21 @@
-git<script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+    <button value="create" onclick="create('easy')">쉬움</button>
+    <button value="create" onclick="create('hard')">보통</button>
+    <button value="create" onclick="create('very-hard')">어려움</button>
+
+    <div id="bourd"></div>
+
+</body>
+</html>
+
+<script src = "./sudoku.js"></script>
+<script>
+    
     function cl(){
         var puzzleCreateEasy = sudoku.generate("easy");
         var puzzleToBourd = new Array(sudoku.board_string_to_grid(puzzleCreateEasy));
@@ -21,38 +38,19 @@ git<script>
         //console.log(puzzleToBourd);
     }
 
-    function creatPuzzle(level){
-        var puzzleCreateEasy = sudoku.generate(level);
-        var puzzleToBourd = new Array(sudoku.board_string_to_grid(puzzleCreateEasy));
+    function create(level){
+        var puzzleCreate = sudoku.generate(level);
+        var bourd = document.getElementById("bourd");
+        var paint = sudoku.return_board(puzzleCreate);
+        bourd.innerHTML=paint;
+    }
+
+    function easy(){
+        var puzzleCreate = sudoku.generate("easy");
+        var bourd = document.getElementById("bourd");
+        var paint = sudoku.return_board(puzzleCreate);
+        bourd.innerHTML=paint;
     }
 </script>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-    
-    
-    
-
-    <button value="create" onclick="easy()">쉬움</button>
-    <button value="create" onclick="normal()">보통</button>
-    <button value="create" onclick="hard()">어려움</button>
-    <button value="create" onclick="expert()">전문가</button>
-
-    
-    
-    <div id="quest"></div>
-    <div id="bourd"></div>
-    <div id="test"></div>
-
-</body>
-</html>
-<script src = "./sudoku.js"></script>
 
 
