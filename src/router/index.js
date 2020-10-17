@@ -28,10 +28,20 @@ const routes = [
     component: () => import("../views/LogIn.vue")
   },
   {
-    path: "/write/:soldier",
-    name: "Write",
+    path: "/write/mail",
+    name: "WriteMail",
     component: () => import("../views/Write.vue")
-  }
+  },
+  // {
+  //   path: "/write/rolling",
+  //   name: "WriteRolling",
+  //   component: () => import("../views/WriteRolling.vue")
+  // },
+  // {
+  //   path: "/mypage",
+  //   name: "MyPage",
+  //   component: () => import("../views/MyPage.vue")
+  // }
 ];
 
 const router = new VueRouter({

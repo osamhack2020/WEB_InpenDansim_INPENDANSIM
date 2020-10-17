@@ -1,12 +1,9 @@
 <template>
   <div class="home">
-    <button @click="handleDashboard">Dashboard</button>
-    <div class="search-soldier">
-      <input v-model.trim="searchKeyword" placeholder="훈련병 이름 검색" />
-      <button @click="handleSearch" :disabled="searchKeyword === ''">
-        Let's write!
-      </button>
-    </div>
+    <router-link to="/write/mail">인편쓰러가기</router-link>
+    <router-link to="/write/rolling">롤링페이퍼 쓰러가기</router-link>
+    <!-- <button @click = "getNews" >go!</button> -->
+    <!-- <div>News~! {{ news }}</div> -->
   </div>
 </template>
 
@@ -14,19 +11,20 @@
 export default {
   data() {
     return {
-      searchKeyword: ""
+      searchKeyword: "",
+      news: "test"
     };
   },
   methods: {
-    handleDashboard() {
-      this.$router.push("/dashboard");
-    },
-    handleSearch() {
-      this.$router.push({
-        name: "Write",
-        params: { soldier: this.searchKeyword }
-      });
-      this.searchKeyword = "";
+    async getNews() {
+      this.news = 'loading...'
+      try{
+        let response = await fetch("http://api.sbs.co.kr/xml/news/rss.jsp?pmDiv=ranking");
+        this.news = await response.text();
+      } catch(e) {
+        this.news = e;
+      }
+      // this.news = new window.DOMParser().parseFromString(text, "text/xml");
     }
   }
 };
