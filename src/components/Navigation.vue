@@ -1,8 +1,12 @@
 <template>
   <div class="navigation">
     <router-link to="/">인편단심</router-link>
-    <router-link v-if="!loggedIn" to="/login">Log-In</router-link>
-    <button v-else @click="handleLogOut">Log-Out</button>
+    <div>
+      <router-link to='/write/mail'>편지 쓰기</router-link>
+      <router-link to="/mypage">마이페이지</router-link>
+      <router-link v-if="!loggedIn" to="/login">Log-In</router-link>
+      <button v-else @click="handleLogOut">Log-Out</button>
+    </div>
   </div>
 </template>
 
