@@ -3,7 +3,7 @@
 
 
 # Smaple Logo(제작중)
-![Logo](https://logosbynick.com/wp-content/uploads/2018/03/final-logo-example.png)
+![Logo](![Logo](./img/logo.png))
 
 팀명 텍스트 및 팀명 로고 이미지 **(택1)**
 
