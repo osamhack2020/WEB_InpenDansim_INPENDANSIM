@@ -1,5 +1,5 @@
 <template>
-  <div class="write">
+  <div class="mail">
     <div class="write__utility-bar">Utility componenets area</div>
     <div class="write__writing-area">
       <div class="write__meta">
@@ -12,6 +12,7 @@
           <option value="air">공군</option>
           <option value="marine">해병대</option>
         </select>
+        <router-link to="/write/send">보내기</router-link>
       </div>
       <div class="write__text">
         <textarea
@@ -53,39 +54,39 @@ export default {
 </script>
 
 <style scoped>
-  .write {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 1rem;
-    
-    margin: 1rem;
-  }
+.mail {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 1rem;
 
-  .write__utility-bar {
-    grid-column: 1 / 2;
+  margin: 1rem;
+}
 
-    border: 1px solid #000;
-  }
+.write__utility-bar {
+  grid-column: 1 / 2;
 
-  .write__writing-area {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    grid-gap: 0.5rem;
-  }
+  border: 1px solid #000;
+}
 
-  .write__text {
-    position: relative;
-  }
+.write__writing-area {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: 0.5rem;
+}
 
-  .write__text textarea {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
+.write__text {
+  position: relative;
+}
 
-  .write__text span {
-    position: absolute;
-    bottom: 0.2rem;
-    right: 0.2rem;
-  }
+.write__text textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.write__text span {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.2rem;
+}
 </style>
