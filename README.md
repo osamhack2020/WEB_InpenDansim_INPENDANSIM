@@ -3,7 +3,7 @@
 
 
 # Smaple Logo(제작중)
-![Logo](![Logo](img/logo.png))
+![Logo](img/logo.png)
 
 팀명 텍스트 및 팀명 로고 이미지 **(택1)**
 
