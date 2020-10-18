@@ -1,0 +1,12 @@
+@import "reset.css";
+@import "cover.css";
+body {
+  height: 3000px;
+  font-family: Poppins;
+  font-weight: SemiBold;
+}
+.cover {
+  width: 100%;
+  height: 600px;
+  border: 1px solid black;
+}
