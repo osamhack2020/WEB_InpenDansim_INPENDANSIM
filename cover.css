@@ -1,0 +1,212 @@
+header {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+header > ul {
+  list-style: none;
+}
+
+header > a {
+  text-decoration: none;
+  color: #646464;
+  outline: none;
+}
+
+header > a:link {
+  color: black;
+  text-decoration: none;
+}
+
+span.title {
+  font-size: 24px;
+}
+
+header > h1 {
+  margin-left: 20px;
+}
+
+header > nav {
+  width: 600px;
+  height: 100%;
+}
+
+header ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+header ul > li {
+  font-size: 17px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.empty-box-cover {
+  text-align: center;
+}
+.empty-box-cover .empty-box-cover__cover-first {
+  position: relative;
+  height: 700px;
+  width: 1200px;
+  margin-top: 45px;
+  display: inline-block;
+  background: grey;
+  border: 1px solid grey;
+}
+.empty-box-cover
+  .empty-box-cover__cover-first.empty-box-cover__cover-first__leftside {
+  width: 585px;
+  height: 42lpx;
+  left: 0px;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+.empty-box-cover__cover-first__leftside > img {
+  width: 100%;
+  height: auto;
+  opacity: 0.5;
+}
+.empty-box-cover__cover-first__leftside .cover-first__container__first-box {
+  position: absolute;
+  bottom: 27%;
+  left: 16px;
+  -webkit-transform: rotate(-13deg);
+  font-weight: bold;
+  font-size: 25px;
+}
+//두번째 박스 시작
+.empty-box-cover__second {
+  text-align: center;
+}
+.empty-box-cover .empty-box-cover__cover-second {
+  position: relative;
+  height: 700px;
+  width: 1200px;
+  display: inline-block;
+  background: grey;
+  border: 1px solid grey;
+}
+.empty-box-cover__cover-first__leftside .cover-first__container__second-box {
+  position: absolute;
+  bottom: 2%;
+  right: 400px;
+  font-weight: bold;
+  font-size: 25px;
+}
+.empty-box-cover
+  .empty-box-cover__cover-first.empty-box-cover__cover-second__leftside {
+  margin: 0 auto;
+  width: 585px;
+  height: 42lpx;
+  left: 0px;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+.empty-box-cover__cover-second__leftside > img {
+  width: 100%;
+  height: auto;
+  opacity: 0.4;
+}
+.empty-box-cover__cover-second__leftside {
+  position: relative;
+}
+.cover-second__container__first {
+  position: absolute;
+  top: 10%;
+  left: 25px;
+  font-size: 20px;
+}
+.cover-second__container__first__first-box {
+  margin-bottom: 20px;
+  font-size: 35px;
+  font-weight: bold;
+}
+.cover-second__container__first__second-box {
+  margin-bottom: 20px;
+}
+
+.cover-second__container__btn {
+  width: 240px;
+  height: 50px;
+  background-color: black;
+  color: white;
+}
+// 세번째박스시작
+.empty-box-cover__third {
+  text-align: center;
+}
+.empty-box-cover .empty-box-cover__cover-third {
+  position: relative;
+  height: 700px;
+  width: 1200px;
+  display: inline-block;
+  background: grey;
+  border: 1px solid grey;
+}
+.empty-box-cover__cover-first__leftside .cover-first__container__third-box {
+  position: absolute;
+  bottom: 2%;
+  right: 400px;
+  font-weight: bold;
+  font-size: 25px;
+}
+.empty-box-cover
+  .empty-box-cover__cover-first.empty-box-cover__cover-third__leftside {
+  margin: 0 auto;
+  width: 585px;
+  height: 42lpx;
+  left: 0px;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+.empty-box-cover__cover-third__leftside > img {
+  width: 100%;
+  height: auto;
+  opacity: 0.4;
+}
+.empty-box-cover__cover-third__leftside {
+  position: relative;
+}
+.cover-third__container__first {
+  position: absolute;
+  bottom: 10%;
+  font-size: 20px;
+}
+.cover-third__container__first__first-box {
+  margin-bottom: 20px;
+  font-size: 35px;
+  font-weight: bold;
+}
+.cover-third__container__first__second-box {
+  margin-bottom: 20px;
+}
+
+.cover-third__container__btn {
+  width: 240px;
+  height: 50px;
+  background-color: black;
+  color: white;
+}
