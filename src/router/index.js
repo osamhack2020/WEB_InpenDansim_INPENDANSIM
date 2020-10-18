@@ -12,14 +12,6 @@ const routes = [
     component: Home
   },
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: () => import("../views/Dashboard.vue"),
-    meta: {
-      requiresAuth: true
-    }
-  },
-  {
     path: "/login",
     name: "LogIn",
     // route level code-splitting
@@ -30,18 +22,23 @@ const routes = [
   {
     path: "/write/mail",
     name: "WriteMail",
-    component: () => import("../views/Write.vue")
+    component: () => import("../views/WriteMail.vue")
   },
-  // {
-  //   path: "/write/rolling",
-  //   name: "WriteRolling",
-  //   component: () => import("../views/WriteRolling.vue")
-  // },
-  // {
-  //   path: "/mypage",
-  //   name: "MyPage",
-  //   component: () => import("../views/MyPage.vue")
-  // }
+  {
+    path: "/write/rolling",
+    name: "WriteRolling",
+    component: () => import("../views/WriteRolling.vue")
+  },
+  {
+    path: "/write/send",
+    name: "Send",
+    component: () => import("../views/Send.vue")
+  },
+  {
+    path: "/rollingpaper/",
+    name: "RollingPaper",
+    component: () => import("../views/RollingPaper.vue")
+  }
 ];
 
 const router = new VueRouter({

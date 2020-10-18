@@ -21,7 +21,8 @@ export default {
 </script>
 
 <style>
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -35,8 +36,8 @@ html, body {
 }
 
 * {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 </style>
