@@ -128,7 +128,7 @@ export default {
   outline: none;
   resize: none;
   overflow: auto;
-  font-family: "Maru Buri", Dotum, Baekmuk Dotum, Undotum, Apple Gothic, Latin font, sans-serif;
+  font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic, Latin font, sans-serif;
   font-size: 20px;
 
 }

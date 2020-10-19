@@ -42,8 +42,8 @@ body {
 }
 
 @font-face {
-  font-family: "Maru Buri";
-  src: local("Maru Buri"),
+  font-family: "maruburi";
+  src: local("maruburi"),
    url(./assets/fonts/MARUBuriBetaR.ttf) format("truetype");
 }
 </style>
