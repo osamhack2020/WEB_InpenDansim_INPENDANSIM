@@ -35,6 +35,6 @@ export default {
   justify-content: space-between;
 
   padding: 1rem;
-  background: #cbb;
+  box-shadow: 0px -4px 10px 2px #aaa;
 }
 </style>

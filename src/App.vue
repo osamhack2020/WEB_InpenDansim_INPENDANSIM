@@ -40,4 +40,10 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: "Maru Buri";
+  src: local("Maru Buri"),
+   url(./assets/fonts/MARUBuriBetaR.ttf) format("truetype");
+}
 </style>
