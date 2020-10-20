@@ -3,21 +3,49 @@
     <div class="utility-bar">
       <div class="utility-bar__menu">
         <div
+          href='#'
           class="utility-bar__menu-item"
           v-for="(content, index) in utilityContents"
           :key="index"
+          @click="utilityContentNum = content.iconRef"
         >
-          <svg width="22" height="27">
-            <circle
-              cx="11"
-              cy="11"
-              r="10"
-              fill="#fff"
-              stroke="#ccc"
-              stroke-width="0.5"
-            />
-          </svg>
-          <div>{{ content }}</div>
+          <img :src="getImgUrl(content.iconRef, false)" class="icon" width='40'>
+          <img :src="getImgUrl(content.iconRef, true)" class="icon-hover" width='40'>
+          <div>{{ content.name }}</div>
+        </div>
+      </div>
+      <div class="utility-bar__content">
+        <div v-if="utilityContentNum == 'news'">
+          <div class="hashtag">
+            <span>#바깥소식 #궁금하지?</span>
+          </div>
+          <div class='navigation'>
+            <div @click='showHeadlines=true' class='navigation__button'>정치</div>
+            <div class='navigation__divider'>|</div>
+            <div @click='showHeadlines=true' class='navigation__button'>경제</div>
+            <div class='navigation__divider'>|</div>
+            <div @click='showHeadlines=true' class='navigation__button'>사회</div>
+            <div class='navigation__divider'>|</div>
+            <div @click='showHeadlines=true' class='navigation__button'>문화</div>
+            <div class='navigation__divider'>|</div>
+            <div @click='showHeadlines=true' class='navigation__button'>세계</div>
+          </div>
+          <div v-if='showHeadlines' class='news__headline-container'>
+            <div @click='showHeadlines = false' class='news__headline'>헤드라인</div>
+          </div>
+          <div v-else class='news__article'>자세한글</div>
+        </div>
+        <div v-if="utilityContentNum == 'novel'">
+          novel
+        </div>
+        <div v-if="utilityContentNum == 'words'">
+          words
+        </div>
+        <div v-if="utilityContentNum == 'music'">
+          songs
+        </div>
+        <div v-if="utilityContentNum == 'sudoku'">
+          sudoku
         </div>
       </div>
     </div>
@@ -54,7 +82,28 @@ export default {
     return {
       mailText: "",
       armyType: "army",
-      utilityContents: ["뉴스", "단편소설", "한줄명언", "노래가사", "스도쿠"],
+      showHeadlines: true,
+      utilityContentNum: 'news',
+      utilityContents: [{
+        name:"뉴스",
+        iconRef: 'news'
+      },
+      {
+        name:"소설",
+        iconRef: 'novel'
+      },
+      {
+        name:"한줄명언",
+        iconRef: 'words'
+      },
+      {
+        name:"노래가사",
+        iconRef: 'music'
+      },
+      {
+        name:"스도쿠",
+        iconRef: 'sudoku'
+      }]
     };
   },
   computed: {
@@ -75,6 +124,12 @@ export default {
       return 0;
     },
   },
+  methods: {
+    getImgUrl(pic, hover) {
+      if(hover) return require('../assets/icons/writing_'+pic+'-hover.svg');
+    return require('../assets/icons/writing_'+pic+'.svg');
+}
+  }
 };
 </script>
 
@@ -88,6 +143,56 @@ export default {
   grid-column: 1 / 2;
 
   border-right: 1px solid #ddd;
+
+  display: grid;
+  grid-template-columns: 18% 1fr;
+}
+
+
+.utility-bar__menu {
+  border-right: 1px solid #ddd;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.utility-bar__menu-item {
+  margin-top: 1.5rem;
+  font-size: 9pt;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.utility-bar__menu-item .icon {
+  transition: opacity 0.3s;
+}
+
+.utility-bar__menu-item .icon-hover {
+  position:absolute;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.utility-bar__menu-item:hover .icon {
+  opacity: 0;
+}
+
+.utility-bar__menu-item:hover .icon-hover {
+  opacity: 1;
+}
+
+.utility-bar__content {
+  height: 100%;
+  width: 100%;
+  border: 2px solid #dd0;
 }
 
 .writing-area {
@@ -143,30 +248,4 @@ export default {
   right: 1rem;
 }
 
-.utility-bar__menu {
-  border-right: 1px solid #ddd;
-  width: 18%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.utility-bar__menu-item {
-  margin-top: 1.5rem;
-  font-size: 8pt;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.utility-bar__menu-item circle {
-  transition: fill 0.3s ease;
-}
-
-.utility-bar__menu-item circle:hover {
-  fill: rgb(93, 93, 255);
-}
 </style>
