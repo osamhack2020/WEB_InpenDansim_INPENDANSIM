@@ -1,0 +1,114 @@
+/* home default */
+
+.nav-div {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0px 24px;
+  height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e3e5e9;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
+  font-weight: bold;
+  color: #111111;
+}
+
+.nav__toggle {
+  display: none;
+}
+.nav-overlay {
+  visibility: hidden;
+  height: 0px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+.nav-menu > .nav-link {
+  padding-left: 40px;
+}
+.account > a {
+  padding-left: 20px;
+}
+.title {
+  font-size: 24px;
+}
+header > h1 {
+  margin-left: 20px;
+}
+
+@media (max-width: 800px) {
+  .app-header {
+    height: 64px;
+  }
+  .nav-div {
+    height: 58px;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .nav__toggle {
+    display: block;
+    margin: 15px 10px;
+    border: 0;
+    background: none;
+    outline: 0;
+    cursor: pointer;
+  }
+  .nav-menu {
+    position: absolute;
+    margin-left: 60px;
+    height: 100%;
+    width: 100px;
+    float: left;
+  }
+  .account > .both {
+    margin-right: 10px;
+  }
+  .account {
+    display: block;
+  }
+  .nav-menu > .nav-link,
+  .account > .desktop {
+    display: none;
+  }
+  .nav__wrapper.active {
+    padding-left: 16px;
+    background-color: #fff;
+    width: 80vw;
+    height: 100vh;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-overlay,
+  .nav-overlay > nav > a,
+  .nav-overlay > nav > .account > a {
+    display: block;
+    font-size: 24px;
+    padding: 20px;
+  }
+  .nav-overlay {
+    text-align: center;
+  }
+}
+
+/* write-header */
+.writeLetter__nav-menu {
+  display: flex;
+  align-items: center;
+}
+.writeLetter__nav-menu > .writeLetter__nav-link {
+  padding: 30px;
+}
+
+.writeLetter__nextPage {
+  font-size: 20px;
+  background-color: #0070f3;
+  border-radius: 30px;
+  padding: 8px;
+}

@@ -1,0 +1,55 @@
+.content-wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.middle-bar {
+  width: 2%;
+  height: 80vh;
+}
+.content-wrap {
+  border-top: 2px solid black;
+}
+.post-coloumn {
+  width: 50%;
+  height: 100vh;
+  border: 1px solid black;
+}
+.left-coloumn {
+  margin-right: 5px;
+  padding-bottom: 10%;
+}
+.right-coloumn {
+  margin-left: 5px;
+}
+.middle-bar {
+  width: 1px;
+  background-color: black;
+  height: 80%;
+  float: left;
+}
+.left-coloumn select {
+  border: 0px;
+  display: box;
+  font-size: 30px;
+  width: 100px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.left-coloumn .how__use {
+  margin-top: 35px;
+  text-align: center;
+}
+.left-coloumn h1 {
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+}
+.left-coloumn__text {
+  margin-top: 35%;
+}
+.left-coloumn__bottom-text {
+}

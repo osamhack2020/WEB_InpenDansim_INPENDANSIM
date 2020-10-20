@@ -1,12 +1,31 @@
 @import "reset.css";
-@import "cover.css";
+
+/* components */
+@import "components/header.css";
+@import "components/sidebar.css";
+@import "components/main-footer.css";
+@import "component/postLetter-header.css";
+@import "component/footer.css";
+@import "component/temp.css";
+
+/* page */
+@import "pages/cover.css";
+@import "pages/writeLetter.css";
+@import "pages/postLetter.css";
+
+@font-face {
+  font-family: maruburi;
+  src: url("../fonts/MaruBuri-Regular.ttf");
+}
+
 body {
-  height: 3000px;
-  font-family: Poppins;
+  width: 100%;
+  /* height: 3000px; */
+  /* font-family: Poppins; */
+  font-family: maruburi;
+
   font-weight: SemiBold;
 }
-.cover {
-  width: 100%;
-  height: 600px;
-  border: 1px solid black;
+#root {
+  position: relative;
 }

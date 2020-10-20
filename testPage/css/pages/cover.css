@@ -1,0 +1,76 @@
+/* components */
+@import "../components/cover1.css";
+@import "../components/cover2.css";
+@import "../components/cover3.css";
+@import "../components/footer.css";
+
+/* 공통사항 */
+.cover {
+  width: 100%;
+  height: 80vh;
+}
+
+.content-area {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* 소개글 css */
+.cover-bundle {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-area-coloumn > h1 {
+  margin: 20px;
+  font-size: 56px;
+  line-height: 64px;
+}
+
+/* 배경 */
+.cover-first {
+  background-image: url("../../img/letter.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+.cover-second {
+  background-image: url("../../img/email.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.cover-third {
+  background-image: url("../../img/soldier.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.coloumn {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: tomato;
+  margin-top: 30px;
+  text-align: center;
+  width: 40%;
+  height: 300px;
+}
+
+@media (min-width: 640px) {
+}
+@media screen and (max-width: 800px) {
+  /* .content-area {
+    flex-wrap: wrap;
+  } */
+}
+
+@media (min-width: 1024px) {
+}

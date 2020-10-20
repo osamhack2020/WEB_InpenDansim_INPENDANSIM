@@ -1,0 +1,21 @@
+.first-box button {
+  margin: 50px 0px 60px 0px;
+}
+
+.content-area-coloumn {
+  border: 1px solid black;
+  background-color: tomato;
+  margin-top: 90px;
+  text-align: center;
+  width: 400px;
+  height: 300px;
+}
+/* h1 속성 */
+/* .empty-box-cover__cover-first__leftside .cover-first__container__first-box {
+  position: absolute;
+  bottom: 27%;
+  left: 16px;
+  -webkit-transform: rotate(-13deg);
+  font-weight: bold;
+  font-size: 25px;
+} */

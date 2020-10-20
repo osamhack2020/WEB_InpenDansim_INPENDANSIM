@@ -1,0 +1,5 @@
+.cover-third__content-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
