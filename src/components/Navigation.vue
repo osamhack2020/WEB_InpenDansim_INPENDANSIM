@@ -26,7 +26,18 @@
         <a href="#" class="account-link both">회원가입</a>
       </div>
     </div>
-    <div class="nav-overlay"></div>
+    <div class="nav-overlay">
+      <nav role="navigation" class="nav-overlay__nav-menu">
+        <a href="writeLetter.html" class="nav-link">편지쓰기</a>
+        <a href="#" class="nav-link">롤링페이퍼쓰기</a>
+        <a href="#" class="nav-link">내가 보낸편지</a>
+        <div class="account">
+          <a href="#" class="overlay-desktop">고객센터</a>
+          <a href="#" class="overlay-desktop">로그인하기</a>
+          <a href="#" class="both">회원가입</a>
+        </div>
+      </nav>
+    </div>
     <div class="menu-shadow" style="opacity: 1; display: block;"></div>
 
     <!-- <router-link to="/">인편단심</router-link>
@@ -52,6 +63,11 @@ export default {
   methods: {
     handleLogOut() {
       this.$store.dispatch("logout");
+    },
+    showNav: function() {
+      let navToggle = document.querySelector(".nav__toggle");
+
+      let navWrapper = document.querySelector(".nav__wrapper");
     },
   },
 };
