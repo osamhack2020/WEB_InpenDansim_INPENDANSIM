@@ -10,17 +10,27 @@ import Navigation from "@/components/Navigation.vue";
 
 export default {
   components: {
-    Navigation
+    Navigation,
   },
   computed: {
     showNav() {
       return true;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
+@import "assets/style/reset.css";
+/* components */
+
+/* page */
+
+@font-face {
+  font-family: "maruburi";
+  src: local("maruburi"),
+    url(./assets/fonts/MARUBuriBetaR.ttf) format("truetype");
+}
 html,
 body {
   height: 100%;
@@ -39,11 +49,5 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-@font-face {
-  font-family: "maruburi";
-  src: local("maruburi"),
-    url(./assets/fonts/MARUBuriBetaR.ttf) format("truetype");
 }
 </style>
