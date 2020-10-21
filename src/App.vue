@@ -44,6 +44,6 @@ body {
 @font-face {
   font-family: "maruburi";
   src: local("maruburi"),
-   url(./assets/fonts/MARUBuriBetaR.ttf) format("truetype");
+    url(./assets/fonts/MARUBuriBetaR.ttf) format("truetype");
 }
 </style>
