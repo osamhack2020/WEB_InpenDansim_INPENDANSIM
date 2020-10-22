@@ -1,7 +1,12 @@
 <template>
   <div class="navigation app-header">
     <div class="nav-div">
-      <button class="nav__toggle" aria-expanded="false" type="button">
+      <button
+        class="nav__toggle"
+        aria-expanded="false"
+        type="button"
+        @click="toggle"
+      >
         <i class="fas fa-bars fa-2x"></i>
       </button>
       <!-- logo -->
@@ -27,18 +32,29 @@
       </div>
     </div>
     <div class="nav-overlay">
-      <nav role="navigation" class="nav-overlay__nav-menu">
+      <nav class="nav-overlay__nav-menu" :class="{ showNav: isActive }">
         <a href="writeLetter.html" class="nav-link">편지쓰기</a>
-        <a href="#" class="nav-link">롤링페이퍼쓰기</a>
-        <a href="#" class="nav-link">내가 보낸편지</a>
+        <router-link to="/write/rolling" class="nav-link"
+          >롤링페이퍼 쓰러가기</router-link
+        >
+        <router-link to="/mypage" class="nav-link">마이페이지</router-link>
         <div class="account">
           <a href="#" class="overlay-desktop">고객센터</a>
-          <a href="#" class="overlay-desktop">로그인하기</a>
+          <router-link v-if="!loggedIn" to="/login" class="account-link desktop"
+            >로그인하기</router-link
+          >
+          <button v-else @click="handleLogOut" class="account-link desktop">
+            로그아웃
+          </button>
           <a href="#" class="both">회원가입</a>
         </div>
       </nav>
     </div>
-    <div class="menu-shadow" style="opacity: 1; display: block;"></div>
+    <div
+      class="menu-shadow"
+      :class="{ shadow: isActive }"
+      style="opacity: 1; display: block;"
+    ></div>
 
     <!-- <router-link to="/">인편단심</router-link>
     <div>
@@ -54,22 +70,38 @@
 import { mapState } from "vuex";
 
 export default {
+  data() {
+    return {
+      isActive: false
+    };
+  },
   computed: {
     ...mapState(["userProfile"]),
     loggedIn() {
       return Object.keys(this.userProfile).length > 0;
-    },
+    }
   },
   methods: {
     handleLogOut() {
       this.$store.dispatch("logout");
     },
-    showNav: function() {
-      let navToggle = document.querySelector(".nav__toggle");
-
-      let navWrapper = document.querySelector(".nav__wrapper");
+    toggle() {
+      this.isActive = !this.isActive;
     },
-  },
+    // showNav: function() {
+    //   let navToggle = document.querySelector(".nav__toggle");
+
+    //   let navWrapper = document.querySelector(".nav__wrapper");
+    // },
+    open: function(event) {
+      // 메소드 안에서 사용하는 `this` 는 Vue 인스턴스를 가리킵니다
+      alert("Hello " + this.name + "!");
+      // `event` 는 네이티브 DOM 이벤트입니다
+      if (event) {
+        alert(event.target.tagName);
+      }
+    }
+  }
 };
 </script>
 
@@ -98,10 +130,10 @@ export default {
 .nav__toggle {
   display: none;
 }
-.nav-overlay {
+/* .nav-overlay {
   visibility: hidden;
   height: 0px;
-}
+} */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -149,16 +181,25 @@ export default {
   .account > .desktop {
     display: none;
   }
-  .nav__wrapper.active {
+  /* open */
+  /* .shadow {
+    position: absolute;
+    top: 58px;
+    width: 100%;
+    height: 800px;
+    background-color: tomato;
+  } */
+  .showNav {
+    /* z-index: 10; */
     padding-left: 16px;
     background-color: #fff;
-    width: 80vw;
-    height: 100vh;
-    visibility: visible;
+    /* width: 80%; */
+    height: 100%;
+    /* visibility: visible; */
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(250px, 0);
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
   }
-
   .nav-overlay,
   .nav-overlay > nav > a,
   .nav-overlay > nav > .account > a {
@@ -167,6 +208,8 @@ export default {
     padding: 20px;
   }
   .nav-overlay {
+    width: 250px;
+    left: -500px;
     text-align: center;
   }
 }
