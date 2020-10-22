@@ -130,10 +130,10 @@ export default {
 .nav__toggle {
   display: none;
 }
-/* .nav-overlay {
+.nav-overlay {
   visibility: hidden;
   height: 0px;
-} */
+}
 .nav-menu {
   display: flex;
   align-items: center;
@@ -195,7 +195,7 @@ export default {
     background-color: #fff;
     /* width: 80%; */
     height: 100%;
-    /* visibility: visible; */
+    visibility: visible;
     opacity: 1;
     transform: translate(250px, 0);
     box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
