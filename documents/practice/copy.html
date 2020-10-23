@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>웹 크롤링 연습</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+   <!--복사할 텍스트 만들기-->
+ <script>
+ var copyText = function(){
+   var textField = document.getElementById("inputField");
+   textField.select();
+   document.execCommand('copy');
+ }
+ </script>
+<input type="text" id="inputField" style="width:200px">
+<button onclick="copyText()">복사하기</button>
+<br><br>
+<p><input type="text" style="width:200px"></p>
+ </body>
+</html>
