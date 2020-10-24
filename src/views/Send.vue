@@ -1,5 +1,5 @@
 <template>
-<div class='write__wrap'>
+<div class='send__wrap'>
   <div class="navigation app-header">
     <div class="nav-div">
       <nav role="navigation" class="nav-menu">
@@ -12,7 +12,7 @@
       </div>
     </div>
   </div>
-  <div class="write">
+  <div class="send">
     <div v-if="pageNumber">
       <h1>This is a Send page</h1>
       <button @click="toggleSend">Send!</button>

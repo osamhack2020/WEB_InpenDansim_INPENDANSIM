@@ -36,5 +36,6 @@ export default {
   grid-template-rows: auto 1fr;
 
   height: 100%;
+  z-index: -1;
 }
 </style>

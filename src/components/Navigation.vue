@@ -31,25 +31,24 @@
         <a href="#" class="account-link both">회원가입</a>
       </div>
     </div>
-    <div class="nav-overlay" v-if='isActive'>
-      <nav class="nav-overlay__nav-menu" :class="{ showNav: isActive }">
-        <a href="writeLetter.html" class="nav-link">편지쓰기</a>
-        <router-link to="/write/rolling" class="nav-link"
-          >롤링페이퍼 쓰러가기</router-link
-        >
-        <router-link to="/mypage" class="nav-link">마이페이지</router-link>
-        <div class="account">
-          <a href="#" class="overlay-desktop">고객센터</a>
-          <router-link v-if="!loggedIn" to="/login" class="account-link desktop"
-            >로그인하기</router-link
-          >
-          <button v-else @click="handleLogOut" class="account-link desktop">
-            로그아웃
-          </button>
-          <a href="#" class="both">회원가입</a>
-        </div>
-      </nav>
-    </div>
+    <transition name='side-menu'>
+      <div v-if='isActive' class="nav-overlay">
+      <router-link to="write/mail" class="nav-link">편지쓰기</router-link>
+      <router-link to="/write/rolling" class="nav-link"
+        >롤링페이퍼 쓰러가기</router-link
+      >
+      <router-link to="/mypage" class="nav-link">마이페이지</router-link>
+      <a href="#" class="overlay-desktop">고객센터</a>
+      <router-link v-if="!loggedIn" to="/login" class="account-link desktop"
+        >로그인하기</router-link
+      >
+      <button v-else @click="handleLogOut" class="account-link desktop">
+        로그아웃
+      </button>
+      <a href="#" class="both">회원가입</a>
+      </div>
+    </transition>
+      
     <!-- <div
       class="menu-shadow"
       :class="{ shadow: isActive }"
@@ -109,7 +108,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang='scss'>
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
@@ -154,6 +153,7 @@ export default {
     height: 58px;
     padding-right: 0px;
     padding-left: 0px;
+    z-index: 1000;
   }
   .nav__toggle {
     display: block;
@@ -188,29 +188,37 @@ export default {
     height: 800px;
     background-color: tomato;
   } */
-  .showNav {
-    /* z-index: 10; */
-    padding-left: 16px;
-    background-color: #fff;
-    /* width: 80%; */
-    height: 100%;
-    visibility: visible;
-    opacity: 1;
-    transform: translate(250px, 0);
-    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
-  }
+  // .showNav {
+  //   /* z-index: 10; */
+  //   padding-left: 16px;
+  //   background-color: #fff;
+  //   /* width: 80%; */
+  //   transform: translate(300px, 0);
+  //   box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
+  // }
   .nav-overlay,
-  .nav-overlay > nav > a,
-  .nav-overlay > nav > .account > a {
+  .nav-overlay > a,
+  .nav-overlay > .account > a {
     display: block;
     font-size: 24px;
     padding: 20px;
   }
   .nav-overlay {
+    position: relative;  
+    padding-left: 16px;
+    background-color: #fff;
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
     width: 250px;
-    transform: translateX(-103%);
     text-align: center;
-    z-index: 1000000;
+    z-index: 100;
+  }
+
+  .side-menu-enter-active, .side-menu-leave-active {
+    transition: transform .5s, opacity .5s;
+  }
+  .side-menu-enter, .side-menu-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(-103%);
   }
 }
 </style>
