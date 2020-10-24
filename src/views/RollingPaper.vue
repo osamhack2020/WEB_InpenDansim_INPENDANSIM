@@ -1,13 +1,16 @@
 <template>
   <div class="rolling-paper">
-    <router-link to="/write/send">보내기</router-link>
+    <router-link to="/write/send">롤링페이퍼 보내기</router-link>
 
     <div v-if="haveRoll">
       <!-- 롤링페이퍼 기존거 작성하기 -->
 
+      <!-- 훈련병 소개 카드 -->
       <div class="box header-wrapper">
         <div class="title-wrapper">
-          <h1 class="title">to. 홍길동 훈련병</h1>
+          <h1 class="title">
+            to. 홍길동 훈련병 <span class="badge badge-info">D - 4 !</span>
+          </h1>
         </div>
         <div class="subtitle">
           <span>
@@ -19,7 +22,7 @@
             길동이에게 큰 힘이 될 거에요💪
           </span>
           <button type="button" class="btn notice-badge">
-            작성 <span class="badge badge-light">4</span>
+            작성 <span class="badge badge-light">{{ listCount }}</span>
           </button>
           <button type="button" class="btn btn-link share-button">
             링크로 초대하기 <i class="far fa-share-square "></i>
@@ -27,35 +30,22 @@
         </div>
         <div class="hr"></div>
       </div>
-
+      <!-- 훈련병 소개 카드 -->
+      <!-- 게시된 메시지들 -->
       <main class="chat-screen">
         <ul class="chat__messages">
-          <li class=" message">
+          <li class=" message" v-for="contents in relayList">
             <div class="message__content">
-              <span class="message__author">Best Friends</span>
+              <span class="message__author">{{ contents.author }}</span>
               <span class="message__bubble">
-                Congrats I love you!
-              </span>
-            </div>
-          </li>
-          <li class=" message">
-            <div class="message__content">
-              <span class="message__author">Best Friends</span>
-              <span class="message__bubble">
-                Congrats I love you!
-              </span>
-            </div>
-          </li>
-          <li class=" message">
-            <div class="message__content">
-              <span class="message__author">Best Friends</span>
-              <span class="message__bubble">
-                Congrats I love you!
+                {{ contents.comment }}
               </span>
             </div>
           </li>
         </ul>
       </main>
+      <!-- 게시된 메시지들 -->
+      <!-- 메시지 쓰는부분 -->
       <div class="chat__write--container">
         <input class="chat__write writer" type="text" placeholder="작성자" />
         <input
@@ -69,6 +59,7 @@
           </span>
         </div>
       </div>
+      <!-- 메시지 쓰는부분 -->
     </div>
     <div v-else>
       <!-- 롤링페이퍼 새로 만들기 -->
@@ -98,13 +89,34 @@ export default {
       pageNumber: 0,
       people: name,
       haveRoll: true,
+      listCount: 4,
+      relayList: [
+        {
+          author: "태윤이가",
+          comment:
+            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!"
+        },
+        {
+          author: "지우석",
+          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?"
+        },
+        {
+          author: "정호",
+          comment:
+            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!"
+        },
+        {
+          author: "은상",
+          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!"
+        }
+      ]
     };
   },
   methods: {
     toggleNext() {
       this.pageNumber = !this.pageNumber;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -157,6 +169,7 @@ export default {
 }
 
 .share-button {
+  margin-left: 16px;
   background-color: #135fa1;
   color: #ffffff;
 }
@@ -259,17 +272,14 @@ export default {
   margin-bottom: 20px;
 }
 
-
-
-
 .message .message__bubble {
   background-color: white;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  margin: 8px;
+  width: 300px;
   padding: 10px 20px;
   border-radius: 20px;
   display: block;
-  color: white;
+  line-height: 150%;
   font-weight: 600;
 }
 </style>

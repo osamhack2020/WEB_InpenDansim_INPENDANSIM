@@ -1,35 +1,39 @@
 <template>
   <div class="rolling">
     <div v-if="pageNumber" class="wrapper search-roll">
-      <div class="find">
-        내가 찾는 훈련병은 <br />
+      <div id="find">
+        받을 훈련병은 <br />
         <input
-          v-model="message"
+          class="input-area"
           maxlength="6"
           placeholder="ㅇㅇㅇ"
           value=""
-          style="box-sizing: content-box; width: 200px; border: 0px; font-size: 34px; outline: none; display: inline-block; font-weight: lighter; padding: 10px; text-align:right"
-        />에요.
+        /><br />
+        이에요.
       </div>
       <div class="guho">
         우리만의 암구호는<br />
         <input
-          v-model="guho"
+          class="input-area"
           type="text"
           maxlength="10"
           placeholder="****"
-          value="1234"
-          style="box-sizing: content-box; width: 77px; border: 0px; font-size: 34px; outline: none; display: inline-block; padding: 10px; font-weight: lighter; margin-left:120px;"
-        />에요.
+          value=""
+        /><br />
+
+        이에요.
       </div>
 
-      <div class="fixed">
+      <div class="button-list">
+        <router-link to="/rollingpaper" class="btn btn-primary"
+          >롤링페이퍼 참가하기</router-link
+        >
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-outline-primary"
           @click="findRolling(message, guho)"
         >
-          롤링페이퍼 참가하기
+          롤링페이퍼 새로 만들기
         </button>
       </div>
 
@@ -38,9 +42,6 @@
       </div>
       <div v-else>
         찾는 롤링페이퍼가 없네요...
-        <router-link to="/rollingpaper" class="btn btn-primary"
-          >롤링페이퍼 새로 만들기</router-link
-        >
       </div>
       <div v-if="message === '김태윤'">
         있어요!!
@@ -67,7 +68,7 @@ export default {
       isFound: false,
       start: false,
       message: "ㅇㅇㅇ",
-      guho: "1234",
+      guho: "1234"
     };
   },
   methods: {
@@ -81,20 +82,36 @@ export default {
       } else {
         return false;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
+.input-area {
+  width: 60%;
+  box-sizing: content-box;
+  font-size: 34px;
+  border: 0px;
+  outline: none;
+  display: inline-block;
+  font-weight: lighter;
+  padding: 0px 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease-in-out;
+}
+
 .rolling {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
 }
 .search-roll {
+  padding: 16px;
   max-width: 444px;
   width: 100%;
   display: flex;
+
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
@@ -110,16 +127,24 @@ export default {
 .wrapper {
   width: 100%;
   font-size: 34px;
-  margin-top: 60px;
+  margin-top: 20px;
   text-align: left;
   font-weight: bold;
   line-height: 60px;
+  display: felx;
+  flex-direction: column;
+  justify-content: center;
 }
-.guho,
-.find {
-  /* text-align: right; */
+.wrapper div {
+  text-align: left;
 }
-.btn-primary {
+#find {
+  margin-bottom: 20px;
+}
+.button-list {
+  margin-top: 20px;
+}
+.btn {
   width: 80%;
 }
 </style>
