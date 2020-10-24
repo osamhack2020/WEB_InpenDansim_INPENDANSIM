@@ -9,6 +9,7 @@
     "deploy": "npm run build && git add . && git commit -m 'MOD: Run build' && git push origin main"
   },
   "dependencies": {
+    "clipboard": "^2.0.6",
     "core-js": "^3.6.5",
     "firebase": "^7.22.0",
     "vue": "^2.6.11",
