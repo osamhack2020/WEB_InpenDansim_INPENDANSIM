@@ -25,16 +25,18 @@ export default {
   src: local("maruburi"),
     url(./assets/fonts/MARUBuriBetaR.ttf) format("truetype");
 }
+@font-face {
+  font-family: "nanum square";
+  src: local("nanum square"),
+    url(./assets/fonts/NanumSquareEB.ttf) format("truetype");
+}
+
 html,
 body {
-  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-#app {
-  height: 100%;
-}
 
 * {
   -webkit-box-sizing: border-box;

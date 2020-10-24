@@ -355,7 +355,7 @@ export default {
   display: grid;
   grid-template-rows: auto 1fr;
 
-  height: 100%;
+  height: 100vh;
 }
 
 .mail {
