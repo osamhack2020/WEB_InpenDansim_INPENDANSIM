@@ -1,22 +1,17 @@
 <template>
   <div id="app">
-    <Navigation v-if="showNav"></Navigation>
-    <router-view />
+    <router-view tag = 'div'/>
   </div>
 </template>
 
 <script>
-import Navigation from "@/components/Navigation.vue";
 
 export default {
-  components: {
-    Navigation,
-  },
   computed: {
     showNav() {
-      return true;
-    },
-  },
+      return this.$route.path == '/';
+    }
+  }
 };
 </script>
 
@@ -39,9 +34,6 @@ body {
 }
 
 #app {
-  display: grid;
-  grid-template-rows: auto 1fr;
-
   height: 100%;
 }
 

@@ -12,8 +12,8 @@
       <!-- logo -->
       <nav role="navigation" class="nav-menu">
         <router-link to="/" class="logo title">인편단심</router-link>
-        <router-link to="/write/mail" class="nav-link">편지 쓰기</router-link>
-        <router-link to="/write/rolling" class="nav-link"
+        <router-link to="/write/mail" class="nav-link" v-if="path != '/write/mail'">편지 쓰기</router-link>
+        <router-link to="/write/rolling" class="nav-link" v-if="path != '/write/rolling'"
           >롤링페이퍼 쓰러가기</router-link
         >
 
@@ -31,7 +31,7 @@
         <a href="#" class="account-link both">회원가입</a>
       </div>
     </div>
-    <div class="nav-overlay">
+    <div class="nav-overlay" v-if='isActive'>
       <nav class="nav-overlay__nav-menu" :class="{ showNav: isActive }">
         <a href="writeLetter.html" class="nav-link">편지쓰기</a>
         <router-link to="/write/rolling" class="nav-link"
@@ -50,11 +50,11 @@
         </div>
       </nav>
     </div>
-    <div
+    <!-- <div
       class="menu-shadow"
       :class="{ shadow: isActive }"
       style="opacity: 1; display: block;"
-    ></div>
+    ></div> -->
 
     <!-- <router-link to="/">인편단심</router-link>
     <div>
@@ -79,6 +79,9 @@ export default {
     ...mapState(["userProfile"]),
     loggedIn() {
       return Object.keys(this.userProfile).length > 0;
+    },
+    path() {
+      return this.$route.path;
     }
   },
   methods: {
@@ -129,10 +132,6 @@ export default {
 }
 .nav__toggle {
   display: none;
-}
-.nav-overlay {
-  visibility: hidden;
-  height: 0px;
 }
 .nav-menu {
   display: flex;
@@ -209,8 +208,9 @@ export default {
   }
   .nav-overlay {
     width: 250px;
-    left: -500px;
+    transform: translateX(-103%);
     text-align: center;
+    z-index: 1000000;
   }
 }
 </style>
