@@ -9,6 +9,7 @@
    
 </head>
 <body>
+  
   <form action="" method="post" name="formname">
 
     <input  id="myinput" type="text" placeholder="이름을 입력해주세요." 
@@ -18,13 +19,9 @@ maxlength="256" oninput="MaxLength(this);" onkeypress="JavaScript:press(this.for
    <span id="inform__isName"></span>
   </form>
   <script>
-    function press(f){ if(f.keyCode == 13)
-    {  formname.submit();  } 
-    }
-
-    var input = "유정호";
-    var innerText = document.getElementById("myinput").innerText;
     function MaxLength(e){
+       var input = "유정호";
+    var innerText = document.getElementById("myinput").innerText;
         if(e.value.length - 10 > 0){
             $("#myinput").css("border", "1px solid red");
             document.getElementById("inform__wrongLength").innerHTML = "이름이 10글자를 넘었어요!";
@@ -32,6 +29,7 @@ maxlength="256" oninput="MaxLength(this);" onkeypress="JavaScript:press(this.for
         else if(e.value.length - 10 <= 0){
             if(input == document.getElementById('myinput').value){
                 document.getElementById("inform__isName").innerHTML = "이름이 맞았습니다!";
+                $("#myinput").css("border", "1px solid black");
             }
             else{
               document.getElementById("inform__isName").innerHTML = "이름이 틀렸습니다!";
@@ -39,6 +37,14 @@ maxlength="256" oninput="MaxLength(this);" onkeypress="JavaScript:press(this.for
             }
         }
     }
+    function press(f){ if(f.keyCode == 13)
+    { 
+      myFn();
+      formname.submit();  } 
+    }
+
+   
+    
     </script>
  
 </body>
