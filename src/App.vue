@@ -1,22 +1,16 @@
 <template>
   <div id="app">
-    <Navigation v-if="showNav"></Navigation>
-    <router-view />
+    <router-view tag="div" />
   </div>
 </template>
 
 <script>
-import Navigation from "@/components/Navigation.vue";
-
 export default {
-  components: {
-    Navigation,
-  },
   computed: {
     showNav() {
-      return true;
-    },
-  },
+      return this.$route.path == "/";
+    }
+  }
 };
 </script>
 
@@ -31,18 +25,17 @@ export default {
   src: local("maruburi"),
     url(./assets/fonts/MARUBuriBetaR.ttf) format("truetype");
 }
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+@font-face {
+  font-family: "nanum square";
+  src: local("nanum square"),
+    url(./assets/fonts/NanumSquareEB.ttf) format("truetype");
 }
 
-#app {
-  display: grid;
-  grid-template-rows: auto 1fr;
-
-  height: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
 }
 
 * {
