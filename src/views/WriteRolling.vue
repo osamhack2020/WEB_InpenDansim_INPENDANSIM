@@ -75,7 +75,13 @@ export default {
       // this.pageNumber = !this.pageNumber;
       this.start = !this.start;
     },
-    findRolling: function(person, pass) {},
+    findRolling: function(person, password) {
+      if (person === "김태윤" && password === "4321") {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
 };
 </script>
