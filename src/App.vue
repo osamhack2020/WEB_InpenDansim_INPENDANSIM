@@ -37,7 +37,6 @@ body {
   padding: 0;
 }
 
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

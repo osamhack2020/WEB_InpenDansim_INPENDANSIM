@@ -1,62 +1,61 @@
 <template>
   <div class="home">
     <Navigation></Navigation>
-    <div class='page-1'>
+    <div class="page-1">
       <!-- <router-link to="/write/mail" tag="a">인편쓰러가기</router-link>
       <router-link to="/write/rolling">롤링페이퍼 쓰러가기~</router-link>
       <div></div>
       <textarea :value="text" @input="text = $event.target.value"></textarea>
       <div>{{ text.replace(/\n/gi, "&lt;br&gt;").replace(/'/gi, "‘") }}</div> -->
 
-      <div class='page-1__left'>
-        <div class='main-text'>
-          <span>전군 통합<br>단순 심플한<br>인편 작성 서비스.</span>
+      <div class="page-1__left">
+        <div class="main-text">
+          <span>전군 통합<br />단순 심플한<br />인편 작성 서비스.</span>
         </div>
-        <div class='sub-text'>
+        <div class="sub-text">
           <span>인터넷 편지, 간단하게 작성해보세요.</span>
         </div>
-        <div class='btn'>
+        <div class="btn">
           <div>지금 시작하기</div>
         </div>
       </div>
-      <div class='page-1__right'>
-          <div class='image'>
-            <div class='top-bar'>
-              <div class='btn-1'></div>
-              <div class='btn-2'></div>
-              <div class='btn-3'></div>
-            </div>
-            <div class='bottom'>
-              <div class='text-area'>
-                인편, 일단 쓰고 보자
-              </div>
+      <div class="page-1__right">
+        <div class="image">
+          <div class="top-bar">
+            <div class="btn-1"></div>
+            <div class="btn-2"></div>
+            <div class="btn-3"></div>
+          </div>
+          <div class="bottom">
+            <div class="text-area">
+              인편, 일단 쓰고 보자
             </div>
           </div>
+        </div>
       </div>
     </div>
-    <div class='page-2'>
-      <div class='page-2__middle'>
-        <div class='main-text'>
+    <div class="page-2">
+      <div class="page-2__middle">
+        <div class="main-text">
           <span>보내기만 하세요.</span>
         </div>
-        <div class='main-text'>
+        <div class="main-text">
           <span>인편단심이 채워드립니다.</span>
         </div>
-        <div class='sub-text'>
+        <div class="sub-text">
           <span>인터넷 편지, 간단하게 작성해보세요.</span>
         </div>
-        <div class='btn'>
+        <div class="btn">
           <div>지금 시작하기</div>
         </div>
-        <div class='image'>
-            <div class='top-bar'>
-              <div class='btn-1'></div>
-              <div class='btn-2'></div>
-              <div class='btn-3'></div>
-            </div>
-            <div class='bottom'>
-            </div>
+        <div class="image">
+          <div class="top-bar">
+            <div class="btn-1"></div>
+            <div class="btn-2"></div>
+            <div class="btn-3"></div>
           </div>
+          <div class="bottom"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -79,85 +78,91 @@ export default {
 };
 </script>
 
-<style scoped lang='scss'>
-
+<style scoped lang="scss">
 //templates
 .main-text {
-    font-family: "nanum square";
-    font-size: 60pt;
-    font-weight: bolder;
+  font-family: "nanum square";
+  font-size: 60pt;
+  font-weight: bolder;
+}
+.sub-text {
+  font-family: "nanum square";
+  font-size: 20pt;
+}
+.btn div {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4pt;
+  box-shadow: 0 2px 4px 0 #aaa;
+  background: #0f4c81;
+  font: {
+    family: "nanum square";
+    size: 13pt;
+    weight: lighter;
   }
-  .sub-text {
-    font-family: 'nanum square';
-    font-size: 20pt;
+  color: #fff;
+
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    cursor: pointer;
   }
-  .btn div {
-    display: inline-block;
-    margin-left: 0.5rem;
-    padding: 1rem 2rem;
+  &:active {
     border: none;
-    border-radius: 4pt;
-    box-shadow: 0 2px 4px 0 #aaa;
-    background: #0f4c81;
-    font: {
-      family: 'nanum square';
-      size: 13pt;
-      weight: lighter;
+    box-shadow: none;
+  }
+}
+.image {
+  width: 60%;
+  height: 100%;
+  border-radius: 7pt;
+  box-shadow: 0 2pt 20pt -5pt #000;
+  display: grid;
+  grid-template-rows: 2rem auto;
+  .top-bar {
+    background: #f9f9f9;
+    border-radius: 7pt 7pt 0 0;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    div {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 0.4rem;
+      margin: 0.2rem 0.4rem 0 0;
     }
-    color: #fff;
-
-    transition: box-shadow 0.3s ease;
-    &:hover {cursor: pointer;}
-    &:active {
-      border: none;
-      box-shadow: none;
+    .btn-1 {
+      background: #fa5f57;
+    }
+    .btn-2 {
+      background: #fcbc28;
+    }
+    .btn-3 {
+      background: #26c93d;
     }
   }
-  .image {
-    width: 60%;
-    height: 100%;
-    border-radius: 7pt;
-    box-shadow: 0 2pt 20pt -5pt #000;
-    display: grid;
-    grid-template-rows: 2rem auto;
-    .top-bar {
-      background: #f9f9f9;
-      border-radius: 7pt 7pt 0 0;
-      display: flex;
-      align-items: center;
-      padding-left: 1rem;
-      div {
-        width: 0.7rem;
-        height: 0.7rem;
-        border-radius: 0.4rem;
-        margin: 0.2rem 0.4rem 0 0;
-      }
-      .btn-1 {
-        background: #fa5f57;
-      }
-      .btn-2 {
-        background: #fcbc28;
-      }
-      .btn-3 {
-        background: #26c93d;
-      }
-    }
-    .bottom {
-      border-radius: 0 0 7pt 7pt;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  .bottom {
+    border-radius: 0 0 7pt 7pt;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
+}
 
 //first page
 .page-1 {
   width: 100vw;
   height: 80vh;
   padding: 10% 13%;
-  background: linear-gradient(165deg, #ffbfb9 0, 50%, #b5bfd4 60%, #fff 60% 100%);
+  background: linear-gradient(
+    165deg,
+    #ffbfb9 0,
+    50%,
+    #b5bfd4 60%,
+    #fff 60% 100%
+  );
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -191,10 +196,10 @@ export default {
         border-radius: 4pt;
         padding: 1rem;
         font: {
-        family: 'maruburi';
-        size: 13pt;
-        weight: bold;
-      }
+          family: "maruburi";
+          size: 13pt;
+          weight: bold;
+        }
       }
     }
   }
@@ -231,8 +236,6 @@ export default {
     }
   }
 }
-
-
 
 @media (max-width: 814px) {
   .page-1 {
