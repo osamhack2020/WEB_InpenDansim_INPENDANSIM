@@ -12,8 +12,16 @@
       <!-- logo -->
       <nav role="navigation" class="nav-menu">
         <router-link to="/" class="logo title">인편단심</router-link>
-        <router-link to="/write/mail" class="nav-link" v-if="path != '/write/mail'">편지 쓰기</router-link>
-        <router-link to="/write/rolling" class="nav-link" v-if="path != '/write/rolling'"
+        <router-link
+          to="/write/mail"
+          class="nav-link"
+          v-if="path != '/write/mail'"
+          >편지 쓰기</router-link
+        >
+        <router-link
+          to="/write/rolling"
+          class="nav-link"
+          v-if="path != '/write/rolling'"
           >롤링페이퍼 쓰러가기</router-link
         >
 
@@ -31,24 +39,24 @@
         <a href="#" class="account-link both">회원가입</a>
       </div>
     </div>
-    <transition name='side-menu'>
-      <div v-if='isActive' class="nav-overlay">
-      <router-link to="write/mail" class="nav-link">편지쓰기</router-link>
-      <router-link to="/write/rolling" class="nav-link"
-        >롤링페이퍼 쓰러가기</router-link
-      >
-      <router-link to="/mypage" class="nav-link">마이페이지</router-link>
-      <a href="#" class="overlay-desktop">고객센터</a>
-      <router-link v-if="!loggedIn" to="/login" class="account-link desktop"
-        >로그인하기</router-link
-      >
-      <button v-else @click="handleLogOut" class="account-link desktop">
-        로그아웃
-      </button>
-      <a href="#" class="both">회원가입</a>
+    <transition name="side-menu">
+      <div v-if="isActive" class="nav-overlay">
+        <router-link to="write/mail" class="nav-link">편지쓰기</router-link>
+        <router-link to="/write/rolling" class="nav-link"
+          >롤링페이퍼 쓰러가기</router-link
+        >
+        <router-link to="/mypage" class="nav-link">마이페이지</router-link>
+        <a href="#" class="overlay-desktop">고객센터</a>
+        <router-link v-if="!loggedIn" to="/login" class="account-link desktop"
+          >로그인하기</router-link
+        >
+        <button v-else @click="handleLogOut" class="account-link desktop">
+          로그아웃
+        </button>
+        <a href="#" class="both">회원가입</a>
       </div>
     </transition>
-      
+
     <!-- <div
       class="menu-shadow"
       :class="{ shadow: isActive }"
@@ -108,7 +116,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
@@ -204,7 +212,7 @@ export default {
     padding: 20px;
   }
   .nav-overlay {
-    position: relative;  
+    position: relative;
     padding-left: 16px;
     background-color: #fff;
     box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
@@ -213,8 +221,9 @@ export default {
     z-index: 100;
   }
 
-  .side-menu-enter-active, .side-menu-leave-active {
-    transition: transform .5s, opacity .5s;
+  .side-menu-enter-active,
+  .side-menu-leave-active {
+    transition: transform 0.5s, opacity 0.5s;
   }
   .side-menu-enter, .side-menu-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;

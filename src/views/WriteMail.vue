@@ -1,137 +1,135 @@
 <template>
-<div class='mail__wrap'>
-  <div class="navigation app-header">
-    <div class="nav-div">
-      <nav role="navigation" class="nav-menu">
-        <router-link to="/" class="logo title">인편단심</router-link>
-        <span style="margin: 0 0.7rem;">|</span>
-        <span>편지 작성</span>
-      </nav>
-      <div class="nav-send" @click="handleSend">
-        <span>보내기</span>
+  <div class="mail__wrap">
+    <div class="navigation app-header">
+      <div class="nav-div">
+        <nav role="navigation" class="nav-menu">
+          <router-link to="/" class="logo title">인편단심</router-link>
+          <span style="margin: 0 0.7rem;">|</span>
+          <span>편지 작성</span>
+        </nav>
+        <div class="nav-send" @click="handleSend">
+          <span>보내기</span>
+        </div>
       </div>
     </div>
-    
-  </div>
-  <div class="mail">
-    <div class="utility-bar">
-      <div class="utility-bar__menu">
-        <div
-          href="#"
-          class="utility-bar__menu-item"
-          v-for="(content, index) in utilityContents"
-          :key="index"
-          @click="utilityContentName = content.iconRef"
-        >
-          <img
-            :src="getImgUrl(content.iconRef, false)"
-            class="icon"
-            width="40"
-          />
-          <img
-            :src="getImgUrl(content.iconRef, true)"
-            class="icon-hover"
-            width="40"
-          />
-          <div>{{ content.name }}</div>
-        </div>
-      </div>
-      <div class="utility-bar__content">
-        <div v-if="utilityContentName == 'news'">
-          <div class="hashtag">
-            <span>#바깥소식 #궁금하지?</span>
-            <div>오늘의 뉴스 헤드라인</div>
+    <div class="mail">
+      <div class="utility-bar">
+        <div class="utility-bar__menu">
+          <div
+            href="#"
+            class="utility-bar__menu-item"
+            v-for="(content, index) in utilityContents"
+            :key="index"
+            @click="utilityContentName = content.iconRef"
+          >
+            <img
+              :src="getImgUrl(content.iconRef, false)"
+              class="icon"
+              width="40"
+            />
+            <img
+              :src="getImgUrl(content.iconRef, true)"
+              class="icon-hover"
+              width="40"
+            />
+            <div>{{ content.name }}</div>
           </div>
-          <div class="navigation">
-            <div
-              v-for="(categoryName, index) in newsCategories"
-              @click="handleShowCategory(index)"
-              :class="[
-                'navigation__button',
-                { focus: newsCategoryNum == index }
-              ]"
-              :key="index"
-            >
-              {{ categoryName }}
+        </div>
+        <div class="utility-bar__content">
+          <div v-if="utilityContentName == 'news'">
+            <div class="hashtag">
+              <span>#바깥소식 #궁금하지?</span>
+              <div>오늘의 뉴스 헤드라인</div>
             </div>
-          </div>
-          <div v-if="showHeadlines" class="headlines-container">
-            <div
-              v-for="(headline, index) in newsHeadlines[newsCategoryNum]"
-              :key="index"
-              @click="handleShowNews(newsCategoryNum, index)"
-              class="headline"
-            >
-              <div>{{ headline.title }}</div>
-              <div>{{ headline.content.slice(0, 60) + " ..." }}</div>
-            </div>
-          </div>
-          <div v-else class="article-container">
-            <div class="article__title">{{ newsDetails.title }}</div>
-            <div class="article__content">{{ newsDetails.content }}</div>
-          </div>
-        </div>
-        <div v-if="utilityContentName == 'novel'">
-          novel
-        </div>
-        <div v-if="utilityContentName == 'words'">
-          words
-        </div>
-        <div v-if="utilityContentName == 'music'">
-          <div class="hashtag">
-            <span>#들려주진 #못하지만 #읽어줄게</span>
-            <div>오늘은 내가 DJ</div>
-          </div>
-          <div class="playlists_container">
-            <div
-              v-for="(playlist, index) in musicPlaylists"
-              class="playlist"
-              :key="index"
-            >
-              <div class="playlist__title">{{ playlist.title }}</div>
+            <div class="navigation">
               <div
-                class="playlist__song"
-                v-for="(song, index) in playlist.songs"
+                v-for="(categoryName, index) in newsCategories"
+                @click="handleShowCategory(index)"
+                :class="[
+                  'navigation__button',
+                  { focus: newsCategoryNum == index }
+                ]"
                 :key="index"
               >
-                <span class="title">{{ song.title }}</span>
-                <span class="artist">{{ song.artist }}</span>
+                {{ categoryName }}
+              </div>
+            </div>
+            <div v-if="showHeadlines" class="headlines-container">
+              <div
+                v-for="(headline, index) in newsHeadlines[newsCategoryNum]"
+                :key="index"
+                @click="handleShowNews(newsCategoryNum, index)"
+                class="headline"
+              >
+                <div>{{ headline.title }}</div>
+                <div>{{ headline.content.slice(0, 60) + " ..." }}</div>
+              </div>
+            </div>
+            <div v-else class="article-container">
+              <div class="article__title">{{ newsDetails.title }}</div>
+              <div class="article__content">{{ newsDetails.content }}</div>
+            </div>
+          </div>
+          <div v-if="utilityContentName == 'novel'">
+            novel
+          </div>
+          <div v-if="utilityContentName == 'words'">
+            words
+          </div>
+          <div v-if="utilityContentName == 'music'">
+            <div class="hashtag">
+              <span>#들려주진 #못하지만 #읽어줄게</span>
+              <div>오늘은 내가 DJ</div>
+            </div>
+            <div class="playlists_container">
+              <div
+                v-for="(playlist, index) in musicPlaylists"
+                class="playlist"
+                :key="index"
+              >
+                <div class="playlist__title">{{ playlist.title }}</div>
+                <div
+                  class="playlist__song"
+                  v-for="(song, index) in playlist.songs"
+                  :key="index"
+                >
+                  <span class="title">{{ song.title }}</span>
+                  <span class="artist">{{ song.artist }}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div v-if="utilityContentName == 'sudoku'">
-          sudoku
+          <div v-if="utilityContentName == 'sudoku'">
+            sudoku
+          </div>
         </div>
       </div>
-    </div>
-    <div class="writing-area">
-      <div class="writing-area__wrap">
-        <div class="writing-area__meta">
-          <input class="reciever-name" type="text" />
-          <span class="reciever-name-label">에게</span>
-          <span class="reciever-type-label">군종</span>
-          <select class="reciever-type" v-model="armyType">
-            <option value="army">육군</option>
-            <option value="navy">해군</option>
-            <option value="air">공군</option>
-            <option value="marine">해병대</option>
-          </select>
-          <router-link to="/write/send">보내기</router-link>
-        </div>
-        <div class="writing-area__text">
-          <textarea
-            :value="mailText"
-            @input="mailText = $event.target.value"
-            :maxlength="textMaxLength"
-          ></textarea>
-          <span>{{ `${textCounter}/${textMaxLength}` }}</span>
+      <div class="writing-area">
+        <div class="writing-area__wrap">
+          <div class="writing-area__meta">
+            <input class="reciever-name" type="text" />
+            <span class="reciever-name-label">에게</span>
+            <span class="reciever-type-label">군종</span>
+            <select class="reciever-type" v-model="armyType">
+              <option value="army">육군</option>
+              <option value="navy">해군</option>
+              <option value="air">공군</option>
+              <option value="marine">해병대</option>
+            </select>
+            <router-link to="/write/send">보내기</router-link>
+          </div>
+          <div class="writing-area__text">
+            <textarea
+              :value="mailText"
+              @input="mailText = $event.target.value"
+              :maxlength="textMaxLength"
+            ></textarea>
+            <span>{{ `${textCounter}/${textMaxLength}` }}</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-  
 </template>
 <script>
 export default {
@@ -343,13 +341,16 @@ export default {
       this.showHeadlines = true;
     },
     handleSend() {
-      this.$router.push({path: '/write/send', params: {mailText: this.mailText}})
+      this.$router.push({
+        path: "/write/send",
+        params: { mailText: this.mailText }
+      });
     }
   }
 };
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .mail__wrap {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -496,8 +497,6 @@ export default {
   right: 1rem;
 }
 
-
-
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
@@ -544,7 +543,7 @@ export default {
   font-size: 1.2rem;
   font-weight: normal;
   cursor: pointer;
-  
+
   &:hover {
     background: #0c3d67;
   }

@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-    <router-view tag = 'div'/>
+    <router-view tag="div" />
   </div>
 </template>
 
 <script>
-
 export default {
   computed: {
     showNav() {
-      return this.$route.path == '/';
+      return this.$route.path == "/";
     }
   }
 };
