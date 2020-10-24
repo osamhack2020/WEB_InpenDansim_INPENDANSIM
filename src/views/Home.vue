@@ -253,9 +253,9 @@ export default {
       font-size: 8pt;
       padding: 0.5rem 1rem;
     }
-  .image .text-area {
-    font-size: 10pt;
-  }
+    .image .text-area {
+      font-size: 10pt;
+    }
   }
 }
 </style>
