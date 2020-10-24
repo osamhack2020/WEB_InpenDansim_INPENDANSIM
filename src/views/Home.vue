@@ -154,7 +154,7 @@ export default {
 //first page
 .page-1 {
   width: 100vw;
-  height: calc(100vh - 64px);
+  height: 100vh;
   padding: 10% 13%;
   background: linear-gradient(
     165deg,
@@ -241,7 +241,7 @@ export default {
   .page-1 {
     grid-template-columns: none;
     grid-template-rows: 1fr 1fr;
-    padding: 20% 13%;
+    padding: 10% 13% 30% 13%;
     .main-text {
       font-size: 25pt;
     }

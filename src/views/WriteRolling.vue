@@ -96,8 +96,7 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
@@ -149,9 +148,6 @@ export default {
     box-shadow: none;
   }
 }
-
-
-
 
 .input-area {
   width: 60%;

@@ -7,8 +7,8 @@
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 전송</span>
         </nav>
-        <div class="nav-back" @click="handleBack">
-          <span>뒤로가기</span>
+        <div class="nav-send" @click="handleSend">
+          <span>보내기</span>
         </div>
       </div>
     </div>
@@ -153,13 +153,18 @@ export default {
       });
       this.newAuthor.name = "";
       this.newAuthor.comment = "";
+    },
+    handleSend() {
+      this.$router.push({
+        path: "/write/send",
+        params: { mailText: this.mailText }
+      });
     }
   }
 };
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
@@ -193,25 +198,27 @@ export default {
 .title {
   font-size: 24px;
 }
-.nav-back {
+.nav-send {
   height: 2.6rem;
   padding: 0 1.5rem;
   border-radius: 1.3rem;
+  background: #135fa1;
   transition: background 0.3s ease;
   box-shadow: 0 2px 4px 0 #ccc;
+  color: #fff;
   display: flex;
   align-items: center;
   font-size: 1.2rem;
+  font-weight: normal;
   cursor: pointer;
 
   &:hover {
-    background: rgba($color: #135fa1, $alpha: 0.2);
+    background: #0c3d67;
   }
   &:active {
     box-shadow: none;
   }
 }
-
 
 .rolling-paper {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,

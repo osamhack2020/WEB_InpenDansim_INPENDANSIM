@@ -58,7 +58,6 @@
 
       <button @click="toggleSend">Send!</button>
     </div>
-    
   </div>
 </template>
 
