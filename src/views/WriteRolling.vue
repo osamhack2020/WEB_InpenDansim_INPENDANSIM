@@ -97,7 +97,7 @@ export default {
   display: inline-block;
   font-weight: lighter;
   padding: 0px 15px;
-  text-align: center;
+  text-align: left;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   transition: border-color 0.3s ease-in-out;
 }

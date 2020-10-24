@@ -34,11 +34,11 @@
       <!-- 게시된 메시지들 -->
       <main class="chat-screen">
         <ul class="chat__messages">
-          <li class=" message" v-for="contents in relayList">
+          <li class="message" v-for="author in relayList">
             <div class="message__content">
-              <span class="message__author">{{ contents.author }}</span>
+              <span class="message__author">{{ author.name }}</span>
               <span class="message__bubble">
-                {{ contents.comment }}
+                {{ author.comment }}
               </span>
             </div>
           </li>
@@ -46,13 +46,25 @@
       </main>
       <!-- 게시된 메시지들 -->
       <!-- 메시지 쓰는부분 -->
+
       <div class="chat__write--container">
-        <input class="chat__write writer" type="text" placeholder="작성자" />
-        <input
-          class="chat__write comment"
+      
+        <textarea
+          class="chat__write chat-comment"
           type="text"
           placeholder="응원 메시지"
-        />
+          v-model="newAuthor.comment"
+        ></textarea>
+        <div class="top-wrap">
+          <input
+            class="chat__write chat-writer"
+            type="text"
+            placeholder="작성자"
+            v-model="newAuthor.name"
+          />
+          <button type="button" class="btn btn-warning" @click="addComment">보내기</button>
+        </div>
+
         <div class="chat__icon-right chat__icon">
           <span class="chat__write-icon">
             <i class="far fa-smile-wink"></i>
@@ -86,27 +98,33 @@ var name = 3;
 export default {
   data() {
     return {
+      list: ["user01", "user02", "user03"],
+      newUser: "",
       pageNumber: 0,
       people: name,
       haveRoll: true,
       listCount: 4,
+      newAuthor:{
+        name:"",
+        comment:""
+      },
       relayList: [
         {
-          author: "태윤이가",
+          name: "태윤이가",
           comment:
             " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!"
         },
         {
-          author: "지우석",
+          name: "지우석",
           comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?"
         },
         {
-          author: "정호",
+          name: "정호",
           comment:
             " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!"
         },
         {
-          author: "은상",
+          name: "은상",
           comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!"
         }
       ]
@@ -115,6 +133,14 @@ export default {
   methods: {
     toggleNext() {
       this.pageNumber = !this.pageNumber;
+    },
+    addComment: function() {
+      this.relayList.push({
+        name:this.newAuthor.name,
+        comment:this.newAuthor.comment
+      })
+      this.newAuthor.name="";
+      this.newAuthor.comment="";
     }
   }
 };
@@ -191,18 +217,31 @@ export default {
 }
 
 .chat__write--container {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   position: fixed;
   bottom: 0px;
   margin: 0 auto;
   left: 0;
   right: 0;
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  /* box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
-    0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025); */
+  max-width: 440px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
 }
+.top-wrap {
+  background-color: #cccccc;
+  display: flex;
+  justify-content: space-between;
+}
+.chat-writer {
+  width: 96px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
+}
+
 .chat__icon-left {
   position: absolute;
   left: 10px;
@@ -213,13 +252,13 @@ export default {
   right: 10px;
 }
 
-.chat__write {
+.chat-comment {
   margin: 0 auto;
   bottom: 0px;
 
   border-radius: 0;
   padding: 20px 60px;
-  width: 80%;
+  width: 100%;
   border: none;
   font-size: 14px;
   transition: width 0.5s ease-in-out, border-radius 0.5s ease-in,
