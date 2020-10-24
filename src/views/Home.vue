@@ -154,7 +154,7 @@ export default {
 //first page
 .page-1 {
   width: 100vw;
-  height: 80vh;
+  height: calc(100vh - 64px);
   padding: 10% 13%;
   background: linear-gradient(
     165deg,
@@ -169,10 +169,10 @@ export default {
 }
 .page-1__left {
   .main-text {
-    margin-bottom: 2rem;
+    line-height: 105%;
   }
   .sub-text {
-    margin: 0 0 2rem 0.5rem;
+    margin: 2rem 0 2rem 0.5rem;
   }
   .btn div {
     margin-left: 0.5rem;
@@ -186,7 +186,7 @@ export default {
 
   .image {
     width: 60%;
-    height: 100%;
+    height: 80%;
 
     .bottom {
       .text-area {
@@ -241,6 +241,21 @@ export default {
   .page-1 {
     grid-template-columns: none;
     grid-template-rows: 1fr 1fr;
+    .main-text {
+      font-size: 20pt;
+    }
+    .sub-text {
+      font-size: 10pt;
+      margin: 1rem 0 1rem 0.2rem;
+    }
+    .btn div {
+      margin-left: 0.2rem;
+      font-size: 8pt;
+      padding: 0.5rem 1rem;
+    }
+  .image .text-area {
+    font-size: 10pt;
+  }
   }
 }
 </style>
