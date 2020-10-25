@@ -77,7 +77,7 @@ export default {
       isFound: false,
       start: false,
       message: "ㅇㅇㅇ",
-      guho: "1234"
+      guho: "1234",
     };
   },
   methods: {
@@ -91,8 +91,8 @@ export default {
       } else {
         return false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

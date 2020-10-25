@@ -118,28 +118,28 @@ export default {
       listCount: 4,
       newAuthor: {
         name: "",
-        comment: ""
+        comment: "",
       },
       relayList: [
         {
           name: "태윤이가",
           comment:
-            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!"
+            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!",
         },
         {
           name: "지우석",
-          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?"
+          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?",
         },
         {
           name: "정호",
           comment:
-            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!"
+            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!",
         },
         {
           name: "은상",
-          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!"
-        }
-      ]
+          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!",
+        },
+      ],
     };
   },
   methods: {
@@ -149,7 +149,7 @@ export default {
     addComment: function() {
       this.relayList.push({
         name: this.newAuthor.name,
-        comment: this.newAuthor.comment
+        comment: this.newAuthor.comment,
       });
       this.newAuthor.name = "";
       this.newAuthor.comment = "";
@@ -157,10 +157,10 @@ export default {
     handleSend() {
       this.$router.push({
         path: "/write/send",
-        params: { mailText: this.mailText }
+        params: { mailText: this.mailText },
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
