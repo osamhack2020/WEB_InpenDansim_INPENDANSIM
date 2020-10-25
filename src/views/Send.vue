@@ -8,16 +8,16 @@
           <!-- <span>편지 전송</span> -->
         </nav>
         <div class="nav-back" @click="handleBack">
-          <span><i class="fas fa-arrow-left"></i> 뒤로가기</span>
+          <span><i class="fas fa-arrow-left"></i> 편지작성</span>
         </div>
       </div>
     </div>
     <div class="content-area" v-if="pageNumber">
       <div class="wrapper send-now">
         <div class="content content-main">
-          편지를 누르면 ㅇㅇ훈련소 페이지로 이동합니다.
+          편지를 누르면 ㅇㅇㅇ훈련소 페이지로 이동합니다.
         </div>
-        <textarea name="" id="" cols="30" rows="10">dfdfd</textarea>
+        <textarea name="" id="" cols="30" rows="10">편지 내용입니다.</textarea>
         <!-- 클립보드에 복사되었습니다. -->
 
         <!-- 테스트영영 -->
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div class="wrapper send-latter">
-        <div class="content content-main">
+        <div class="content content-middle">
           로그인하고 작성한 편지를 보관하세요.
         </div>
         <div class="content content-sub">
@@ -175,6 +175,9 @@ export default {
   }
 }
 // contents
+.send__wrap {
+  background-color: #ffbfb9;
+}
 .content-area {
   margin: 50px auto;
   max-width: 1200px;
@@ -186,6 +189,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
   width: 40%;
   margin: 16px;
