@@ -47,9 +47,9 @@
         >
         <router-link to="/mypage" class="nav-link">마이페이지</router-link>
         <a href="#" class="overlay-desktop">고객센터</a>
-        <router-link v-if="!loggedIn" to="/login" class="account-link desktop"
-          >로그인하기</router-link
-        >
+        <router-link v-if="!loggedIn" to="/login" class="account-link desktop">
+          로그인하기
+        </router-link>
         <button v-else @click="handleLogOut" class="account-link desktop">
           로그아웃
         </button>
@@ -79,7 +79,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      isActive: false
+      isActive: false,
     };
   },
   computed: {
@@ -89,7 +89,7 @@ export default {
     },
     path() {
       return this.$route.path;
-    }
+    },
   },
   methods: {
     handleLogOut() {
@@ -110,8 +110,8 @@ export default {
       if (event) {
         alert(event.target.tagName);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -227,7 +227,8 @@ export default {
   }
   .side-menu-enter, .side-menu-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
-    transform: translateY(-103%);
+    // transform: translateY(-103%);
+    transform: translateX(-103%);
   }
 }
 </style>
