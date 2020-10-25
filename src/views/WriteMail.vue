@@ -39,10 +39,12 @@
           <div v-if="utilityContentName == 'news'">
             <div class="hashtag">
               <span>#바깥소식 #궁금하지?</span>
-              <div>오늘의 뉴스 헤드라인</div>
+              <div class="title">오늘의 뉴스 헤드라인</div>
             </div>
-            <div class="navigation">
+
+            <div class="navigation btn-group">
               <div
+                class="btn btn-secondary"
                 v-for="(categoryName, index) in newsCategories"
                 @click="handleShowCategory(index)"
                 :class="[
@@ -351,6 +353,56 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// header
+.navigation {
+  font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.nav-div {
+  display: flex;
+  padding: 0px 24px;
+  height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e3e5e9;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
+  font-weight: bold;
+  color: #111111;
+}
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-size: 24px;
+}
+.nav-send {
+  height: 40px;
+  padding: 0 1.5rem;
+  border-radius: 1.3rem;
+  background: #135fa1;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 4px 0 #ccc;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: normal;
+  cursor: pointer;
+
+  &:hover {
+    background: #0c3d67;
+  }
+  &:active {
+    box-shadow: none;
+  }
+}
+
 .mail__wrap {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -374,7 +426,7 @@ export default {
 
 .utility-bar__menu {
   border-right: 1px solid #ddd;
-  width: 100%;
+  min-width: 54px;
   height: 100%;
 
   display: flex;
@@ -392,6 +444,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  div {
+    margin-top: 10px;
+    font: {
+      family: "nanum square";
+
+      weight: lighter;
+    }
+  }
 }
 
 .utility-bar__menu-item .icon {
@@ -415,19 +475,31 @@ export default {
 .utility-bar__content {
   height: 100%;
   width: 100%;
+  .hashtag {
+    margin: 20px 10px;
+    font: {
+      family: "nanum square";
+      size: 16pt;
+      weight: lighter;
+    }
+  }
+  .title{
+    margin-top:10px;
+  }
 }
 
 .utility-bar__content .navigation {
-  margin: 0 2rem;
-
   display: flex;
   justify-content: space-between;
+  .btn {
+    width: 20%;
+  }
 }
 
 .utility-bar__content .navigation .navigation__button {
   font-family: "maruburi";
   padding: 0.5rem;
-  border-radius: 20% 20% 0 0;
+  // border-radius: 20% 20% 0 0;
 }
 
 .utility-bar__content .navigation .navigation__button.focus {
@@ -437,7 +509,7 @@ export default {
 .headlines-container {
   min-height: 10rem;
   background: #b5bfd4;
-  border-radius: 1rem;
+  // border-radius: 1rem;
 }
 
 .headline {
@@ -495,60 +567,5 @@ export default {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-}
-
-.navigation {
-  font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
-    Latin font, sans-serif;
-}
-
-.nav-div {
-  display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  padding: 0px 24px;
-  height: 64px;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e3e5e9;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
-  font-weight: bold;
-  color: #111111;
-}
-.nav__toggle {
-  display: none;
-}
-.nav-menu {
-  display: flex;
-  align-items: center;
-}
-.nav-menu > .nav-link {
-  padding-left: 40px;
-}
-.title {
-  font-size: 24px;
-}
-.nav-send {
-  height: 2.6rem;
-  padding: 0 1.5rem;
-  border-radius: 1.3rem;
-  background: #135fa1;
-  transition: background 0.3s ease;
-  box-shadow: 0 2px 4px 0 #ccc;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-  font-weight: normal;
-  cursor: pointer;
-
-  &:hover {
-    background: #0c3d67;
-  }
-  &:active {
-    box-shadow: none;
-  }
 }
 </style>
