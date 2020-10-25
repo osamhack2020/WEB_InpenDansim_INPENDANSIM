@@ -332,6 +332,7 @@ export default {
   .page-footer {
     .flex-center {
       flex-wrap: wrap;
+      font-weight: 400;
     }
   }
 }
@@ -361,6 +362,11 @@ export default {
       margin: 30px;
       cursor: pointer;
     }
+  }
+  p {
+    color: #0f4c81;
+    font-weight: 300;
+    font-family: "nanum square";
   }
 }
 </style>

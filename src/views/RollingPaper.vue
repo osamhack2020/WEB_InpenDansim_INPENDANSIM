@@ -239,7 +239,7 @@ export default {
 
 .header-wrapper {
   margin: 16px;
-  padding-left: 60px;
+  padding-left: 30px;
   background-color: #ffffff;
   z-index: 10;
 }
@@ -276,7 +276,13 @@ export default {
   margin: 10px;
   display: block;
 }
-
+button {
+  font: {
+    family: "nanum square";
+    size: 13pt;
+    weight: lighter;
+  }
+}
 .share-button {
   margin-left: 16px;
   background-color: #135fa1;
