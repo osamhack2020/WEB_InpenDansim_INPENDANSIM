@@ -483,8 +483,8 @@ export default {
       weight: lighter;
     }
   }
-  .title{
-    margin-top:10px;
+  .title {
+    margin-top: 10px;
   }
 }
 
