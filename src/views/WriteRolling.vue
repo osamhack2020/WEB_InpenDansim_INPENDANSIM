@@ -199,16 +199,25 @@ export default {
     margin-bottom: 20px;
   }
   .button-list {
+    font: {
+      family: "nanum square";
+      size: 13pt;
+      weight: lighter;
+    }
     position: absolute;
     bottom: 16px;
     margin-top: 30px;
     box-sizing: border-box;
     margin: 25px 16px;
     .btn {
-      height: 42px;
+      vertical-align: middle;
+      padding: 16px;
+      font-size: 20px;
+      letter-spacing: 1px;
       min-width: 328px;
       max-width: 440px;
-      margin: 12px 0px;
+      margin: 16px 0px;
+      margin-left: 10px;
     }
   }
 }
