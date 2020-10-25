@@ -94,13 +94,13 @@ export default {
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .nav-div {
   display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 1;
   padding: 0px 24px;
   height: 64px;
   align-items: center;
