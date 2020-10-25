@@ -79,7 +79,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      isActive: false,
+      isActive: false
     };
   },
   computed: {
@@ -89,7 +89,7 @@ export default {
     },
     path() {
       return this.$route.path;
-    },
+    }
   },
   methods: {
     handleLogOut() {
@@ -110,8 +110,8 @@ export default {
       if (event) {
         alert(event.target.tagName);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -120,12 +120,14 @@ export default {
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
 }
 
 .nav-div {
   display: flex;
-  position: sticky;
-  top: 0;
+
   z-index: 1;
   padding: 0px 24px;
   height: 64px;

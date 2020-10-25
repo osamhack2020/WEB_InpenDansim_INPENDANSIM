@@ -33,7 +33,7 @@
             길동이에게 큰 힘이 될 거에요💪
           </span>
           <button type="button" class="btn notice-badge">
-            작성 <span class="badge badge-light">{{ listCount }}</span>
+            작성 <span class="badge badge-light">{{ listCount }}명</span>
           </button>
           <button type="button" class="btn btn-link share-button">
             링크로 초대하기 <i class="far fa-share-square "></i>
@@ -118,28 +118,28 @@ export default {
       listCount: 4,
       newAuthor: {
         name: "",
-        comment: "",
+        comment: ""
       },
       relayList: [
         {
           name: "태윤이가",
           comment:
-            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!",
+            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!"
         },
         {
           name: "지우석",
-          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?",
+          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?"
         },
         {
           name: "정호",
           comment:
-            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!",
+            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!"
         },
         {
           name: "은상",
-          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!",
-        },
-      ],
+          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!"
+        }
+      ]
     };
   },
   methods: {
@@ -149,7 +149,7 @@ export default {
     addComment: function() {
       this.relayList.push({
         name: this.newAuthor.name,
-        comment: this.newAuthor.comment,
+        comment: this.newAuthor.comment
       });
       this.newAuthor.name = "";
       this.newAuthor.comment = "";
@@ -157,10 +157,10 @@ export default {
     handleSend() {
       this.$router.push({
         path: "/write/send",
-        params: { mailText: this.mailText },
+        params: { mailText: this.mailText }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -168,14 +168,16 @@ export default {
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  z-index: 1;
 }
 
 .nav-div {
   display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  padding: 0px 24px;
+
+  padding: 0px 16px;
   height: 64px;
   align-items: center;
   justify-content: space-between;
@@ -199,7 +201,7 @@ export default {
   font-size: 24px;
 }
 .nav-send {
-  height: 2.6rem;
+  height: 40px;
   padding: 0 1.5rem;
   border-radius: 1.3rem;
   background: #135fa1;
