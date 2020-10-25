@@ -2,10 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import Clipboard from 'v-clipboard';
-import {
-  auth
-} from "./firebase";
+import Clipboard from "v-clipboard";
+import { auth } from "./firebase";
 
 Vue.config.productionTip = false;
 Vue.use(Clipboard);

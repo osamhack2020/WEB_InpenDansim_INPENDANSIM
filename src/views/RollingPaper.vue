@@ -1,6 +1,17 @@
 <template>
   <div class="rolling-paper">
-    <router-link to="/write/send">롤링페이퍼 보내기</router-link>
+    <div class="navigation app-header">
+      <div class="nav-div">
+        <nav role="navigation" class="nav-menu">
+          <router-link to="/" class="logo title">인편단심</router-link>
+          <span style="margin: 0 0.7rem;">|</span>
+          <span>편지 전송</span>
+        </nav>
+        <div class="nav-send" @click="handleSend">
+          <span>보내기</span>
+        </div>
+      </div>
+    </div>
 
     <div v-if="haveRoll">
       <!-- 롤링페이퍼 기존거 작성하기 -->
@@ -34,7 +45,7 @@
       <!-- 게시된 메시지들 -->
       <main class="chat-screen">
         <ul class="chat__messages">
-          <li class="message" v-for="author in relayList">
+          <li class="message" v-for="(author, index) in relayList" :key="index">
             <div class="message__content">
               <span class="message__author">{{ author.name }}</span>
               <span class="message__bubble">
@@ -48,6 +59,12 @@
       <!-- 메시지 쓰는부분 -->
 
       <div class="chat__write--container">
+        <textarea
+          class="chat__write chat-comment"
+          type="text"
+          placeholder="응원 메시지"
+          v-model="newAuthor.comment"
+        ></textarea>
         <div class="top-wrap">
           <input
             class="chat__write chat-writer"
@@ -59,12 +76,7 @@
             보내기
           </button>
         </div>
-        <textarea
-          class="chat__write chat-comment"
-          type="text"
-          placeholder="응원 메시지"
-          v-model="newAuthor.comment"
-        ></textarea>
+
         <div class="chat__icon-right chat__icon">
           <span class="chat__write-icon">
             <i class="far fa-smile-wink"></i>
@@ -94,42 +106,41 @@
 </template>
 
 <script>
+var name = 3;
 export default {
   data() {
     return {
-      pageNumber: 0,
+      list: ["user01", "user02", "user03"],
       newUser: "",
-
+      pageNumber: 0,
+      people: name,
       haveRoll: true,
       listCount: 4,
       newAuthor: {
         name: "",
-        comment: ""
+        comment: "",
       },
       relayList: [
         {
           name: "태윤이가",
           comment:
-            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!"
+            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!",
         },
         {
           name: "지우석",
-          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?"
+          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?",
         },
         {
           name: "정호",
           comment:
-            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!"
+            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!",
         },
         {
           name: "은상",
-          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!"
-        }
-      ]
+          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!",
+        },
+      ],
     };
-  },
-  props: {
-    name
   },
   methods: {
     toggleNext() {
@@ -138,24 +149,84 @@ export default {
     addComment: function() {
       this.relayList.push({
         name: this.newAuthor.name,
-        comment: this.newAuthor.comment
+        comment: this.newAuthor.comment,
       });
       this.newAuthor.name = "";
       this.newAuthor.comment = "";
-      this.listCount++;
-    }
-  }
+    },
+    handleSend() {
+      this.$router.push({
+        path: "/write/send",
+        params: { mailText: this.mailText },
+      });
+    },
+  },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.navigation {
+  font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+}
+
+.nav-div {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0px 24px;
+  height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e3e5e9;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
+  font-weight: bold;
+  color: #111111;
+}
+.nav__toggle {
+  display: none;
+}
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+.nav-menu > .nav-link {
+  padding-left: 40px;
+}
+.title {
+  font-size: 24px;
+}
+.nav-send {
+  height: 2.6rem;
+  padding: 0 1.5rem;
+  border-radius: 1.3rem;
+  background: #135fa1;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 4px 0 #ccc;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: normal;
+  cursor: pointer;
+
+  &:hover {
+    background: #0c3d67;
+  }
+  &:active {
+    box-shadow: none;
+  }
+}
+
 .rolling-paper {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   margin-right: auto;
   margin-left: auto;
   max-width: 428px;
-  /* min-height: 50vh; */
+  min-height: 2000vh;
 }
 
 .header-wrapper {
@@ -244,6 +315,16 @@ export default {
   box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
 }
 
+.chat__icon-left {
+  position: absolute;
+  left: 10px;
+}
+
+.chat__icon-right {
+  position: absolute;
+  right: 10px;
+}
+
 .chat-comment {
   margin: 0 auto;
   bottom: 0px;
@@ -278,8 +359,6 @@ export default {
 
 .chat-screen .chat__messages {
   height: 200vh;
-
-  padding-bottom: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;

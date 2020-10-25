@@ -5,7 +5,7 @@
         <nav role="navigation" class="nav-menu">
           <router-link to="/" class="logo title">인편단심</router-link>
           <span style="margin: 0 0.7rem;">|</span>
-          <span>편지 작성</span>
+          <span>편지 전송</span>
         </nav>
         <div class="nav-back" @click="handleBack">
           <span><i class="fas fa-arrow-left"></i> 뒤로가기</span>

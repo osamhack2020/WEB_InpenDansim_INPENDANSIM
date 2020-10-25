@@ -37,7 +37,8 @@ const routes = [{
   },
   {
     // param 추가 https://remocon33.tistory.com/586
-    path: "/rollingpaper/:name/:password",
+    path: "/rollingpaper",
+    // path: "/rollingpaper/:name/:password",
     name: "RollingPaper",
     component: () => import("../views/RollingPaper.vue")
   }

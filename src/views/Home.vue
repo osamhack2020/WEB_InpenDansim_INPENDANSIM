@@ -203,7 +203,7 @@ export default {
 //first page
 .page-1 {
   width: 100vw;
-  height: calc(100vh - 64px);
+  height: 100vh;
   padding: 10% 13%;
   background: linear-gradient(
     165deg,
@@ -299,16 +299,17 @@ export default {
   .page-1 {
     grid-template-columns: none;
     grid-template-rows: 1fr 1fr;
+    padding: 10% 13% 30% 13%;
     .main-text {
-      font-size: 20pt;
+      font-size: 25pt;
     }
     .sub-text {
-      font-size: 10pt;
+      font-size: 15pt;
       margin: 1rem 0 1rem 0.2rem;
     }
     .btn div {
       margin-left: 0.2rem;
-      font-size: 8pt;
+      font-size: 15pt;
       padding: 0.5rem 1rem;
     }
     .image .text-area {
