@@ -1,12 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import { auth } from "../firebase";
+import {
+  auth
+} from "../firebase";
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
     path: "/",
     name: "Home",
     component: Home
@@ -35,7 +36,8 @@ const routes = [
     component: () => import("../views/Send.vue")
   },
   {
-    path: "/rollingpaper/",
+    // param 추가 https://remocon33.tistory.com/586
+    path: "/rollingpaper/:name/:password",
     name: "RollingPaper",
     component: () => import("../views/RollingPaper.vue")
   }

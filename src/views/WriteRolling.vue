@@ -7,7 +7,7 @@
           class="input-area"
           maxlength="6"
           placeholder="ㅇㅇㅇ"
-          value=""
+          v-model="looking.name"
         /><br />
         이에요.
       </div>
@@ -18,10 +18,9 @@
           type="text"
           maxlength="10"
           placeholder="****"
-          value=""
+          v-model="looking.password"
         /><br />
-
-        이에요.
+        에요.
       </div>
 
       <div class="button-list">
@@ -71,6 +70,7 @@ export default {
       guho: "1234"
     };
   },
+  
   methods: {
     toggleNext() {
       // this.pageNumber = !this.pageNumber;

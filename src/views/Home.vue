@@ -10,7 +10,12 @@
 
       <div class="page-1__left">
         <div class="main-text">
-          <span>전군 통합<br />단순 심플한<br />인편 작성 서비스.</span>
+          <span class="title-h1">
+            전군 통합<br />
+            단순 심플<br />
+            인터넷<br />
+            편지서비스
+          </span>
         </div>
         <div class="sub-text">
           <span>인터넷 편지, 간단하게 작성해보세요.</span>
@@ -58,6 +63,48 @@
         </div>
       </div>
     </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small cyan darken-3">
+      <!-- Footer Elements -->
+      <div class="container">
+        <div class=" flex-center">
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x">
+            </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x">
+            </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x">
+            </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x">
+            </i>
+          </a>
+          <!--Pinterest-->
+          <a class="pin-ic">
+            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+      <!-- Footer Elements -->
+
+      <!-- Copyright -->
+      <P>ⓒ 2020 INPENDANSIM ALL RIGHTS RESERVED.</P>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
   </div>
 </template>
 
@@ -84,6 +131,10 @@ export default {
   font-family: "nanum square";
   font-size: 60pt;
   font-weight: bolder;
+  // line-height: 120%;
+}
+.title-h1 {
+  line-height: 110%;
 }
 .sub-text {
   font-family: "nanum square";
@@ -114,8 +165,6 @@ export default {
   }
 }
 .image {
-  width: 60%;
-  height: 100%;
   border-radius: 7pt;
   box-shadow: 0 2pt 20pt -5pt #000;
   display: grid;
@@ -185,7 +234,7 @@ export default {
   align-items: center;
 
   .image {
-    width: 60%;
+    width: 100%;
     height: 80%;
 
     .bottom {
@@ -209,6 +258,15 @@ export default {
   width: 100vw;
   height: 100vh;
   // padding: 10% 13%;
+
+  background: linear-gradient(
+    165deg,
+    #fff 0,
+    60%,
+    #b5bfd4 60%,
+    #ffbfb9 70% 100%
+  );
+
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
@@ -255,6 +313,34 @@ export default {
     }
     .image .text-area {
       font-size: 10pt;
+    }
+  }
+}
+// footer
+.page-footer {
+  width: 100%;
+  padding: 32px;
+
+  background: #ffbfb9;
+  text-align: center;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .container {
+    margin: 20px 0px;
+  }
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      display: block;
+      width: 24px;
+      margin: 30px;
+      cursor: pointer;
     }
   }
 }

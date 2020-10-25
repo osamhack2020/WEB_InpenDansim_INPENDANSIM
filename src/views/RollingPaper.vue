@@ -48,13 +48,6 @@
       <!-- 메시지 쓰는부분 -->
 
       <div class="chat__write--container">
-      
-        <textarea
-          class="chat__write chat-comment"
-          type="text"
-          placeholder="응원 메시지"
-          v-model="newAuthor.comment"
-        ></textarea>
         <div class="top-wrap">
           <input
             class="chat__write chat-writer"
@@ -62,9 +55,16 @@
             placeholder="작성자"
             v-model="newAuthor.name"
           />
-          <button type="button" class="btn btn-warning" @click="addComment">보내기</button>
+          <button type="button" class="btn btn-warning" @click="addComment">
+            보내기
+          </button>
         </div>
-
+        <textarea
+          class="chat__write chat-comment"
+          type="text"
+          placeholder="응원 메시지"
+          v-model="newAuthor.comment"
+        ></textarea>
         <div class="chat__icon-right chat__icon">
           <span class="chat__write-icon">
             <i class="far fa-smile-wink"></i>
@@ -94,19 +94,17 @@
 </template>
 
 <script>
-var name = 3;
 export default {
   data() {
     return {
-      list: ["user01", "user02", "user03"],
-      newUser: "",
       pageNumber: 0,
-      people: name,
+      newUser: "",
+
       haveRoll: true,
       listCount: 4,
-      newAuthor:{
-        name:"",
-        comment:""
+      newAuthor: {
+        name: "",
+        comment: ""
       },
       relayList: [
         {
@@ -130,17 +128,21 @@ export default {
       ]
     };
   },
+  props: {
+    name
+  },
   methods: {
     toggleNext() {
       this.pageNumber = !this.pageNumber;
     },
     addComment: function() {
       this.relayList.push({
-        name:this.newAuthor.name,
-        comment:this.newAuthor.comment
-      })
-      this.newAuthor.name="";
-      this.newAuthor.comment="";
+        name: this.newAuthor.name,
+        comment: this.newAuthor.comment
+      });
+      this.newAuthor.name = "";
+      this.newAuthor.comment = "";
+      this.listCount++;
     }
   }
 };
@@ -153,7 +155,7 @@ export default {
   margin-right: auto;
   margin-left: auto;
   max-width: 428px;
-  min-height: 2000vh;
+  /* min-height: 50vh; */
 }
 
 .header-wrapper {
@@ -242,16 +244,6 @@ export default {
   box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
 }
 
-.chat__icon-left {
-  position: absolute;
-  left: 10px;
-}
-
-.chat__icon-right {
-  position: absolute;
-  right: 10px;
-}
-
 .chat-comment {
   margin: 0 auto;
   bottom: 0px;
@@ -286,6 +278,8 @@ export default {
 
 .chat-screen .chat__messages {
   height: 200vh;
+
+  padding-bottom: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;

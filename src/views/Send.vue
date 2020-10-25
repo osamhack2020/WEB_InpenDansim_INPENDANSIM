@@ -8,7 +8,7 @@
           <span>편지 작성</span>
         </nav>
         <div class="nav-back" @click="handleBack">
-          <span>뒤로가기</span>
+          <span><i class="fas fa-arrow-left"></i> 뒤로가기</span>
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@
       <br />
 
       <button @click="toggleSend">Send!</button>
-    
+    </div>
   </div>
 </template>
 
@@ -76,6 +76,7 @@ export default {
     },
     handleBack() {
       this.$router.push({ path: "/write/mail" });
+    },
     copyText: function() {
       var agt = navigator.userAgent.toLowerCase();
       var textField = document.getElementById("target");
@@ -111,7 +112,7 @@ export default {
   padding: 0px 24px;
   height: 64px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
   border-bottom: 1px solid #e3e5e9;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
@@ -132,6 +133,7 @@ export default {
   font-size: 24px;
 }
 .nav-back {
+  margin-left: 20px;
   height: 2.6rem;
   padding: 0 1.5rem;
   border-radius: 1.3rem;
@@ -148,6 +150,7 @@ export default {
   &:active {
     box-shadow: none;
   }
+}
 .content-area {
   margin-top: 50px;
   margin-left: auto;
