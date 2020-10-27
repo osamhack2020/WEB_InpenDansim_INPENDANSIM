@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import WriteMail from "../views/WriteMail.vue";
 import {
   auth
 } from "../firebase";
@@ -23,7 +24,7 @@ const routes = [{
   {
     path: "/write/mail",
     name: "WriteMail",
-    component: () => import("../views/WriteMail.vue")
+    component: WriteMail
   },
   {
     path: "/write/rolling",
