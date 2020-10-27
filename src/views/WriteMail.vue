@@ -7,7 +7,7 @@
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 작성</span>
         </nav>
-        <div class="nav-send" @click="handleSend">
+        <div class="nav-send" @click="handleSend()">
           <span>보내기</span>
         </div>
       </div>
@@ -60,16 +60,16 @@
               <div
                 v-for="(headline, index) in newsHeadlines[newsCategoryNum]"
                 :key="index"
-                @click="handleShowNews(newsCategoryNum, index)"
                 class="headline"
               >
-                <div>{{ headline.title }}</div>
-                <div>{{ headline.content.slice(0, 60) + " ..." }}</div>
+                <div class='title' @click="handleShowNews(newsCategoryNum, index)">{{ headline.title }}</div>
+                <div class='content'>{{ headline.content.slice(0, 60) + " ..." }}</div>
+                <div class='add-btn' @click='handleAdd(headline.title+"\n"+headline.content.replace(/&lt;br&gt;/gi, " "))'>추가하기 >></div>
               </div>
             </div>
             <div v-else class="article-container">
-              <div class="article__title">{{ newsDetails.title }}</div>
-              <div class="article__content">{{ newsDetails.content }}</div>
+              <div class="title">{{ newsDetails.title }}</div>
+              <div class="content" v-html="newsDetails.content"></div>
             </div>
           </div>
           <div v-if="utilityContentName == 'novel'">
@@ -81,7 +81,7 @@
           <div v-if="utilityContentName == 'music'">
             <div class="hashtag">
               <span>#들려주진 #못하지만 #읽어줄게</span>
-              <div>오늘은 내가 DJ</div>
+              <div class='title'>오늘은 내가 DJ</div>
             </div>
             <div class="playlists_container">
               <div
@@ -118,25 +118,33 @@
               <option value="air">공군</option>
               <option value="marine">해병대</option>
             </select>
-            <router-link to="/write/send">보내기</router-link>
           </div>
           <div class="writing-area__text">
             <textarea
               :value="mailText"
               @input="mailText = $event.target.value"
               :maxlength="textMaxLength"
+              spellcheck="false"
             ></textarea>
             <span>{{ `${textCounter}/${textMaxLength}` }}</span>
           </div>
         </div>
       </div>
     </div>
+    <div class='alert-popup__wrap'>
+      <transition name='popup'>
+        <div class='alert-popup' v-if="showAlert"><span>{{ alertMessage }}</span></div>
+      </transition>
+    </div>
+    
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      showAlert: false,
+      alertMessage: '',
       mailText: "",
       armyType: "army",
       showHeadlines: true,
@@ -179,7 +187,7 @@ export default {
           {
             title: '공군 사병 ‘치료 휴가‘ 내고 무단출국…"여친 만나려"',
             content:
-              '[앵커]<br><br>한 공군 병사가 몸이 아프다며 휴가를 나갔는데 제때 복귀하지 않고 해외로 무단 출국했습니다. 일종의 ‘탈영‘인데요. 닷새 만인 오늘(20일) 귀국하긴 했는데, 여자친구를 만나러 가려고 출국했다고 합니다.<br><br>이한길 기자입니다.<br><br>[기자]<br><br>충북 청주의 한 공군부대에서 근무하는 A상병은 지난 14일 1박 2일로 청원 휴가를 나갔습니다.<br><br>침샘 수술을 위해 병원을 다녀오겠다며 휴가를 낸 겁니다.<br><br>하지만 A상병은 다음날 부대에 복귀하지 않고 인천공항을 통해 카타르를 거쳐 이탈리아 밀라노로 무단 출국했습니다.<br><br>규정상 병사가 해외여행을 가려면 보름 전 지휘관의 승인을 받아야 하는데, A씨는 이런 절차를 밟지 않았습니다.<br><br>출국심사는 정상적으로 받았지만 출입국관리사무소는 A씨가 현역 병사라는 사실을 전혀 알지 못했습니다.<br><br>군 관계자는 "법무부 출입국관리시스템에는 만 25세가 넘은 병역기피 우려자 명단만 표시된다"고 했습니다.<br><br>A상병이 복귀하지 않자 해당 부대는 소재 파악에 나섰고 뒤늦게 출국 사실을 확인했습니다.<br><br>군은 가족을 통해 A상병과 연락을 시도했고 설득 끝에 출국 닷새 만인 오늘 오후 한국으로 돌아왔습니다.<br><br>A상병은 여자친구를 만나기 위해 출국했다고 주장한 걸로 알려졌습니다.<br><br>군사경찰은 코로나19 검사 등이 끝나는 대로 A상병을 탈영 등의 혐의로 조사할 방침입니다.<br><br>(영상디자인 : 박성현 / 영상그래픽 : 김정은)<br><br>이한길 기자 (oneway@jtbc.co.kr) [영상편집: 이지훈]'
+              '[앵커]한 공군 병사가 몸이 아프다며 휴가를 나갔는데 제때 복귀하지 않고 해외로 무단 출국했습니다. 일종의 ‘탈영‘인데요. 닷새 만인 오늘(20일) 귀국하긴 했는데, 여자친구를 만나러 가려고 출국했다고 합니다.<br><br>이한길 기자입니다.<br><br>[기자]<br><br>충북 청주의 한 공군부대에서 근무하는 A상병은 지난 14일 1박 2일로 청원 휴가를 나갔습니다.<br><br>침샘 수술을 위해 병원을 다녀오겠다며 휴가를 낸 겁니다.<br><br>하지만 A상병은 다음날 부대에 복귀하지 않고 인천공항을 통해 카타르를 거쳐 이탈리아 밀라노로 무단 출국했습니다.<br><br>규정상 병사가 해외여행을 가려면 보름 전 지휘관의 승인을 받아야 하는데, A씨는 이런 절차를 밟지 않았습니다.<br><br>출국심사는 정상적으로 받았지만 출입국관리사무소는 A씨가 현역 병사라는 사실을 전혀 알지 못했습니다.<br><br>군 관계자는 "법무부 출입국관리시스템에는 만 25세가 넘은 병역기피 우려자 명단만 표시된다"고 했습니다.<br><br>A상병이 복귀하지 않자 해당 부대는 소재 파악에 나섰고 뒤늦게 출국 사실을 확인했습니다.<br><br>군은 가족을 통해 A상병과 연락을 시도했고 설득 끝에 출국 닷새 만인 오늘 오후 한국으로 돌아왔습니다.<br><br>A상병은 여자친구를 만나기 위해 출국했다고 주장한 걸로 알려졌습니다.<br><br>군사경찰은 코로나19 검사 등이 끝나는 대로 A상병을 탈영 등의 혐의로 조사할 방침입니다.<br><br>(영상디자인 : 박성현 / 영상그래픽 : 김정은)<br><br>이한길 기자 (oneway@jtbc.co.kr) [영상편집: 이지훈]'
           },
           {
             title: "“재산세 완화 추진…종부세는 유지” ‘부동산 늪’에 빠진 민주당",
@@ -206,7 +214,7 @@ export default {
           {
             title: "‘그래도 오를 거야!‘...2030 세대 ‘영끌‘ 매수 최고",
             content:
-              "[앵커]<br>서울 아파트 가격이 잠시 숨 고르기에 들어가면서 최근까지 치솟던 매매가가 보합세를 유지하고 있는데요.<br><br>하지만 오랜 기간 상승이 이어지다 보니, 더 오를 것이라는 전망에다 지금 사지 못하면 앞으로 내 집 마련이 어려울 것이라는 젊은 세대의 불안감이 커지면서 이른바 ‘2030‘의 매수세가 역대 최고를 기록했습니다.<br><br>김현우 기자의 보도입니다.<br><br>[기자]<br>지난주 서울 강남구의 아파트값 변동률은 마이너스 0.01%!<br><br>18주 만에 하락 전환했습니다.<br><br>하지만 강남 이외 지역의 소형 평수를 중심으로 이른바 ‘가격 키 맞추기‘가 계속되고 있습니다.<br><br>이 때문에 서울 지역 전체 아파트 가격 상승률은 8주 연속 0.01% 수준을 유지하고 있습니다.<br><br>초강력 대출 규제와 세금 인상, 여기에다 자금출처 조사까지!<br><br>정부가 투기 수요에 대한 전방위 압박에 나섰지만, 서울 아파트값은 관망세일 뿐 하락 장으로 판단하긴 이른 감이 있습니다.<br><br>‘더 오를 거란‘ 불안 심리는 30대는 물론 20대 이하까지 자극하고 있습니다.<br><br>지난달 서울 아파트의 30대 거래량은 전체의 37%로 역대 최고 수준을 기록했습니다.<br><br>20대 이하의 매수세도 강해져, 지난달 거래된 서울 아파트 매매 10건 가운데 4건 이상을 2030이 사들인 셈입니다.<br><br>이런 ‘사자!‘ 행렬은 최근 매물 부족에다 가격이 치솟고 있는 전세 시장의 영향도 큽니다.<br><br>[30대 직장인 : 주변 전세 시세가 너무 많이 올라서 전세를 다시 사는 걸 포기하고 지금 살고 있는 지역이 아니라 서울 외곽이나 경기도 쪽으로 매매를 알아보고 있습니다.]<br><br>3기 신도시 등의 청약 일정이 공개됐지만, 내 집 마련에 대한 불안감을 잠재우긴 역부족이란 평가가 나오는 이유입니다.<br><br>[김규정 / 한국투자증권 자산승계연구소장 : (서울 아파트 가격이) 본격적인 하락세로 이어지지 않고 수요자들이 여전히 추가 상승의 기대를 가지고 시장에서 머물고 있기 때문에 당분간 (부동) 자금과 저금리 효과로 인해서 가격 하락세가 나타나기는 쉽지 않을 것으로 보입니다.]<br><br>최근 들어 서울과 수도권의 신규 아파트 공급 물량이 줄고 있고, 청약 대기 수요는 늘고 있어 부동산 시장은 관망세 속에 가격 불안이 이어질 전망입니다.<br><br>YTN 김현우[hmwy12@ytn.co.kr]입니다.<br>"
+              "[앵커]서울 아파트 가격이 잠시 숨 고르기에 들어가면서 최근까지 치솟던 매매가가 보합세를 유지하고 있는데요.<br><br>하지만 오랜 기간 상승이 이어지다 보니, 더 오를 것이라는 전망에다 지금 사지 못하면 앞으로 내 집 마련이 어려울 것이라는 젊은 세대의 불안감이 커지면서 이른바 ‘2030‘의 매수세가 역대 최고를 기록했습니다.<br><br>김현우 기자의 보도입니다.<br><br>[기자]<br>지난주 서울 강남구의 아파트값 변동률은 마이너스 0.01%!<br><br>18주 만에 하락 전환했습니다.<br><br>하지만 강남 이외 지역의 소형 평수를 중심으로 이른바 ‘가격 키 맞추기‘가 계속되고 있습니다.<br><br>이 때문에 서울 지역 전체 아파트 가격 상승률은 8주 연속 0.01% 수준을 유지하고 있습니다.<br><br>초강력 대출 규제와 세금 인상, 여기에다 자금출처 조사까지!<br><br>정부가 투기 수요에 대한 전방위 압박에 나섰지만, 서울 아파트값은 관망세일 뿐 하락 장으로 판단하긴 이른 감이 있습니다.<br><br>‘더 오를 거란‘ 불안 심리는 30대는 물론 20대 이하까지 자극하고 있습니다.<br><br>지난달 서울 아파트의 30대 거래량은 전체의 37%로 역대 최고 수준을 기록했습니다.<br><br>20대 이하의 매수세도 강해져, 지난달 거래된 서울 아파트 매매 10건 가운데 4건 이상을 2030이 사들인 셈입니다.<br><br>이런 ‘사자!‘ 행렬은 최근 매물 부족에다 가격이 치솟고 있는 전세 시장의 영향도 큽니다.<br><br>[30대 직장인 : 주변 전세 시세가 너무 많이 올라서 전세를 다시 사는 걸 포기하고 지금 살고 있는 지역이 아니라 서울 외곽이나 경기도 쪽으로 매매를 알아보고 있습니다.]<br><br>3기 신도시 등의 청약 일정이 공개됐지만, 내 집 마련에 대한 불안감을 잠재우긴 역부족이란 평가가 나오는 이유입니다.<br><br>[김규정 / 한국투자증권 자산승계연구소장 : (서울 아파트 가격이) 본격적인 하락세로 이어지지 않고 수요자들이 여전히 추가 상승의 기대를 가지고 시장에서 머물고 있기 때문에 당분간 (부동) 자금과 저금리 효과로 인해서 가격 하락세가 나타나기는 쉽지 않을 것으로 보입니다.]<br><br>최근 들어 서울과 수도권의 신규 아파트 공급 물량이 줄고 있고, 청약 대기 수요는 늘고 있어 부동산 시장은 관망세 속에 가격 불안이 이어질 전망입니다.<br><br>YTN 김현우[hmwy12@ytn.co.kr]입니다.<br>"
           },
           {
             title: "세계 D램 70%, 낸드 56% 장악…K메모리 `압도적 투톱`",
@@ -229,7 +237,7 @@ export default {
           {
             title: '"엄마" 부르기도 했었는데...‘라면 형제‘ 동생 오늘 숨져',
             content:
-              "[앵커]<br>엄마가 집을 비운 사이 발생한 화재로 중상을 입은 초등학생 형제 가운데 동생이 안타깝게도 오늘 오후 결국 숨졌습니다.<br><br>최근 의식을 되찾아 일반병실로 옮겨졌는데, 다시 상태가 급격히 나빠진 것으로 알려졌습니다.<br><br>형제가 입원해있던 병원에 취재기자 나가 있습니다. 정현우 기자!<br><br>치료를 받던 중 의식을 되찾고 다소 호전됐다는 얘기도 있었는데, 오늘 갑자기 상태가 안 좋아진 건가요?<br><br>[기자]<br>그렇습니다. 지난달 14일 인천 미추홀구 빌라에서 라면으로 끼니를 때우다 난 것으로 추정되는 불로 10살, 8살 형제가 화상을 입고 이곳 병원에서 치료를 받아왔습니다.<br><br>의식을 되찾기까지 오랜 시일이 걸렸지만, 최근 다소 호전돼 일반병실로 옮겨졌다는 소식이 전해지며 한숨 돌리는가 싶었는데요.<br><br>오늘 8살 동생이 급격하게 상태가 나빠져 끝내 숨졌습니다.<br><br>숨진 시각은 오후 3시 30분쯤.<br><br>사고가 발생한 지 한 달여 만입니다.<br><br>동생은 튜브를 빼고도 식사를 하고, 휴대전화를 들여다볼 수 있을 만큼 호전됐던 것으로 알려졌습니다.<br><br>한때 엄마도 알아보면서 부르기도 했다는데요.<br><br>하지만 유독가스를 많이 마셔 호흡기나 폐는 많이 부어 있는 상태였다고 합니다.<br><br>어제 오후부터 아이는 호흡 곤란과 구토 증세를 호소하는 등 상태가 갑자기 안 좋아져 오늘 오전엔 다시 중환자실로 옮겨진 것으로 전해졌습니다.<br><br>중환자실에서 심폐소생술 등을 했지만 결국 안타깝게 숨졌습니다.<br><br>전신에 1도 화상을 입은 동생은 지난달 추석 연휴 기간 형과 함께 의식을 완전히 되찾아 중환자실에서 일반병실로 옮겨졌습니다.<br><br>형은 온몸의 40%에 3도 화상을 입어 2차례 피부 이식 수술을 받았고, 휴대전화로 원격수업을 가끔 들을 만큼 건강이 호전된 것으로 알려졌습니다.<br><br>앞서 이들 형제는 지난달 14일 오전, 인천 미추홀구 빌라 2층 집에서 일어난 화재로 중화상을 입었습니다.<br><br>이들은 코로나19 재확산 여파로 등교하지 않고 비대면 수업을 하는 중, 어머니가 외출하고 없는 상황에서 스스로 끼니를 해결하다 변을 당했습니다.<br><br>지금까지 한강성심병원에서 YTN 정현우[junghw5043@ytn.co.kr]입니다."
+              "[앵커]엄마가 집을 비운 사이 발생한 화재로 중상을 입은 초등학생 형제 가운데 동생이 안타깝게도 오늘 오후 결국 숨졌습니다.<br><br>최근 의식을 되찾아 일반병실로 옮겨졌는데, 다시 상태가 급격히 나빠진 것으로 알려졌습니다.<br><br>형제가 입원해있던 병원에 취재기자 나가 있습니다. 정현우 기자!<br><br>치료를 받던 중 의식을 되찾고 다소 호전됐다는 얘기도 있었는데, 오늘 갑자기 상태가 안 좋아진 건가요?<br><br>[기자]<br>그렇습니다. 지난달 14일 인천 미추홀구 빌라에서 라면으로 끼니를 때우다 난 것으로 추정되는 불로 10살, 8살 형제가 화상을 입고 이곳 병원에서 치료를 받아왔습니다.<br><br>의식을 되찾기까지 오랜 시일이 걸렸지만, 최근 다소 호전돼 일반병실로 옮겨졌다는 소식이 전해지며 한숨 돌리는가 싶었는데요.<br><br>오늘 8살 동생이 급격하게 상태가 나빠져 끝내 숨졌습니다.<br><br>숨진 시각은 오후 3시 30분쯤.<br><br>사고가 발생한 지 한 달여 만입니다.<br><br>동생은 튜브를 빼고도 식사를 하고, 휴대전화를 들여다볼 수 있을 만큼 호전됐던 것으로 알려졌습니다.<br><br>한때 엄마도 알아보면서 부르기도 했다는데요.<br><br>하지만 유독가스를 많이 마셔 호흡기나 폐는 많이 부어 있는 상태였다고 합니다.<br><br>어제 오후부터 아이는 호흡 곤란과 구토 증세를 호소하는 등 상태가 갑자기 안 좋아져 오늘 오전엔 다시 중환자실로 옮겨진 것으로 전해졌습니다.<br><br>중환자실에서 심폐소생술 등을 했지만 결국 안타깝게 숨졌습니다.<br><br>전신에 1도 화상을 입은 동생은 지난달 추석 연휴 기간 형과 함께 의식을 완전히 되찾아 중환자실에서 일반병실로 옮겨졌습니다.<br><br>형은 온몸의 40%에 3도 화상을 입어 2차례 피부 이식 수술을 받았고, 휴대전화로 원격수업을 가끔 들을 만큼 건강이 호전된 것으로 알려졌습니다.<br><br>앞서 이들 형제는 지난달 14일 오전, 인천 미추홀구 빌라 2층 집에서 일어난 화재로 중화상을 입었습니다.<br><br>이들은 코로나19 재확산 여파로 등교하지 않고 비대면 수업을 하는 중, 어머니가 외출하고 없는 상황에서 스스로 끼니를 해결하다 변을 당했습니다.<br><br>지금까지 한강성심병원에서 YTN 정현우[junghw5043@ytn.co.kr]입니다."
           },
           {
             title: '빅히트 주가 급락에 청원까지…"공모가격 수상해요"',
@@ -345,8 +353,18 @@ export default {
     handleSend() {
       this.$router.push({
         path: "/write/send",
-        params: { mailText: this.mailText }
+        params: { mailText: this.mailText, armyType: this.armyType }
       });
+    },
+    handleAdd(text) {
+      this.mailText = (this.mailText + text).slice(0, this.textMaxLength);
+      this.handleShowAlert('추가되었습니다!');
+    },
+    handleShowAlert(message) {
+      this.alertMessage = message;
+      this.showAlert = true;
+      var that=this;
+      setTimeout(() => {that.showAlert = false; that.alertMessage = '';}, 2000);
     }
   }
 };
@@ -360,48 +378,48 @@ export default {
   position: sticky;
   top: 0;
   z-index: 1;
+  .nav-div {
+    display: flex;
+    padding: 0px 24px;
+    height: 64px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e3e5e9;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
+    font-weight: bold;
+    color: #111111;
+  }
+  .nav-menu {
+    display: flex;
+    align-items: center;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .nav-send {
+    height: 40px;
+    padding: 0 1.5rem;
+    border-radius: 1.3rem;
+    background: #135fa1;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 4px 0 #ccc;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: normal;
+    cursor: pointer;
+
+    &:hover {
+      background: #0c3d67;
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
 }
 
-.nav-div {
-  display: flex;
-  padding: 0px 24px;
-  height: 64px;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e3e5e9;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
-  font-weight: bold;
-  color: #111111;
-}
-.nav-menu {
-  display: flex;
-  align-items: center;
-}
-.title {
-  font-size: 24px;
-}
-.nav-send {
-  height: 40px;
-  padding: 0 1.5rem;
-  border-radius: 1.3rem;
-  background: #135fa1;
-  transition: background 0.3s ease;
-  box-shadow: 0 2px 4px 0 #ccc;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-  font-weight: normal;
-  cursor: pointer;
-
-  &:hover {
-    background: #0c3d67;
-  }
-  &:active {
-    box-shadow: none;
-  }
-}
 
 .mail__wrap {
   display: grid;
@@ -477,15 +495,23 @@ export default {
   width: 100%;
   .hashtag {
     margin: 20px 10px;
-    font: {
-      family: "nanum square";
-      size: 16pt;
-      weight: lighter;
+    font-family: 'nanum square';
+    .title {
+      margin-top: 10px;
+      font-size: 22pt;
+    }
+    span {
+      color: #0067a3;
+      font-size: 12pt;
+      font-weight: lighter;
     }
   }
-  .title {
-    margin-top: 10px;
-  }
+
+  // & > div {
+  //   height: 100%;
+  //   display: grid;
+  //   grid-template-rows: 16% 6% auto;
+  // }
 }
 
 .utility-bar__content .navigation {
@@ -508,12 +534,56 @@ export default {
 
 .headlines-container {
   min-height: 10rem;
-  background: #b5bfd4;
-  // border-radius: 1rem;
+  padding: 0.5rem 0.5rem;
+  // background: #b5bfd4;
 }
 
 .headline {
-  padding: 1rem 0;
+  position: relative;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+  // &:last-child { border: none; }
+  line-height: 110%;
+  .title { 
+    font-weight: bold; 
+    margin-bottom: 4px;
+    &:hover{ text-decoration: underline; }
+  }
+  .content { font-size: 10pt; }
+  .add-btn {
+    position: absolute;
+    bottom:0.5rem;
+    right: 0.5rem;
+    height: 2rem;
+    padding: 0 1rem;
+    border-radius: 1rem;
+    background: rgba(#0067a3,0.8);
+    color: #fff;
+    font-family: 'nanum square';
+    font-weight:bold;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  &:hover {
+    cursor: pointer;
+    .add-btn {
+      opacity: 1;
+    }
+  }
+}
+
+.article-container {
+  padding: 1rem 0.5rem;
+  line-height: 110%;
+  .title {
+    font-size: 14pt;
+    font-weight: bold;
+    line-height: 120%;
+    margin-bottom: 1rem;
+  }
 }
 
 .writing-area {
@@ -557,6 +627,7 @@ export default {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   font-size: 20px;
+  line-height: 110%;
 }
 
 .writing-area__text textarea::selection {
@@ -567,5 +638,36 @@ export default {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
+}
+.alert-popup__wrap {
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  top:10vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert-popup {
+  background: #ddd;
+  height: 3rem;
+  width: 200px;
+  font-family: 'nanum square';
+  font-size: 15pt;
+  border-radius: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-enter-active, .popup-leave-active {
+  transition: all .5s;
+}
+.popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  width: 3rem;
+  opacity: 0;
 }
 </style>

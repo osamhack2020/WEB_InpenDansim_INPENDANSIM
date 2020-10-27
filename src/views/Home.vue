@@ -21,7 +21,7 @@
           <span>인터넷 편지, 간단하게 작성해보세요.</span>
         </div>
         <div class="btn">
-          <div>지금 시작하기</div>
+          <div @click="$router.push('/write/mail')">지금 시작하기</div>
         </div>
       </div>
       <div class="page-1__right">
@@ -52,7 +52,7 @@
             <span>인터넷 편지, 간단하게 작성해보세요.</span>
           </div>
           <div class="btn">
-            <div>지금 시작하기</div>
+            <div @click="$router.push('/write/mail')">지금 시작하기</div>
           </div>
         </div>
         <div class="image">
@@ -157,9 +157,10 @@ export default {
   }
   color: #fff;
 
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s;
   &:hover {
     cursor: pointer;
+    box-shadow: 0 2px 8px -1px #000;
   }
   &:active {
     border: none;
