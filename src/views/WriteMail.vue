@@ -109,15 +109,14 @@
       <div class="writing-area">
         <div class="writing-area__wrap">
           <div class="writing-area__meta">
-            <input class="reciever-name" type="text" />
-            <span class="reciever-name-label">에게</span>
-            <span class="reciever-type-label">군종</span>
             <select class="reciever-type" v-model="armyType">
               <option value="army">육군</option>
               <option value="navy">해군</option>
               <option value="air">공군</option>
               <option value="marine">해병대</option>
             </select>
+            <input class="reciever-name" type="text" />
+            <span class="reciever-name-label">에게</span>
           </div>
           <div class="writing-area__text">
             <textarea
@@ -126,7 +125,7 @@
               :maxlength="textMaxLength"
               spellcheck="false"
             ></textarea>
-            <span>{{ `${textCounter}/${textMaxLength}` }}</span>
+            <span class="writing-area__couter">{{ `${textMaxLength}자 중 ${textCounter}자` }}</span>
           </div>
         </div>
       </div>
@@ -352,7 +351,7 @@ export default {
     },
     handleSend() {
       this.$router.push({
-        path: "/write/send",
+        name:'Send',
         params: { mailText: this.mailText, armyType: this.armyType }
       });
     },
@@ -604,17 +603,31 @@ export default {
   padding-bottom: 1rem;
   border-bottom: 2px solid #ddd;
   margin-bottom: 1rem;
+  font-family: 'maruburi';
+  font-size: 12pt;
 }
 
 .reciever-name {
+  width: 10%;
   border: none;
   border-bottom: 2px solid #ddd;
   outline: none;
   transition: border-color 0.3s ease;
+  &:hover, &:focus {
+    border-color: #135fa1;
+  }
 }
 
-.reciever-name:focus {
-  border-color: #135fa1;
+
+.reciever-type {
+  padding: 0.5rem 1rem;
+  margin-right: 3%;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  &:hover {
+    border: 2px solid #135fa1;
+  }
 }
 
 .writing-area__text textarea {
@@ -639,6 +652,14 @@ export default {
   bottom: 1rem;
   right: 1rem;
 }
+.writing-area__couter {
+  font-family: 'maruburi';
+  font-size: 14pt;
+  font-weight: bold;
+  color: #135fa1;
+}
+
+
 .alert-popup__wrap {
   position: absolute;
   z-index: 100;

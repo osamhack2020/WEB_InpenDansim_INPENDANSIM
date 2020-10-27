@@ -17,7 +17,7 @@
         <div class="content content-main">
           편지를 누르면 ㅇㅇㅇ훈련소 페이지로 이동합니다.
         </div>
-        <textarea name="" id="" cols="30" rows="10">편지 내용입니다.</textarea>
+        <textarea name="" id="" cols="30" rows="10" v-model='mailText'></textarea>
         <!-- 클립보드에 복사되었습니다. -->
 
         <!-- 테스트영영 -->
@@ -89,7 +89,9 @@
 export default {
   data() {
     return {
-      pageNumber: true
+      pageNumber: true,
+      mailText: this.$route.params.mailText,
+      armyType: this.$route.params.armyType
     };
   },
   methods: {
