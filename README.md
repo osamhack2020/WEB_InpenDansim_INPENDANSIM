@@ -20,9 +20,9 @@
 * 권장: Google Chrome 버젼 77 이상
 * __IE환경에서 작동이 안될 수도 있습니다.__
 ### 사용가능 브라우저
-![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
- 56+ ✔ | 32+ ✔ | ⛔ | 42+ ✔ | 8+ ✔ |
+ 56+ ✔ | 32+ ✔ | 16+ ✔ | 42+ ✔ | 8+ ✔ |
  
  
  표의 버전은 [caniuse](https://caniuse.com/?search=sticky)를 참고함
