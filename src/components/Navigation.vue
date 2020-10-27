@@ -47,9 +47,9 @@
         >
         <router-link to="/mypage" class="nav-link">마이페이지</router-link>
         <a href="#" class="overlay-desktop">고객센터</a>
-        <router-link v-if="!loggedIn" to="/login" class="account-link desktop"
-          >로그인하기</router-link
-        >
+        <router-link v-if="!loggedIn" to="/login" class="account-link desktop">
+          로그인하기
+        </router-link>
         <button v-else @click="handleLogOut" class="account-link desktop">
           로그아웃
         </button>
@@ -120,12 +120,14 @@ export default {
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
 }
 
 .nav-div {
   display: flex;
-  position: sticky;
-  top: 0;
+
   z-index: 1;
   padding: 0px 24px;
   height: 64px;
@@ -227,7 +229,8 @@ export default {
   }
   .side-menu-enter, .side-menu-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
-    transform: translateY(-103%);
+    // transform: translateY(-103%);
+    transform: translateX(-103%);
   }
 }
 </style>

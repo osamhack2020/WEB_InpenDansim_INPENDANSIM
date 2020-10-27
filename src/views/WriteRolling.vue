@@ -9,34 +9,28 @@
         </nav>
       </div>
     </div>
-    <div v-if="pageNumber" class="wrapper search-roll">
-      <div id="find">
-        받을 훈련병은 <br />
-        <input
-          class="input-area"
-          maxlength="6"
-          placeholder="ㅇㅇㅇ"
-          value=""
-        /><br />
-        이에요.
+    <div v-if="pageNumber" class="search-wrapper ">
+      <div class="find-target">
+        <span>받을 훈련병은</span>
+        <input class="input-area" maxlength="6" placeholder="ㅇㅇㅇ" value="" />
+        <span>이에요.</span>
       </div>
-      <div class="guho">
-        우리만의 암구호는<br />
+      <div class="find-guho">
+        <span>우리만의 암구호는</span>
         <input
           class="input-area"
           type="text"
           maxlength="10"
           placeholder="****"
           value=""
-        /><br />
-
-        이에요.
+        />
+        <span>이에요.</span>
       </div>
 
       <div class="button-list">
-        <router-link to="/rollingpaper" class="btn btn-primary"
-          >롤링페이퍼 참가하기</router-link
-        >
+        <router-link to="/rollingpaper" class="btn btn-primary">
+          롤링페이퍼 참가하기
+        </router-link>
         <button
           type="button"
           class="btn btn-outline-primary"
@@ -46,7 +40,7 @@
         </button>
       </div>
 
-      <div v-if="message === '김태윤' && guho === '4321'">
+      <!-- <div v-if="message === '김태윤' && guho === '4321'">
         있어요!!!!! ->바로 이동
       </div>
       <div v-else>
@@ -58,7 +52,7 @@
       <div v-else>
         없네요...
       </div>
-      <span>메세지: {{ message }}</span>
+      <span>메세지: {{ message }}</span> -->
     </div>
 
     <div v-else>
@@ -77,7 +71,7 @@ export default {
       isFound: false,
       start: false,
       message: "ㅇㅇㅇ",
-      guho: "1234",
+      guho: "1234"
     };
   },
   methods: {
@@ -91,8 +85,8 @@ export default {
       } else {
         return false;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -100,13 +94,13 @@ export default {
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .nav-div {
   display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 1;
   padding: 0px 24px;
   height: 64px;
   align-items: center;
@@ -185,27 +179,46 @@ export default {
   text-align: center;
   justify-content: center; */
 }
-.wrapper {
-  width: 100%;
-  font-size: 34px;
-  margin-top: 20px;
-  text-align: left;
-  font-weight: bold;
-  line-height: 60px;
-  display: felx;
+.search-wrapper {
+  margin: 0 auto;
+  max-width: 440px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.wrapper div {
-  text-align: left;
-}
-#find {
-  margin-bottom: 20px;
-}
-.button-list {
+  font-size: 34px;
   margin-top: 20px;
-}
-.btn {
-  width: 80%;
+  font-weight: bold;
+  line-height: 60px;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 25px 16px;
+  }
+  .find-target {
+    margin-bottom: 20px;
+  }
+  .button-list {
+    font: {
+      family: "nanum square";
+      size: 13pt;
+      weight: lighter;
+    }
+    position: absolute;
+    bottom: 16px;
+    margin-top: 30px;
+    box-sizing: border-box;
+    margin: 25px 16px;
+    .btn {
+      vertical-align: middle;
+      padding: 16px;
+      font-size: 20px;
+      letter-spacing: 1px;
+      min-width: 328px;
+      max-width: 440px;
+      margin: 16px 0px;
+      margin-left: 10px;
+    }
+  }
 }
 </style>

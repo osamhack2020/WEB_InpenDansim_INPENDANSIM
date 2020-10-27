@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div v-if="haveRoll">
+    <div class="rolling-content" v-if="haveRoll">
       <!-- 롤링페이퍼 기존거 작성하기 -->
 
       <!-- 훈련병 소개 카드 -->
@@ -33,14 +33,14 @@
             길동이에게 큰 힘이 될 거에요💪
           </span>
           <button type="button" class="btn notice-badge">
-            작성 <span class="badge badge-light">{{ listCount }}</span>
+            작성 <span class="badge badge-light">{{ listCount }} 명</span>
           </button>
           <button type="button" class="btn btn-link share-button">
             링크로 초대하기 <i class="far fa-share-square "></i>
           </button>
         </div>
-        <div class="hr"></div>
       </div>
+      <div class="hr"></div>
       <!-- 훈련병 소개 카드 -->
       <!-- 게시된 메시지들 -->
       <main class="chat-screen">
@@ -57,31 +57,36 @@
       </main>
       <!-- 게시된 메시지들 -->
       <!-- 메시지 쓰는부분 -->
-
       <div class="chat__write--container">
-        <textarea
-          class="chat__write chat-comment"
-          type="text"
-          placeholder="응원 메시지"
-          v-model="newAuthor.comment"
-        ></textarea>
         <div class="top-wrap">
-          <input
-            class="chat__write chat-writer"
-            type="text"
-            placeholder="작성자"
-            v-model="newAuthor.name"
-          />
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="far fa-smile-wink"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              class="chat__write chat-writer form-control"
+              placeholder="이름을 적어주세요"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              v-model="newAuthor.name"
+            />
+          </div>
+
           <button type="button" class="btn btn-warning" @click="addComment">
-            보내기
+            <i class="fas fa-arrow-up"></i>
           </button>
         </div>
-
-        <div class="chat__icon-right chat__icon">
-          <span class="chat__write-icon">
-            <i class="far fa-smile-wink"></i>
-          </span>
-        </div>
+        <textarea
+          class="chat__write chat-comment input-group input-group-lg"
+          type="text"
+          placeholder="응원 메시지"
+          style=""
+          v-model="newAuthor.comment"
+        ></textarea>
+        <div class="chat__icon-right chat__icon"></div>
       </div>
       <!-- 메시지 쓰는부분 -->
     </div>
@@ -110,36 +115,34 @@ var name = 3;
 export default {
   data() {
     return {
-      list: ["user01", "user02", "user03"],
-      newUser: "",
       pageNumber: 0,
       people: name,
       haveRoll: true,
       listCount: 4,
       newAuthor: {
         name: "",
-        comment: "",
+        comment: ""
       },
       relayList: [
         {
           name: "태윤이가",
           comment:
-            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!",
+            " 길동아 훈련 많이 힘들지 ㅎㅎ 몸 조심하고 수료하면 보자. 파이팅!"
         },
         {
           name: "지우석",
-          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?",
+          comment: "  D-10 !! 이제 한자리네 ㅋㅋ 생각보다 금방이지?"
         },
         {
           name: "정호",
           comment:
-            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!",
+            " 으악 인편 못써줘서 미안해. 대신 롤링페이퍼에라도 응원메시지 남길게. 파이팅!"
         },
         {
           name: "은상",
-          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!",
-        },
-      ],
+          comment: " 길동아 수료까지 얼마 안남았네? 조금만 더 힘내!"
+        }
+      ]
     };
   },
   methods: {
@@ -147,20 +150,23 @@ export default {
       this.pageNumber = !this.pageNumber;
     },
     addComment: function() {
-      this.relayList.push({
-        name: this.newAuthor.name,
-        comment: this.newAuthor.comment,
-      });
-      this.newAuthor.name = "";
-      this.newAuthor.comment = "";
+      if (this.newAuthor.name !== "" && this.newAuthor.comment !== "") {
+        this.relayList.push({
+          name: this.newAuthor.name,
+          comment: this.newAuthor.comment
+        });
+        this.newAuthor.name = "";
+        this.newAuthor.comment = "";
+        this.listCount++;
+      }
     },
     handleSend() {
       this.$router.push({
         path: "/write/send",
-        params: { mailText: this.mailText },
+        params: { mailText: this.mailText }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -168,14 +174,15 @@ export default {
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  z-index: 1;
 }
 
 .nav-div {
   display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  padding: 0px 24px;
+  padding: 0px 16px;
   height: 64px;
   align-items: center;
   justify-content: space-between;
@@ -199,7 +206,7 @@ export default {
   font-size: 24px;
 }
 .nav-send {
-  height: 2.6rem;
+  height: 40px;
   padding: 0 1.5rem;
   border-radius: 1.3rem;
   background: #135fa1;
@@ -223,14 +230,16 @@ export default {
 .rolling-paper {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 428px;
-  min-height: 2000vh;
+  .rolling-content {
+    margin: 0 auto;
+    max-width: 428px;
+    min-height: 200vh;
+  }
 }
 
 .header-wrapper {
   margin: 16px;
+  padding-left: 30px;
   background-color: #ffffff;
   z-index: 10;
 }
@@ -252,6 +261,7 @@ export default {
   font-weight: 700;
 }
 .hr {
+  margin: 16px 0px;
   width: 100%;
   height: 1px;
   border-bottom: 1px solid #dfdfdf;
@@ -266,7 +276,13 @@ export default {
   margin: 10px;
   display: block;
 }
-
+button {
+  font: {
+    family: "nanum square";
+    size: 13pt;
+    weight: lighter;
+  }
+}
 .share-button {
   margin-left: 16px;
   background-color: #135fa1;
@@ -308,53 +324,16 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.chat-writer {
-  width: 96px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
-}
-
-.chat__icon-left {
-  position: absolute;
-  left: 10px;
-}
-
-.chat__icon-right {
-  position: absolute;
-  right: 10px;
-}
-
 .chat-comment {
   margin: 0 auto;
   bottom: 0px;
 
-  border-radius: 0;
-  padding: 20px 60px;
+  padding: 10px 30px;
+  border-radius: 15px;
   width: 100%;
+  height: 90px;
   border: none;
-  font-size: 14px;
-  transition: width 0.5s ease-in-out, border-radius 0.5s ease-in,
-    transform 0.5s ease-in-out;
-}
-
-.chat__icon {
-  font-size: 18px;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.chat__write i {
-  font-size: 22px;
-}
-
-.chat__write-column:nth-child(2) {
-  width: 80%;
-}
-.chat__write-column input {
-  padding: 20px 10px;
-  width: 100%;
-  border: none;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .chat-screen .chat__messages {

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navigation></Navigation>
-    <div class="page-1">
+    <div class="cover-page  page-1">
       <!-- <router-link to="/write/mail" tag="a">인편쓰러가기</router-link>
       <router-link to="/write/rolling">롤링페이퍼 쓰러가기~</router-link>
       <div></div>
@@ -39,19 +39,21 @@
         </div>
       </div>
     </div>
-    <div class="page-2">
+    <div class="cover-page page-2">
       <div class="page-2__middle">
-        <div class="main-text">
-          <span>보내기만 하세요.</span>
-        </div>
-        <div class="main-text">
-          <span>인편단심이 채워드립니다.</span>
-        </div>
-        <div class="sub-text">
-          <span>인터넷 편지, 간단하게 작성해보세요.</span>
-        </div>
-        <div class="btn">
-          <div>지금 시작하기</div>
+        <div class="content-1">
+          <div class="main-text">
+            <span>보내기만 하세요.</span>
+          </div>
+          <div class="main-text">
+            <span>인편단심이 채워드립니다.</span>
+          </div>
+          <div class="sub-text">
+            <span>인터넷 편지, 간단하게 작성해보세요.</span>
+          </div>
+          <div class="btn">
+            <div>지금 시작하기</div>
+          </div>
         </div>
         <div class="image">
           <div class="top-bar">
@@ -129,7 +131,7 @@ export default {
 //templates
 .main-text {
   font-family: "nanum square";
-  font-size: 60pt;
+  font-size: 64px;
   font-weight: bolder;
   // line-height: 120%;
 }
@@ -212,7 +214,6 @@ export default {
     #b5bfd4 60%,
     #fff 60% 100%
   );
-
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -257,7 +258,7 @@ export default {
 .page-2 {
   width: 100vw;
   height: 100vh;
-  // padding: 10% 13%;
+  padding: 10% 13%;
 
   background: linear-gradient(
     165deg,
@@ -271,12 +272,12 @@ export default {
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: center;
-
-  &__middle {
+  .content-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+  }
+  &__middle {
     .main-text {
       margin-bottom: 0.5rem;
     }
@@ -288,7 +289,7 @@ export default {
     }
 
     .image {
-      width: 20cm;
+      width: 100%;
       height: 10cm;
       box-shadow: 0 2pt 15pt -5pt #000;
     }
@@ -299,9 +300,13 @@ export default {
   .page-1 {
     grid-template-columns: none;
     grid-template-rows: 1fr 1fr;
-    padding: 10% 13% 30% 13%;
+    padding: 10% 16px 30% 16px;
+    &__right {
+      margin: 0 auto;
+      width: 80%;
+    }
     .main-text {
-      font-size: 25pt;
+      font-size: 45px;
     }
     .sub-text {
       font-size: 15pt;
@@ -316,11 +321,25 @@ export default {
       font-size: 10pt;
     }
   }
+  .page-2 {
+    padding: 10% 16px 30% 16px;
+    .main-text {
+      font-size: 32px;
+    }
+  }
+}
+@media (max-width: 440px) {
+  .page-footer {
+    .flex-center {
+      flex-wrap: wrap;
+      font-weight: 400;
+    }
+  }
 }
 // footer
 .page-footer {
   width: 100%;
-  padding: 32px;
+  padding: 16px;
 
   background: #ffbfb9;
   text-align: center;
@@ -343,6 +362,11 @@ export default {
       margin: 30px;
       cursor: pointer;
     }
+  }
+  p {
+    color: #0f4c81;
+    font-weight: 300;
+    font-family: "nanum square";
   }
 }
 </style>
