@@ -158,6 +158,7 @@ export default {
         this.newAuthor.name = "";
         this.newAuthor.comment = "";
         this.listCount++;
+        setTimeout(()=>{window.scrollBy(0,1000);},0);
       }
     },
     handleSend() {
@@ -233,7 +234,7 @@ export default {
   .rolling-content {
     margin: 0 auto;
     max-width: 428px;
-    min-height: 200vh;
+    // min-height: 200vh;
   }
 }
 
@@ -337,12 +338,11 @@ button {
 }
 
 .chat-screen .chat__messages {
-  height: 200vh;
+  // height: 200vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 20px;
-  padding-top: 20px;
+  padding: 20px 20px 120px 20px;
 }
 
 .chat__messages .chat__timestamp {
