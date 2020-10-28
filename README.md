@@ -14,11 +14,11 @@
  
  - 사용 목업 프레임워크: figma
 
- ###데스크탑 버전
+ ### 데스크탑 버전
  ![desktop1](img/desktopprototype.png)
  ![desktop2](img/desktopprototype2.png)
  
-###모바일 버전
+### 모바일 버전
  ![mobile1](img/mobileprototype.png)
  ![mobile2](img/mobileprototype2.png)
 
