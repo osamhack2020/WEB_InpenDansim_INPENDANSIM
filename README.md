@@ -15,7 +15,7 @@
  - 사용 목업 프레임워크: figma([링크](https://www.figma.com/file/KzPou0pXuDipyptCNi69t6/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC?node-id=0%3A1))
  
  
-## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)(1차 수정)
+## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * ECMAScript 6 지원 브라우저 사용
 * 권장: Google Chrome 버젼 77 이상
 * __IE환경에서 작동이 안될 수도 있습니다.__
@@ -24,8 +24,6 @@
 --- | --- | --- | --- | --- |
  56+ ✔ | 32+ ✔ | 16+ ✔ | 42+ ✔ | 8+ ✔ |
  
- 
- 표의 버전은 [caniuse](https://caniuse.com/?search=sticky)를 참고함
  
 ## 기술 스택 (Technique Used) (예시)(1차 수정)
 ### Server(back-end)
