@@ -94,9 +94,10 @@
                   class="playlist__song"
                   v-for="(song, index) in playlist.songs"
                   :key="index"
-                >
-                  <span class="title">{{ song.title }}</span>
+                >💿
+                  <span class="title"> {{ song.title }}  </span>
                   <span class="artist">{{ song.artist }}</span>
+                  <div class='add-btn' @click='handleAdd(song.lyrics)'>추가하기 >></div>
                 </div>
               </div>
             </div>
@@ -120,10 +121,12 @@
           </div>
           <div class="writing-area__text">
             <textarea
+              id = 'writing-area'
               :value="mailText"
               @input="mailText = $event.target.value"
               :maxlength="textMaxLength"
               spellcheck="false"
+               @keydown.ctrl.90="mailText = mailText.slice(0,cursor)"
             ></textarea>
             <span class="writing-area__couter">{{ `${textMaxLength}자 중 ${textCounter}자` }}</span>
           </div>
@@ -142,6 +145,7 @@
 export default {
   data() {
     return {
+      cursor: 0,
       showAlert: false,
       alertMessage: '',
       mailText: "",
@@ -255,7 +259,7 @@ export default {
       ],
       musicPlaylists: [
         {
-          title: "고된 훈련에 힘이 될 힐링곡 추천",
+          title: "💕 고된 훈련에 힘이 될 힐링곡 추천",
           songs: [
             {
               title: "이름에게",
@@ -285,12 +289,12 @@ export default {
           ]
         },
         {
-          title: "국군장병이라면 역시! 군가 모듬세트",
+          title: "👮‍♂️ 군인이라면 역시! 군가 모듬세트",
           songs: [
             {
               title: "멋진 사나이",
               artist: "",
-              lyrics: "가사"
+              lyrics: "멋있는 사나이 많고 많지만 바로 내가 사나이 멋진 사나이 싸움에는 천하무적 사랑 뜨겁게 사랑 뜨겁게 바로 내가 사나이다 멋진 일등병\n멋있는 사나이 많고 많지만 분대장 사나이 멋진 사나이 명령에는 호랑이 대화는 정답게 대화는 정답게 바로 내가 사나이다 멋진 분대장"
             },
             {
               title: "전선을 간다",
@@ -310,6 +314,36 @@ export default {
             {
               title: "푸른 소나무",
               artist: "",
+              lyrics: ""
+            }
+          ]
+        },
+        {
+          title: "👏 빠빠 빨간맛~ 신나는 아이돌 음악!",
+          songs: [
+            {
+              title: "빨간 맛",
+              artist: "Red Velvet(레드벨벳)",
+              lyrics: "가사"
+            },
+            {
+              title: "FIESTA",
+              artist: "IZ*ONE(아이즈원)",
+              lyrics: "가사가사"
+            },
+            {
+              title: "CHEER UP",
+              artist: "TWICE(트와이스)",
+              lyrics: ""
+            },
+            {
+              title: "에잇",
+              artist: "아이유(IU)",
+              lyrics: ""
+            },
+            {
+              title: "살짝 설렜어",
+              artist: "오마이걸(OH MY GIRL)",
               lyrics: ""
             }
           ]
@@ -333,6 +367,24 @@ export default {
           return 500;
       }
       return 0;
+    },
+    armyTypeKorean:function() {
+      switch (this.armyType) {
+        case "army":
+          return '육군';
+        case "navy":
+          return '해군';
+        case "air":
+          return '공군';
+        case "marine":
+          return '해병대';
+      }
+      return 0;
+    }
+  },
+  watch: {
+    armyType: function() {
+      this.handleShowAlert(`${this.armyTypeKorean} 훈련소로 편지를 씁니다. ${this.textMaxLength}자까지 쓸 수 있습니다.`);
     }
   },
   methods: {
@@ -356,8 +408,10 @@ export default {
       });
     },
     handleAdd(text) {
+      this.cursor = this.mailText.length;
       this.mailText = (this.mailText + text).slice(0, this.textMaxLength);
-      this.handleShowAlert('추가되었습니다!');
+      this.handleShowAlert('추가되었습니다! Ctrl+Z 키를 눌러 취소할 수 있습니다.');
+      document.getElementById('writing-area').focus();
     },
     handleShowAlert(message) {
       this.alertMessage = message;
@@ -585,6 +639,74 @@ export default {
   }
 }
 
+.playlists_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.5rem;
+}
+.playlist {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding: 0.8rem 0.5rem 0 0.5rem;
+  margin-bottom: 1rem;
+  &__title {
+    font-family: "nanum square";
+    font-weight: lighter;
+    font-size: 15pt;
+    margin-bottom: 0.7rem;
+  }
+  &__song {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.3rem;
+    &:last-child {
+      border: none;
+      padding: none;
+      margin: none;
+    }
+    .add-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0.5rem;
+    height: 1.6rem;
+    padding: 0 1rem;
+    border-radius: 0.8rem;
+    background: rgba(#0067a3,0.8);
+    color: #fff;
+    font-family: 'nanum square';
+    font-weight:bold;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  &:hover {
+    cursor: pointer;
+    .add-btn {
+      opacity: 1;
+    }
+  }
+  }
+  .title {
+    font-weight: bolder;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  .artist {
+    font-size: 10pt;
+  }
+  
+}
+
+
+
+
+
 .writing-area {
   padding: 5rem 8rem;
 }
@@ -673,7 +795,8 @@ export default {
 .alert-popup {
   background: #ddd;
   height: 3rem;
-  width: 200px;
+  width: 550px;
+  padding: 0 2rem;
   font-family: 'nanum square';
   font-size: 15pt;
   border-radius: 1.5rem;

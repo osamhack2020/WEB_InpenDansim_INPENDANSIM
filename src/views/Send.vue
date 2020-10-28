@@ -14,54 +14,21 @@
     </div>
     <div class="content-area" v-if="pageNumber">
       <div class="wrapper send-now">
-        <div class="content content-main">
-          편지를 누르면 ㅇㅇㅇ훈련소 페이지로 이동합니다.
+        <div class="title-container">
+          <div class="eng">SEND</div>
+          <div class='kor'>마음을 전하러 가는 길.</div>
         </div>
-        <textarea name="" id="" cols="30" rows="10" v-model='mailText'></textarea>
-        <!-- 클립보드에 복사되었습니다. -->
-
-        <!-- 테스트영영 -->
-        <button type="button" class="btn btn-primary" @click="showPopup">
-          클립보드에 복사하기
-        </button>
-        <button type="button" class="btn btn-primary" @click="showPopup">
-          편지보내러가기
-        </button>
-        <!--자동으로 이동까지 -->
-        <!-- ㅇㅇ 훈련소로 이동합니다.  -->
-        <input type="text" id="inputField" />
-        <button @click="copyText">복사하기</button>
-
-        <br />
-        <br />
-
-        <button @click="toggleSend">Send!</button>
-        <!-- 테스트영영 -->
-
-        <div class="clipboard">
-          <!-- Target -->
-          <input
-            id="target"
-            value="https://github.com/zenorocha/clipboard.js.git"
-          />
-
-          <!-- Trigger -->
-          <button>copy</button>
-
-          <h1>
-            "공군" 훈련소에 보내시는거죠? <br />
-            저희가 모셔드릴게요
-          </h1>
-
-          <h2>
-            편지 들고 가시는거 잊지 마세요!<br />
-            버튼을 눌러 편지를 담아가세요.
-          </h2>
-          <span> 붙여넣기(ctrl+v) 하시면 내용이 복사됩니다.</span>
+        <div class="article-container">
+          <div class='text'>작성한 편지가 클립보드에 복사되고,</div>
+          <div class='text'>훈련소 페이지로 이동합니다.</div>
+          <div class='text'>훈련병을 찾아 소중한 마음을 전하세요!</div>
+        </div>
+        <div class="btn-container">
+          <div class='btn'>지금 보내러 가기</div>
         </div>
       </div>
       <div class="wrapper send-latter">
-        <div class="content content-middle">
+        <!-- <div class="content content-middle">
           로그인하고 작성한 편지를 보관하세요.
         </div>
         <div class="content content-sub">
@@ -72,7 +39,18 @@
           편지 출력기능을 이용해서<br />
           직접 우편으로 보낼 수 있어요.
         </div>
-        <button type="button" class="btn btn-dark">편지 출력하기</button>
+        <button type="button" class="btn btn-dark">편지 출력하기</button> -->
+        <div class="title-container">
+          <div class="eng">SAVE</div>
+          <div class='kor'>더 예쁜 말로 다듬기 위해서.</div>
+        </div>
+        <div class="article-container">
+          <div class='text'>로그인하고 작성한 페이지를 보관하세요.</div>
+          <div class='text'>언제든지 꺼내서 보낼 수 있어요!</div>
+        </div>
+        <div class="btn-container">
+          <div class='btn'>편지 보관하기</div>
+        </div>
       </div>
     </div>
     <div v-else>
@@ -127,6 +105,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
@@ -179,45 +159,112 @@ export default {
 // contents
 .send__wrap {
   background-color: #ffbfb9;
+  height: 100vh;
 }
 .content-area {
-  margin: 50px auto;
-  max-width: 1200px;
-  display: flex;
-  justify-content: center;
-  flex-flow: wrap;
+  // margin: 50px auto;
+  // max-width: 1200px;
+  // display: flex;
+  // justify-content: center;
+  // flex-flow: wrap;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 12%;
+  padding: 10% 17%;
 }
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+  display:grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  justify-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
   justify-content: center;
-  padding: 20px;
-  width: 40%;
-  margin: 16px;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
-  .content {
-    margin: 10px;
-    text-align: center;
+  padding: 15% 10%;
+  // margin: 16px;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px -2px #000;
+  transition: box-shadow 0.3s ease;
+  // .content {
+  //   margin: 10px;
+  //   text-align: center;
+  // }
+  // .content-main {
+  //   line-height: 120%;
+  //   font-size: 48px;
+  // }
+  // .content-middle {
+  //   line-height: 130%;
+  //   margin-top: 80px;
+  //   font-size: 36px;
+  // }
+  // .content-sub {
+  //   font-size: 20px;
+  // }
+  // button {
+  //   margin-top: 16px;
+  //   width: 80%;
+  // }
+
+
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .eng { 
+      font-family: 'Shrikhand', cursive; 
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .kor { 
+      font-family: 'maruburi';  
+      font-size: 2rem;
+      font-weight: 900;
+    }
+    
   }
-  .content-main {
-    line-height: 120%;
-    font-size: 48px;
-  }
-  .content-middle {
-    line-height: 130%;
-    margin-top: 80px;
-    font-size: 36px;
-  }
-  .content-sub {
-    font-size: 20px;
-  }
-  button {
-    margin-top: 16px;
-    width: 80%;
-  }
+  .article-container {
+      font-family: 'nanum square';
+      font-weight: lighter;
+      font-size: 1.3rem;
+      line-height: 150%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn {
+      font-family: 'nanum square';
+      font-weight: lighter;
+      font-size: 1.3rem;
+      color:#fff;
+      height: 4rem;
+      padding: 0 3rem;
+      border-radius: 2rem;
+      transition: background 0.3s ease;
+      background: #135fa1;
+      box-shadow: 0 2px 4px 0 #ccc;
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba($color: #135fa1, $alpha: 0.6);
+      }
+      &:active {
+        box-shadow: none;
+      }
+    }
+
 }
+    
+
 @media (max-width: 814px) {
   .content-area {
     display: block;
@@ -236,6 +283,16 @@ export default {
     .content-sub {
       font-size: 16px;
     }
+    
   }
 }
+@media (min-width: 815px) {
+  .wrapper:hover {
+    background: #fefefe;
+    box-shadow: 0 2px 15px 0px #000;
+  }
+}
+
+
+
 </style>
