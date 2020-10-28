@@ -2,7 +2,7 @@
 국군 인터넷편지 개선 프로젝트 2020 , ‘인편단심’
  
  
-# Smaple Logo
+# Sample Logo
 ![Logo](img/logo.png)
 
 로고는 '단순함'을 뜻하는 simple의 S와, 육,해,공,해병대 서로다른 4색의 훈련소를 연결시킨다는 의미를 담고 있음.
@@ -11,8 +11,6 @@
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
  
 ## 기능 설계(1차 수정)
- - 발사믹, 카카오 오븐 등 본인이 편한 목업 프레임워크를 이용하여 제작 후 링크
- - 수기로 작성시 찍어서 올려주세요
  
  - 사용 목업 프레임워크: figma([링크](https://www.figma.com/file/KzPou0pXuDipyptCNi69t6/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC?node-id=0%3A1))
  
