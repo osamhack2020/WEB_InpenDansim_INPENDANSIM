@@ -10,10 +10,18 @@
 ## 팀소개 및 프로잭트 설명 동영상(제작중)
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
  
-## 기능 설계(1차 수정)
+## 기능 설계
  
- - 사용 목업 프레임워크: figma([링크](https://www.figma.com/file/KzPou0pXuDipyptCNi69t6/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC?node-id=0%3A1))
+ - 사용 목업 프레임워크: figma
+
+ ###데스크탑 버전
+ ![desktop1](img/desktopprototype.png)
+ ![desktop2](img/desktopprototype2.png)
  
+###모바일 버전
+ ![mobile1](img/mobileprototype.png)
+ ![mobile2](img/mobileprototype2.png)
+
  
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * ECMAScript 6 지원 브라우저 사용
