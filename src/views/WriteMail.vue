@@ -109,16 +109,14 @@
       <div class="writing-area">
         <div class="writing-area__wrap">
           <div class="writing-area__meta">
-            <input class="reciever-name" type="text" />
-            <span class="reciever-name-label">에게</span>
-            <span class="reciever-type-label">군종</span>
             <select class="reciever-type" v-model="armyType">
               <option value="army">육군</option>
               <option value="navy">해군</option>
               <option value="air">공군</option>
               <option value="marine">해병대</option>
             </select>
-            <router-link to="/write/send">보내기</router-link>
+            <input class="reciever-name" type="text" />
+            <span class="reciever-name-label">에게</span>
           </div>
           <div class="writing-area__text">
             <textarea
