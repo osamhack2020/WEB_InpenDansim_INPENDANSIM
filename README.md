@@ -2,8 +2,10 @@
 국군 인터넷편지 개선 프로젝트 2020 , ‘인편단심’
  
  
-# Smaple Logo(임시)
+# Smaple Logo
 ![Logo](img/logo.png)
+
+로고는 '단순함'을 뜻하는 simple의 S와, 육,해,공,해병대 서로다른 4색의 훈련소를 연결시킨다는 의미를 담고 있음.
  
 ## 팀소개 및 프로잭트 설명 동영상(제작중)
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
