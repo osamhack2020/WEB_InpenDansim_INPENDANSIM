@@ -3,7 +3,10 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">인편단심</router-link>
+          <router-link to="/" class="logo title">
+          <img src="../../public/favicon.png" alt="logo" width="24px">
+             <div style="white-space:nowrap;">인편단심</div>
+          </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 전송</span>
         </nav>
@@ -158,7 +161,9 @@ export default {
         this.newAuthor.name = "";
         this.newAuthor.comment = "";
         this.listCount++;
-        setTimeout(()=>{window.scrollBy(0,1000);},0);
+        setTimeout(() => {
+          window.scrollBy(0, 1000);
+        }, 0);
       }
     },
     handleSend() {
@@ -173,6 +178,12 @@ export default {
 
 <style scoped lang="scss">
 .navigation {
+  .logo{
+    display:flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;
@@ -361,16 +372,20 @@ button {
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
-}
 
-.message .message__bubble {
-  background-color: white;
-  margin: 8px;
-  width: 300px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  display: block;
-  line-height: 150%;
-  font-weight: 600;
+  &__author {
+    font-weight: bold;
+    color: #fff;
+  }
+  &__bubble {
+    background-color: white;
+    margin: 8px;
+    width: 300px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: block;
+    line-height: 150%;
+    font-weight: 600;
+  }
 }
 </style>

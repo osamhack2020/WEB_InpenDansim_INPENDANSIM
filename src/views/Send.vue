@@ -3,7 +3,10 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">인편단심</router-link>
+          <router-link to="/" class="logo title">
+              <img src="../../public/favicon.png" alt="logo" width="24px">
+             <div style="white-space:nowrap;">인편단심</div>
+          </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <!-- <span>편지 전송</span> -->
         </nav>
@@ -12,75 +15,59 @@
         </div>
       </div>
     </div>
-    <div class="content-area" v-if="pageNumber">
+    <div class="content-area" v-if="pageNumber == 1">
       <div class="wrapper send-now">
-        <div class="content content-main">
-          편지를 누르면 ㅇㅇㅇ훈련소 페이지로 이동합니다.
+        <div class="title-container">
+          <div class="eng">SEND</div>
+          <div class="kor">마음을 전하러 가는 길.</div>
         </div>
-        <textarea name="" id="" cols="30" rows="10" v-model='mailText'></textarea>
-        <!-- 클립보드에 복사되었습니다. -->
-
-        <!-- 테스트영영 -->
-        <button type="button" class="btn btn-primary" @click="showPopup">
-          클립보드에 복사하기
-        </button>
-        <button type="button" class="btn btn-primary" @click="showPopup">
-          편지보내러가기
-        </button>
-        <!--자동으로 이동까지 -->
-        <!-- ㅇㅇ 훈련소로 이동합니다.  -->
-        <input type="text" id="inputField" />
-        <button @click="copyText">복사하기</button>
-
-        <br />
-        <br />
-
-        <button @click="toggleSend">Send!</button>
-        <!-- 테스트영영 -->
-
-        <div class="clipboard">
-          <!-- Target -->
-          <input
-            id="target"
-            value="https://github.com/zenorocha/clipboard.js.git"
-          />
-
-          <!-- Trigger -->
-          <button>copy</button>
-
-          <h1>
-            "공군" 훈련소에 보내시는거죠? <br />
-            저희가 모셔드릴게요
-          </h1>
-
-          <h2>
-            편지 들고 가시는거 잊지 마세요!<br />
-            버튼을 눌러 편지를 담아가세요.
-          </h2>
-          <span> 붙여넣기(ctrl+v) 하시면 내용이 복사됩니다.</span>
+        <div class="article-container">
+          <div class="text">작성한 편지가 클립보드에 복사되고,</div>
+          <div class="text">훈련소 페이지로 이동합니다.</div>
+          <div class="text">훈련병을 찾아 소중한 마음을 전하세요!</div>
+        </div>
+        <div class="btn-container">
+          <div class="btn" @click="handleSend">지금 보내러 가기</div>
         </div>
       </div>
       <div class="wrapper send-latter">
-        <div class="content content-middle">
-          로그인하고 작성한 편지를 보관하세요.
+        <div class="title-container">
+          <div class="eng">SAVE</div>
+          <div class="kor">더 예쁜 말로 다듬기 위해서.</div>
         </div>
-        <div class="content content-sub">
-          언제든지 보내고 싶을 때 보낼 수 있어요.
+        <div class="article-container">
+          <div class="text">로그인하고 작성한 페이지를 보관하세요.</div>
+          <div class="text">언제든지 꺼내서 보낼 수 있어요!</div>
         </div>
-        <button type="button" class="btn btn-dark">편지 보관하기</button>
-        <div class="content content-middle">
-          편지 출력기능을 이용해서<br />
-          직접 우편으로 보낼 수 있어요.
+        <div class="btn-container">
+          <div class="btn">편지 보관하기</div>
         </div>
-        <button type="button" class="btn btn-dark">편지 출력하기</button>
       </div>
     </div>
-    <div v-else>
-      <h1>보내기를 완료했습니다!</h1>
+    <div class="done-area" v-if="pageNumber == 2">
+      <div class="wrapper done">
+        <div class="title-container">
+          <div class="eng">DONE!</div>
+          <div class="kor">기다리는 시간마저 즐거운.</div>
+        </div>
+        <div class="article-container">
+          <div class="text">인편단심을 찾아 주셔서 감사합니다.</div>
+          <div class="text">또 오세요!</div>
+        </div>
+        <div class="btn-container">
+          <div class="btn" @click="handleShowAlert('복사되었습니다!')">
+            다시 복사하기
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <button type="button" class="btn btn-primary" @click="backToSend">
-        뒤로가기
-      </button>
+    <div class="alert-popup__wrap">
+      <transition name="popup">
+        <div class="alert-popup" v-if="showAlert">
+          <span>{{ alertMessage }}</span>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -89,17 +76,30 @@
 export default {
   data() {
     return {
-      pageNumber: true,
+      showAlert: false,
+      pageNumber: 1,
       mailText: this.$route.params.mailText,
-      armyType: this.$route.params.armyType
+      armyType: this.$route.params.armyType,
+      reciever: this.$route.params.reciever
     };
   },
   methods: {
+    handleSend() {
+      this.pageNumber = 2;
+      this.showPopup();
+    },
     toggleSend() {
       this.pageNumber = !this.pageNumber;
     },
     handleBack() {
-      this.$router.push({ path: "/write/mail" });
+      this.$router.push({
+        name: "WriteMail",
+        params: {
+          mailText: this.mailText,
+          armyType: this.armyType,
+          receiver: this.reciever
+        }
+      });
     },
     copyText: function() {
       var agt = navigator.userAgent.toLowerCase();
@@ -117,17 +117,33 @@ export default {
         "팝업창기능",
         "width=1440, height=900, left=720, top=330"
       );
-      this.pageNumber = !this.pageNumber;
     },
     backToSend: function() {
       this.pageNumber = !this.pageNumber;
+    },
+    handleShowAlert(message) {
+      this.alertMessage = message;
+      this.showAlert = true;
+      var that = this;
+      setTimeout(() => {
+        that.showAlert = false;
+        that.alertMessage = "";
+      }, 2000);
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+
 .navigation {
+  .logo{
+    display:flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;
@@ -176,65 +192,160 @@ export default {
     box-shadow: none;
   }
 }
+
 // contents
 .send__wrap {
   background-color: #ffbfb9;
+  height: 100vh;
 }
-.content-area {
-  margin: 50px auto;
-  max-width: 1200px;
+.content-area,
+.done-area {
+  width: 100%;
+  height: calc(100vh - 64px);
   display: flex;
   justify-content: center;
-  flex-flow: wrap;
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+.wrapper {
+  width: 30%;
+  height: 60%;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  justify-items: center;
   justify-content: center;
-  padding: 20px;
-  width: 40%;
-  margin: 16px;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
-  .content {
-    margin: 10px;
-    text-align: center;
+  padding: 3%;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px -2px #000;
+  transition: box-shadow 0.3s ease;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  .content-main {
-    line-height: 120%;
-    font-size: 48px;
+
+  .title-container {
+    .eng {
+      font-family: "Shrikhand", cursive;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .kor {
+      font-family: "maruburi";
+      font-size: 2rem;
+      font-weight: bolder;
+    }
   }
-  .content-middle {
-    line-height: 130%;
-    margin-top: 80px;
-    font-size: 36px;
+  .article-container {
+    font-family: "nanum square";
+    font-weight: lighter;
+    font-size: 1.3rem;
+    line-height: 150%;
   }
-  .content-sub {
-    font-size: 20px;
-  }
-  button {
-    margin-top: 16px;
-    width: 80%;
+  .btn {
+    font-family: "nanum square";
+    font-weight: lighter;
+    font-size: 1.3rem;
+    color: #fff;
+    height: 4rem;
+    padding: 0 3rem;
+    border-radius: 2rem;
+    transition: background 0.3s ease;
+    background: #135fa1;
+    box-shadow: 0 2px 4px 0 #ccc;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba($color: #135fa1, $alpha: 0.6);
+    }
+    &:active {
+      box-shadow: none;
+    }
   }
 }
+
+.alert-popup__wrap {
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  top: 15vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert-popup {
+  background: rgba($color: #fff, $alpha: 0.7);
+  height: 3rem;
+  width: 550px;
+  padding: 0 2rem;
+  font-family: "nanum square";
+  font-size: 15pt;
+  border-radius: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-enter-active,
+.popup-leave-active {
+  transition: all 0.5s;
+}
+.popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  width: 0;
+  opacity: 0;
+}
+
 @media (max-width: 814px) {
   .content-area {
-    display: block;
+    flex-flow: column wrap;
   }
   .wrapper {
-    width: 100vw;
-    .content-main {
-      line-height: 120%;
-      font-size: 25px;
+    width: 80%;
+    height: 40%;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 3%;
+    .title-container {
+      .eng {
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+      }
+      .kor {
+        font-size: 1.5rem;
+        letter-spacing: -2px;
+      }
     }
-    .content-middle {
-      line-height: 130%;
-      margin-top: 80px;
-      font-size: 20px;
+    .article-container {
+      font-size: 1rem;
     }
-    .content-sub {
-      font-size: 16px;
+    .btn {
+      height: 3rem;
+      border-radius: 1.5rem;
+    }
+    &.send-now {
+      margin-bottom: 10%;
+    }
+  }
+  .alert-popup {
+    width: 400px;
+  }
+}
+@media (min-width: 815px) {
+  .wrapper {
+    &:hover {
+      background: #fefefe;
+      box-shadow: 0 2px 15px 0px #000;
+    }
+    &.send-now {
+      margin-right: 6rem;
     }
   }
 }

@@ -2,11 +2,8 @@
   <div class="home">
     <Navigation></Navigation>
     <div class="cover-page  page-1">
-      <!-- <router-link to="/write/mail" tag="a">인편쓰러가기</router-link>
-      <router-link to="/write/rolling">롤링페이퍼 쓰러가기~</router-link>
-      <div></div>
-      <textarea :value="text" @input="text = $event.target.value"></textarea>
-      <div>{{ text.replace(/\n/gi, "&lt;br&gt;").replace(/'/gi, "‘") }}</div> -->
+      <!-- <textarea :value="text" @input="text = $event.target.value"></textarea>
+      <div>{{ text.replace(/\n\n/gi, "\\n").replace(/\n/gi, " ") }}</div>  -->
 
       <div class="page-1__left">
         <div class="main-text">

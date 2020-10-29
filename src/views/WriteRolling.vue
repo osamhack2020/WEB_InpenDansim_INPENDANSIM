@@ -3,7 +3,10 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">인편단심</router-link>
+          <router-link to="/" class="logo title">
+            <img src="../../public/favicon.png" alt="logo" width="24px">
+            <div style="white-space:nowrap;">인편단심</div>
+          </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <span>롤링페이퍼 찾기</span>
         </nav>
@@ -92,6 +95,12 @@ export default {
 
 <style scoped lang="scss">
 .navigation {
+  .logo{
+    display:flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;
@@ -146,7 +155,7 @@ export default {
 .input-area {
   width: 60%;
   box-sizing: content-box;
-  font-size: 34px;
+  font-size: 25px;
   border: 0px;
   outline: none;
   display: inline-block;
@@ -161,63 +170,40 @@ export default {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
 }
-.search-roll {
-  padding: 16px;
-  max-width: 444px;
-  width: 100%;
-  display: flex;
 
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-
-  flex-direction: column;
-  /* margin-top: 60px;
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center; */
-}
 .search-wrapper {
-  margin: 0 auto;
-  max-width: 440px;
+  height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  font-size: 34px;
-  margin-top: 20px;
+  align-items: center;
+  font-size: 30px;
+  padding-top: 20px;
   font-weight: bold;
   line-height: 60px;
-  div {
+  & > div {
+    width: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 25px 16px;
   }
   .find-target {
     margin-bottom: 20px;
   }
   .button-list {
+    width: 70%;
     font: {
       family: "nanum square";
       size: 13pt;
       weight: lighter;
     }
-    position: absolute;
-    bottom: 16px;
-    margin-top: 30px;
-    box-sizing: border-box;
-    margin: 25px 16px;
+    margin-top: auto;
+    padding-bottom: 2rem;
     .btn {
       vertical-align: middle;
       padding: 16px;
       font-size: 20px;
       letter-spacing: 1px;
-      min-width: 328px;
-      max-width: 440px;
       margin: 16px 0px;
-      margin-left: 10px;
+      width: 100%;
     }
   }
 }
