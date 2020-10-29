@@ -114,7 +114,6 @@ export default {
         "팝업창기능",
         "width=1440, height=900, left=720, top=330"
       );
-      this.pageNumber = !this.pageNumber;
     },
     backToSend: function() {
       this.pageNumber = !this.pageNumber;
