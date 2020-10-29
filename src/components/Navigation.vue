@@ -14,7 +14,7 @@
       <nav role="navigation" class="nav-menu">
         <router-link to="/" class="logo title">  
           <img src="../../public/favicon.png" alt="logo" width="24px">
-          <div style="width:92px">인편단심</div>
+          <span>인편단심</span>
    
         </router-link>
         <router-link
