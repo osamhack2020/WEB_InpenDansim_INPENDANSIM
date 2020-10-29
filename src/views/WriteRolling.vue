@@ -167,7 +167,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 34px;
+  font-size: 25px;
   padding-top: 20px;
   font-weight: bold;
   line-height: 60px;

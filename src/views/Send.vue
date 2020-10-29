@@ -212,11 +212,14 @@ export default {
   box-shadow: 0 2px 10px -2px #000;
   transition: box-shadow 0.3s ease;
 
-  .title-container {
+  & > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .title-container {
     .eng {
       font-family: "Shrikhand", cursive;
       font-size: 3rem;
@@ -225,7 +228,7 @@ export default {
     .kor {
       font-family: "maruburi";
       font-size: 2rem;
-      font-weight: 900;
+      font-weight: bolder;
     }
   }
   .article-container {
@@ -233,11 +236,6 @@ export default {
     font-weight: lighter;
     font-size: 1.3rem;
     line-height: 150%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
   .btn {
     font-family: "nanum square";
@@ -314,6 +312,7 @@ export default {
       }
       .kor {
         font-size: 1.5rem;
+        letter-spacing: -2px;
       }
     }
     .article-container {
