@@ -3,7 +3,9 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">인편단심</router-link>
+          <router-link to="/" class="logo title">
+             <div style="white-space:nowrap;">인편단심</div>
+          </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 전송</span>
         </nav>
@@ -175,6 +177,12 @@ export default {
 
 <style scoped lang="scss">
 .navigation {
+  .logo{
+    display:flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;

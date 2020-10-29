@@ -3,7 +3,10 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">인편단심</router-link>
+          <router-link to="/" class="logo title"> 
+           <img src="../../public/favicon.png" alt="logo" width="24px">
+            <div style="white-space:nowrap;">인편단심</div>
+          </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 작성</span>
         </nav>
@@ -479,11 +482,23 @@ export default {
 <style scoped lang="scss">
 // header
 .navigation {
+  .logo{
+    display:flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;
   top: 0;
   z-index: 1;
+  .logo{
+    display:flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+  }
   .nav-div {
     display: flex;
     padding: 0px 24px;
@@ -598,6 +613,8 @@ export default {
 .utility-bar__content {
   height: 100%;
   width: 100%;
+  min-width:276px;
+  font-family: 'nanum square';
   .hashtag {
     margin: 20px 10px;
     font-family: "nanum square";
@@ -628,13 +645,16 @@ export default {
 }
 
 .utility-bar__content .navigation .navigation__button {
-  font-family: "maruburi";
-  padding: 0.5rem;
-  // border-radius: 20% 20% 0 0;
+  font-family: "nanum square";
+  padding: 5px;
 }
 
 .utility-bar__content .navigation .navigation__button.focus {
   background: #b5bfd4;
+}
+
+.btn-group{
+  width:98%;
 }
 
 .headlines-container {
@@ -644,6 +664,7 @@ export default {
 }
 
 .headline {
+   font-family: "maruburi";
   position: relative;
   padding: 0.5rem 0;
   border-bottom: 1px solid #ddd;
