@@ -221,6 +221,9 @@ export default {
     margin: 0px 16px;
     width: 100%;
     text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
     .btn {
       width:80%;
       vertical-align: middle;
@@ -229,7 +232,7 @@ export default {
       letter-spacing: 1px;
       min-width: 328px;
       max-width: 440px;
-      margin: 8px 0px;
+      margin: 8px auto;
       
     }
   }
