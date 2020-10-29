@@ -361,16 +361,21 @@ button {
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
+
+  &__author {
+    font-weight: bold;
+    color: #fff;
+  }
+  &__bubble {
+    background-color: white;
+    margin: 8px;
+    width: 300px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: block;
+    line-height: 150%;
+    font-weight: 600;
+  }
 }
 
-.message .message__bubble {
-  background-color: white;
-  margin: 8px;
-  width: 300px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  display: block;
-  line-height: 150%;
-  font-weight: 600;
-}
 </style>

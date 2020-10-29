@@ -117,7 +117,7 @@
               <option value="marine">해병대</option>
             </select>
             <input class="reciever-name" type="text" />
-            <span class="reciever-name-label">에게</span>
+            <span class="reciever-name-label" :value="reciever" @input="reciever = $event.target.value">에게</span>
           </div>
           <div class="writing-area__text">
             <textarea
@@ -127,6 +127,7 @@
               :maxlength="textMaxLength"
               spellcheck="false"
                @keydown.ctrl.90="mailText = mailText.slice(0,cursor)"
+               :class="{bigger: armyType == 'army'}"
             ></textarea>
             <span class="writing-area__couter">{{ `${textMaxLength}자 중 ${textCounter}자` }}</span>
           </div>
@@ -148,8 +149,9 @@ export default {
       cursor: 0,
       showAlert: false,
       alertMessage: '',
-      mailText: "",
-      armyType: "army",
+      mailText: this.$route.params.mailText ? this.$route.params.mailText : "",
+      armyType: this.$route.params.armyType ? this.$route.params.armyType : 'army',
+      reciever: this.$route.params.reciever ? this.$route.params.reciever : '',
       showHeadlines: true,
       newsDetails: {
         title: "",
@@ -299,22 +301,22 @@ export default {
             {
               title: "전선을 간다",
               artist: "",
-              lyrics: "가사가사"
+              lyrics: "높은산 깊은골 적막한 산하 눈내린전선을 우리는 간다 젊은넋 숨져 - 간 그때그자리 상처입은 노송 - 은 말을 잊었네 전우여 들리는가 그 성난 목소리 전우여 보이는가 한맺힌 눈동자\n푸른숲 맑은물 숨쉬는 산하 봄이 온 전선을 우리는 간다 젊은피 스며 - 든 그때그자리 이끼낀- 바위-는 말을잊었네 전우여 들리는가 그 성난 목소리 전우여 보이는가 한맺힌 눈동자"
             },
             {
               title: "진짜 사나이",
               artist: "",
-              lyrics: ""
+              lyrics: "사나이로 태어나서 할 일도 많다만 너와 나 나라지키는 영광에 살았다 전투와 전투속에 맺어진 전우야 산봉우리에 해뜨고 해가 질 적에 부모형제 나를 믿고 단잠을 이룬다\n입으로만 큰 소리쳐 사나이 라느냐 너와 나 겨레지키는 결심에 살았다 훈련과 훈련 속에 맺어진 전우야 국군 용사의 자랑을 가슴에 안고 내 고향에 돌아갈땐 농군의 용사다"
             },
             {
               title: "멸공의 횃불",
               artist: "",
-              lyrics: ""
+              lyrics: "아름다운 이 강산을 지키는 우리 사나이 기백으로 오늘을 산다 포탄의 불바다를 무릎 쓰면서 고향땅 부모형제 나라를 위해 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n조국의 푸른 바다 지키는 우리 젊음의 정령 바쳐 오늘을 산다 함포의 벼락불을 쏘아 붙이며 겨레의 생명선에 내일을 걸고 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n자유의 푸른 하늘 지키는 우리 충정과 투지로써 오늘을 산다 번갯불 은빛 날개 구름을 뚫고 찬란한 사명감에 날개를 폈다 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n조국의 빛난 얼을 지키는 우리 자랑과 보람으로 오늘을 산다 새 역사 창조하는 번영의 이 땅 지키고 싸워 이겨 잘 살아가자 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다"
             },
             {
               title: "푸른 소나무",
               artist: "",
-              lyrics: ""
+              lyrics: "이 강산은 내가 지키노라 당신의 그 충정 하늘보며 힘껏 흔들었던 평화의 깃발 아아 다시 선 이땅에 당신 닮은 푸른 소나무 이 목숨 바쳐 큰나라 위해 끝까지 싸우리라\n이 강산은 내가 지키노라 당신의 그 맹세 만주향해 힘껏 포효하던 백두산 호랑이 아아 다시 선 이땅에 당신 닮은 푸른 소나무 이 목숨 바쳐 큰나라 위해 끝까지 싸우리라"
             }
           ]
         },
@@ -385,6 +387,7 @@ export default {
   watch: {
     armyType: function() {
       this.handleShowAlert(`${this.armyTypeKorean} 훈련소로 편지를 씁니다. ${this.textMaxLength}자까지 쓸 수 있습니다.`);
+      this.mailText = this.mailText.slice(0, this.textMaxLength);
     }
   },
   methods: {
@@ -404,12 +407,12 @@ export default {
     handleSend() {
       this.$router.push({
         name:'Send',
-        params: { mailText: this.mailText, armyType: this.armyType }
+        params: { mailText: this.mailText, armyType: this.armyType, receiver: this.reciever }
       });
     },
     handleAdd(text) {
       this.cursor = this.mailText.length;
-      this.mailText = (this.mailText + text).slice(0, this.textMaxLength);
+      this.mailText = (this.mailText + '\n' + text).slice(0, this.textMaxLength);
       this.handleShowAlert('추가되었습니다! Ctrl+Z 키를 눌러 취소할 수 있습니다.');
       document.getElementById('writing-area').focus();
     },
@@ -762,7 +765,8 @@ export default {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   font-size: 20px;
-  line-height: 110%;
+  line-height: 120%;
+  &.bigger {font-size: 30px; line-height: 140%;}
 }
 
 .writing-area__text textarea::selection {
@@ -771,12 +775,12 @@ export default {
 
 .writing-area__text span {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
 }
 .writing-area__couter {
   font-family: 'maruburi';
-  font-size: 14pt;
+  font-size: 16pt;
   font-weight: bold;
   color: #135fa1;
 }
@@ -793,7 +797,7 @@ export default {
   align-items: center;
 }
 .alert-popup {
-  background: #ddd;
+  background: rgba($color: #ccc, $alpha: 0.7);
   height: 3rem;
   width: 550px;
   padding: 0 2rem;

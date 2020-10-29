@@ -161,63 +161,40 @@ export default {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
 }
-.search-roll {
-  padding: 16px;
-  max-width: 444px;
-  width: 100%;
-  display: flex;
 
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-
-  flex-direction: column;
-  /* margin-top: 60px;
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center; */
-}
 .search-wrapper {
-  margin: 0 auto;
-  max-width: 440px;
+  height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   font-size: 34px;
-  margin-top: 20px;
+  padding-top: 20px;
   font-weight: bold;
   line-height: 60px;
-  div {
+  & > div {
+    width:70%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 25px 16px;
   }
   .find-target {
     margin-bottom: 20px;
   }
   .button-list {
+    width: 70%;
     font: {
       family: "nanum square";
       size: 13pt;
       weight: lighter;
     }
-    position: absolute;
-    bottom: 16px;
-    margin-top: 30px;
-    box-sizing: border-box;
-    margin: 25px 16px;
+    margin-top: auto;
+    padding-bottom: 2rem;
     .btn {
       vertical-align: middle;
       padding: 16px;
       font-size: 20px;
       letter-spacing: 1px;
-      min-width: 328px;
-      max-width: 440px;
       margin: 16px 0px;
-      margin-left: 10px;
+      width: 100%;
     }
   }
 }

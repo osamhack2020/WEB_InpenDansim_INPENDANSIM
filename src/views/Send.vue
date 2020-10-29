@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="content-area" v-if="pageNumber">
+    <div class="content-area" v-if="pageNumber==1">
       <div class="wrapper send-now">
         <div class="title-container">
           <div class="eng">SEND</div>
@@ -24,22 +24,10 @@
           <div class='text'>훈련병을 찾아 소중한 마음을 전하세요!</div>
         </div>
         <div class="btn-container">
-          <div class='btn'>지금 보내러 가기</div>
+          <div class='btn' @click='handleSend'>지금 보내러 가기</div>
         </div>
       </div>
       <div class="wrapper send-latter">
-        <!-- <div class="content content-middle">
-          로그인하고 작성한 편지를 보관하세요.
-        </div>
-        <div class="content content-sub">
-          언제든지 보내고 싶을 때 보낼 수 있어요.
-        </div>
-        <button type="button" class="btn btn-dark">편지 보관하기</button>
-        <div class="content content-middle">
-          편지 출력기능을 이용해서<br />
-          직접 우편으로 보낼 수 있어요.
-        </div>
-        <button type="button" class="btn btn-dark">편지 출력하기</button> -->
         <div class="title-container">
           <div class="eng">SAVE</div>
           <div class='kor'>더 예쁜 말로 다듬기 위해서.</div>
@@ -53,12 +41,26 @@
         </div>
       </div>
     </div>
-    <div v-else>
-      <h1>보내기를 완료했습니다!</h1>
-
-      <button type="button" class="btn btn-primary" @click="backToSend">
-        뒤로가기
-      </button>
+    <div class='done-area' v-if="pageNumber==2">
+      <div class="wrapper done">
+        <div class="title-container">
+          <div class="eng">DONE!</div>
+          <div class='kor'>기다리는 시간마저 즐거운.</div>
+        </div>
+        <div class="article-container">
+          <div class='text'>인편단심을 찾아 주셔서 감사합니다.</div>
+          <div class='text'>또 오세요!</div>
+        </div>
+        <div class="btn-container">
+          <div class='btn' @click='handleShowAlert("복사되었습니다!")'>다시 복사하기</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class='alert-popup__wrap'>
+      <transition name='popup'>
+        <div class='alert-popup' v-if="showAlert"><span>{{ alertMessage }}</span></div>
+      </transition>
     </div>
   </div>
 </template>
@@ -67,17 +69,26 @@
 export default {
   data() {
     return {
-      pageNumber: true,
+      showAlert: false,
+      pageNumber: 1,
       mailText: this.$route.params.mailText,
-      armyType: this.$route.params.armyType
+      armyType: this.$route.params.armyType,
+      reciever: this.$route.params.reciever
     };
   },
   methods: {
+    handleSend() {
+      this.pageNumber = 2;
+      showPopup();
+    },
     toggleSend() {
       this.pageNumber = !this.pageNumber;
     },
     handleBack() {
-      this.$router.push({ path: "/write/mail" });
+      this.$router.push({
+        name:'WriteMail',
+        params: { mailText: this.mailText, armyType: this.armyType, receiver: this.reciever }
+      });
     },
     copyText: function() {
       var agt = navigator.userAgent.toLowerCase();
@@ -99,6 +110,12 @@ export default {
     },
     backToSend: function() {
       this.pageNumber = !this.pageNumber;
+    },
+    handleShowAlert(message) {
+      this.alertMessage = message;
+      this.showAlert = true;
+      var that=this;
+      setTimeout(() => {that.showAlert = false; that.alertMessage = '';}, 2000);
     }
   }
 };
@@ -156,59 +173,32 @@ export default {
     box-shadow: none;
   }
 }
+
 // contents
 .send__wrap {
   background-color: #ffbfb9;
   height: 100vh;
 }
-.content-area {
-  // margin: 50px auto;
-  // max-width: 1200px;
-  // display: flex;
-  // justify-content: center;
-  // flex-flow: wrap;
-  height: 90vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 12%;
-  padding: 10% 17%;
+.content-area, .done-area {
+  width: 100%;
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.wrapper {
 
+.wrapper {
+  width: 30%;
+  height: 60%;
   display:grid;
   grid-template-rows: 1fr 2fr 1fr;
   justify-items: center;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
   justify-content: center;
-  padding: 15% 10%;
-  // margin: 16px;
+  padding: 5% 1%;
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0 2px 10px -2px #000;
   transition: box-shadow 0.3s ease;
-  // .content {
-  //   margin: 10px;
-  //   text-align: center;
-  // }
-  // .content-main {
-  //   line-height: 120%;
-  //   font-size: 48px;
-  // }
-  // .content-middle {
-  //   line-height: 130%;
-  //   margin-top: 80px;
-  //   font-size: 36px;
-  // }
-  // .content-sub {
-  //   font-size: 20px;
-  // }
-  // button {
-  //   margin-top: 16px;
-  //   width: 80%;
-  // }
-
 
   .title-container {
     display: flex;
@@ -261,35 +251,83 @@ export default {
         box-shadow: none;
       }
     }
+}
 
+.alert-popup__wrap {
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  top:15vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert-popup {
+  background: rgba($color: #fff, $alpha: 0.7);
+  height: 3rem;
+  width: 550px;
+  padding: 0 2rem;
+  font-family: 'nanum square';
+  font-size: 15pt;
+  border-radius: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-enter-active, .popup-leave-active {
+  transition: all .5s;
+}
+.popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  width: 0;
+  opacity: 0;
 }
     
 
 @media (max-width: 814px) {
+  // .content-area {
+  //   display: block;
+  // }
+  // .wrapper {
+  //   width: 100vw;
+  //   .content-main {
+  //     line-height: 120%;
+  //     font-size: 25px;
+  //   }
+  //   .content-middle {
+  //     line-height: 130%;
+  //     margin-top: 80px;
+  //     font-size: 20px;
+  //   }
+  //   .content-sub {
+  //     font-size: 16px;
+  //   }
+    
+  // }
   .content-area {
-    display: block;
+    flex-flow: column wrap;
   }
   .wrapper {
-    width: 100vw;
-    .content-main {
-      line-height: 120%;
-      font-size: 25px;
+    width: 80%;
+    height: 40%;
+    &.send-now {
+      margin-bottom: 10%;
     }
-    .content-middle {
-      line-height: 130%;
-      margin-top: 80px;
-      font-size: 20px;
-    }
-    .content-sub {
-      font-size: 16px;
-    }
-    
   }
+  .alert-popup {width: 400px;}
 }
 @media (min-width: 815px) {
-  .wrapper:hover {
-    background: #fefefe;
-    box-shadow: 0 2px 15px 0px #000;
+  .wrapper {
+    &:hover {
+      background: #fefefe;
+      box-shadow: 0 2px 15px 0px #000;
+    }
+    &.send-now {
+      margin-right: 6rem;
+    }
   }
 }
 
