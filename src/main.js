@@ -5,8 +5,11 @@ import store from "./store";
 import Clipboard from "v-clipboard";
 import { auth } from "./firebase";
 
+import VueClipboard from 'vue-clipboard2';
+
 Vue.config.productionTip = false;
-Vue.use(Clipboard);
+Vue.use(VueClipboard);
+// Vue.use(Clipboard);
 // new ClipboardJS('.btn');
 let app;
 auth.onAuthStateChanged(user => {

@@ -198,6 +198,7 @@ export default {
     margin-top: auto;
     padding-bottom: 2rem;
     .btn {
+      width:80%;
       vertical-align: middle;
       padding: 16px;
       font-size: 20px;

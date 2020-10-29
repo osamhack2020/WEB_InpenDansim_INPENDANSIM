@@ -186,10 +186,12 @@ export default {
   }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
+  
   position: sticky;
   position: -webkit-sticky;
   top: 0px;
   z-index: 1;
+  
 }
 
 .nav-div {

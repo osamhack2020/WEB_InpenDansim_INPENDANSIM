@@ -17,6 +17,7 @@
     </div>
     <div class="content-area" v-if="pageNumber == 1">
       <div class="wrapper send-now">
+        <textarea style="display: none;" v-model="mailText"></textarea>   
         <div class="title-container">
           <div class="eng">SEND</div>
           <div class="kor">마음을 전하러 가는 길.</div>
@@ -46,6 +47,7 @@
     </div>
     <div class="done-area" v-if="pageNumber == 2">
       <div class="wrapper done">
+        
         <div class="title-container">
           <div class="eng">DONE!</div>
           <div class="kor">기다리는 시간마저 즐거운.</div>
@@ -55,7 +57,8 @@
           <div class="text">또 오세요!</div>
         </div>
         <div class="btn-container">
-          <div class="btn" @click="handleShowAlert('복사되었습니다!')">
+          <textarea style="display:none;" v-model="mailText"></textarea>
+          <div class="btn" @click="handleSend">
             다시 복사하기
           </div>
         </div>
@@ -80,13 +83,21 @@ export default {
       pageNumber: 1,
       mailText: this.$route.params.mailText,
       armyType: this.$route.params.armyType,
-      reciever: this.$route.params.reciever
+      reciever: this.$route.params.reciever,
+      // myInput: '123'
     };
   },
   methods: {
     handleSend() {
-      this.pageNumber = 2;
-      this.showPopup();
+      this.doCopy();
+      this.handleShowAlert('복사되었습니다!\n잠시후 훈련소 페이지로 연결됩니다.');
+      // this.pageNumber = 2;
+      //   this.showPopup();
+
+      setTimeout(() => {
+        this.pageNumber = 2;
+        this.showPopup();
+      }, 3000);
     },
     toggleSend() {
       this.pageNumber = !this.pageNumber;
@@ -113,6 +124,7 @@ export default {
     },
     showPopup: function() {
       window.open(
+        // 추후 각 훈련소 링크로 대체가능하게 추가 지금은 공군만
         "http://www.airforce.mil.kr:8081/user/indexSub.action?codyMenuSeq=156893223&siteId=last2&menuUIType=sub#searchName",
         "팝업창기능",
         "width=1440, height=900, left=720, top=330"
@@ -129,6 +141,9 @@ export default {
         that.showAlert = false;
         that.alertMessage = "";
       }, 2000);
+    },
+    doCopy() {
+      this.$copyText(this.mailText);
     }
   }
 };
