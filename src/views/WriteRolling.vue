@@ -4,8 +4,9 @@
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
           <router-link to="/" class="logo title">
-            <img src="../../public/favicon.png" alt="logo" width="24px">
-            <div>인편단심</div>
+           <img src="../../public/favicon.png" alt="logo" width="24px">
+           
+           <div style="white-space:nowrap;">인편단심</div>
             <!-- <img src="../assets/images/logo.png" alt="" width="115" height="30"> -->
           </router-link>
           <span style="margin: 0 0.7rem;">|</span>
@@ -218,7 +219,10 @@ export default {
     margin-top: 30px;
     box-sizing: border-box;
     margin: 0px 16px;
+    width: 100%;
+    text-align: center;
     .btn {
+      width:80%;
       vertical-align: middle;
       padding: 16px;
       font-size: 20px;
@@ -226,7 +230,7 @@ export default {
       min-width: 328px;
       max-width: 440px;
       margin: 8px 0px;
-      margin-left: 10px;
+      
     }
   }
 }

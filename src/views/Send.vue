@@ -5,7 +5,7 @@
         <nav role="navigation" class="nav-menu">
           <router-link to="/" class="logo title">
             <img src="../../public/favicon.png" alt="logo" width="24px">
-            인편단심
+            <div style="white-space:nowrap;">인편단심</div>
           </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <!-- <span>편지 전송</span> -->
@@ -95,7 +95,7 @@ export default {
     },
     showPopup: function() {
       // this.show = !this.show;
-        alert("내용이 복사되었습니다!\n 확인을 누르면 훈련소 페이지로 이동합니다.");
+        alert("내용이 복사되었습니다!\n 팝업을 닫으면 훈련소 페이지로 이동합니다.");
         window.open(
         "http://www.airforce.mil.kr:8081/user/indexSub.action?codyMenuSeq=156893223&siteId=last2&menuUIType=sub#searchName",
         "팝업창기능",

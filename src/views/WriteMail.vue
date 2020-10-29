@@ -5,7 +5,7 @@
         <nav role="navigation" class="nav-menu">
           <router-link to="/" class="logo title"> 
            <img src="../../public/favicon.png" alt="logo" width="24px">
-            인편단심
+            <div style="white-space:nowrap;">인편단심</div>
           </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 작성</span>
