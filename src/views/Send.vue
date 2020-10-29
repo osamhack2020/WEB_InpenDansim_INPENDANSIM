@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="content-area" v-if="pageNumber">
-       <transition name="alert" v-if="show" >
+       <transition name="alert" v-if="show" style="margin 0px auto" >
           <div class="alert alert-success" role="alert" :class="{show:isShow}">
             <h4 class="alert-heading">편지 내용이 클립보드에 복사되었습니다!</h4>
             <p>이제 훈련소 페이지로 이동합니다.</p>
@@ -96,13 +96,15 @@ export default {
     showPopup: function() {
       this.show = !this.show;
       setTimeout(() => {
-        this.show = !this.show;
+        
         window.open(
         "http://www.airforce.mil.kr:8081/user/indexSub.action?codyMenuSeq=156893223&siteId=last2&menuUIType=sub#searchName",
         "팝업창기능",
         "width=1440, height=900, left=720, top=330"
       );
-      this.pageNumber = !this.pageNumber;}, 3000);
+      }, 3000);
+      this.show = !this.show;
+      this.pageNumber = !this.pageNumber;
 
       
     },
@@ -256,5 +258,11 @@ export default {
   .btn{
     margin:20px 30px;
   }
+}
+.alert-enter-active, .alert-leave-active {
+  transition: opacity .5s;
+}
+.alert-enter, .alert-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
