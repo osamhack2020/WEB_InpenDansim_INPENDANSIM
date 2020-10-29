@@ -91,13 +91,13 @@ export default {
     handleSend() {
       this.doCopy();
       this.handleShowAlert('복사되었습니다!\n잠시후 훈련소 페이지로 연결됩니다.');
-      // this.pageNumber = 2;
-      //   this.showPopup();
+      this.pageNumber = 2;
+      this.showPopup();
 
-      setTimeout(() => {
-        this.pageNumber = 2;
-        this.showPopup();
-      }, 3000);
+      // setTimeout(() => {
+      //   this.pageNumber = 2;
+      //   this.showPopup();
+      // }, 3000);
     },
     toggleSend() {
       this.pageNumber = !this.pageNumber;
