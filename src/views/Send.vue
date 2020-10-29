@@ -94,16 +94,13 @@ export default {
       document.body.removeChild(textField);
     },
     showPopup: function() {
-      this.show = !this.show;
-      setTimeout(() => {
-        
+      // this.show = !this.show;
+        alert("내용이 복사되었습니다!\n 확인을 누르면 훈련소 페이지로 이동합니다.");
         window.open(
         "http://www.airforce.mil.kr:8081/user/indexSub.action?codyMenuSeq=156893223&siteId=last2&menuUIType=sub#searchName",
         "팝업창기능",
         "width=1440, height=900, left=720, top=330"
       );
-      }, 3000);
-      this.show = !this.show;
       this.pageNumber = !this.pageNumber;
 
       
