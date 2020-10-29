@@ -4,8 +4,8 @@
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
           <router-link to="/" class="logo title">
-              <img src="../../public/favicon.png" alt="logo" width="24px">
-             <div style="white-space:nowrap;">인편단심</div>
+            <img src="../../public/favicon.png" alt="logo" width="24px" />
+            <div style="white-space:nowrap;">인편단심</div>
           </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <!-- <span>편지 전송</span> -->
@@ -138,11 +138,11 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 
 .navigation {
-  .logo{
-    display:flex;
+  .logo {
+    display: flex;
     align-items: center;
-    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
-    Latin font, sans-serif;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum,
+      Apple Gothic, Latin font, sans-serif;
   }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
