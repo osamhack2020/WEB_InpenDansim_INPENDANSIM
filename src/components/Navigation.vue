@@ -10,13 +10,8 @@
         <i class="fas fa-bars fa-2x"></i>
       </button>
       <!-- logo -->
-    
       <nav role="navigation" class="nav-menu">
-        <router-link to="/" class="logo title">  
-          <img src="../../public/favicon.png" alt="logo" width="24px">
-          <div style="width:92px">인편단심</div>
-   
-        </router-link>
+        <router-link to="/" class="logo title">인편단심</router-link>
         <router-link
           to="/write/mail"
           class="nav-link"
@@ -123,12 +118,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .navigation {
-  .logo{
-    display:flex;
-    align-items: center;
-    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
-    Latin font, sans-serif;
-  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;
@@ -243,12 +232,5 @@ export default {
     // transform: translateY(-103%);
     transform: translateX(-103%);
   }
-}
-
-.alert-enter-active, .alert-leave-active {
-  transition: opacity .5s;
-}
-.alert-enter, .alert-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }
 </style>

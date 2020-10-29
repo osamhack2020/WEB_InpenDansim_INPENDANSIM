@@ -3,10 +3,7 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">
-            <img src="../../public/favicon.png" alt="logo" width="24px">
-            인편단심
-          </router-link>
+          <router-link to="/" class="logo title">인편단심</router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <!-- <span>편지 전송</span> -->
         </nav>
@@ -16,28 +13,54 @@
       </div>
     </div>
     <div class="content-area" v-if="pageNumber">
-       <transition name="alert" v-if="show" >
-          <div class="alert alert-success" role="alert" :class="{show:isShow}">
-            <h4 class="alert-heading">편지 내용이 클립보드에 복사되었습니다!</h4>
-            <p>이제 훈련소 페이지로 이동합니다.</p>
-            <hr>
-            <p class="mb-0">붙여넣기(ctrl+v)를 해서 편지보내기를 완료하세요.</p>
-        </div>
-       </transition>
       <div class="wrapper send-now">
         <div class="content content-main">
-          편지를 누르면 <br>{{armyType}}훈련소로 이동합니다.
+          편지를 누르면 ㅇㅇㅇ훈련소 페이지로 이동합니다.
         </div>
-        <textarea name="" id="" cols="30" rows="10" v-model='mailText' @click="showPopup"></textarea>
+        <textarea name="" id="" cols="30" rows="10" v-model='mailText'></textarea>
         <!-- 클립보드에 복사되었습니다. -->
-       
+
+        <!-- 테스트영영 -->
+        <button type="button" class="btn btn-primary" @click="showPopup">
+          클립보드에 복사하기
+        </button>
+        <button type="button" class="btn btn-primary" @click="showPopup">
+          편지보내러가기
+        </button>
+        <!--자동으로 이동까지 -->
+        <!-- ㅇㅇ 훈련소로 이동합니다.  -->
+        <input type="text" id="inputField" />
+        <button @click="copyText">복사하기</button>
+
+        <br />
+        <br />
+
+        <button @click="toggleSend">Send!</button>
         <!-- 테스트영영 -->
 
         <div class="clipboard">
-          <span> <br>붙여넣기(ctrl+v) 하시면 내용이 복사됩니다.</span>
+          <!-- Target -->
+          <input
+            id="target"
+            value="https://github.com/zenorocha/clipboard.js.git"
+          />
+
+          <!-- Trigger -->
+          <button>copy</button>
+
+          <h1>
+            "공군" 훈련소에 보내시는거죠? <br />
+            저희가 모셔드릴게요
+          </h1>
+
+          <h2>
+            편지 들고 가시는거 잊지 마세요!<br />
+            버튼을 눌러 편지를 담아가세요.
+          </h2>
+          <span> 붙여넣기(ctrl+v) 하시면 내용이 복사됩니다.</span>
         </div>
       </div>
-      <div class="wrapper send-later">
+      <div class="wrapper send-latter">
         <div class="content content-middle">
           로그인하고 작성한 편지를 보관하세요.
         </div>
@@ -52,16 +75,12 @@
         <button type="button" class="btn btn-dark">편지 출력하기</button>
       </div>
     </div>
-    <div v-else class="send-done">
-      <div class="h1">편지 보내기를 <br>완료하셨습니다!</div>
-      <div class="btn-select">
-        <button type="button" class="btn btn-outline-primary" @click="backToSend">
+    <div v-else>
+      <h1>보내기를 완료했습니다!</h1>
+
+      <button type="button" class="btn btn-primary" @click="backToSend">
         뒤로가기
       </button>
-      <button type="button" class="btn btn-primary" @click="backToSend">
-        마이페이지
-      </button>
-      </div>
     </div>
   </div>
 </template>
@@ -70,7 +89,6 @@
 export default {
   data() {
     return {
-      show:false,
       pageNumber: true,
       mailText: this.$route.params.mailText,
       armyType: this.$route.params.armyType
@@ -94,17 +112,12 @@ export default {
       document.body.removeChild(textField);
     },
     showPopup: function() {
-      this.show = !this.show;
-      setTimeout(() => {
-        this.show = !this.show;
-        window.open(
+      window.open(
         "http://www.airforce.mil.kr:8081/user/indexSub.action?codyMenuSeq=156893223&siteId=last2&menuUIType=sub#searchName",
         "팝업창기능",
         "width=1440, height=900, left=720, top=330"
       );
-      this.pageNumber = !this.pageNumber;}, 3000);
-
-      
+      this.pageNumber = !this.pageNumber;
     },
     backToSend: function() {
       this.pageNumber = !this.pageNumber;
@@ -115,12 +128,6 @@ export default {
 
 <style scoped lang="scss">
 .navigation {
-   .logo{
-    display:flex;
-    align-items: center;
-    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
-    Latin font, sans-serif;
-  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;
@@ -169,17 +176,12 @@ export default {
     box-shadow: none;
   }
 }
-
-.alert-success{
-  position:absolute;
-  top:80px;
-}
 // contents
 .send__wrap {
   background-color: #ffbfb9;
 }
 .content-area {
-  margin: 0px auto;
+  margin: 50px auto;
   max-width: 1200px;
   display: flex;
   justify-content: center;
@@ -191,8 +193,8 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  max-width: 96%;
-  margin: 16px auto;
+  width: 40%;
+  margin: 16px;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
   .content {
@@ -234,27 +236,6 @@ export default {
     .content-sub {
       font-size: 16px;
     }
-  }
-  .send-done{
-    .h1{
-      font-size: 25px;
-    }
-  }
-}
-.send-done{
-  margin:20px auto;
-  min-width:320px;
-  .h1{
-    text-align: center;
-    font-family: "nanum square";
-  font-size: 36px;
-  }
-  .btn-select{
-    display:flex;
-    justify-content: center;
-  }
-  .btn{
-    margin:20px 30px;
   }
 }
 </style>

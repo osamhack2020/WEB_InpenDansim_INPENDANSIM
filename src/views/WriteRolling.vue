@@ -3,11 +3,7 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">
-            <img src="../../public/favicon.png" alt="logo" width="24px">
-            <div>인편단심</div>
-            <!-- <img src="../assets/images/logo.png" alt="" width="115" height="30"> -->
-          </router-link>
+          <router-link to="/" class="logo title">인편단심</router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <span>롤링페이퍼 찾기</span>
         </nav>
@@ -101,12 +97,6 @@ export default {
   position: sticky;
   top: 0;
   z-index: 1;
-  .logo{
-    display:flex;
-    align-items: center;
-    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
-    Latin font, sans-serif;
-  }
 }
 
 .nav-div {
@@ -196,13 +186,14 @@ export default {
   flex-direction: column;
   justify-content: center;
   font-size: 34px;
+  margin-top: 20px;
   font-weight: bold;
   line-height: 60px;
   div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 12px 16px;
+    margin: 25px 16px;
   }
   .find-target {
     margin-bottom: 20px;
@@ -214,10 +205,10 @@ export default {
       weight: lighter;
     }
     position: absolute;
-    bottom: 0px;
+    bottom: 16px;
     margin-top: 30px;
     box-sizing: border-box;
-    margin: 0px 16px;
+    margin: 25px 16px;
     .btn {
       vertical-align: middle;
       padding: 16px;
@@ -225,7 +216,7 @@ export default {
       letter-spacing: 1px;
       min-width: 328px;
       max-width: 440px;
-      margin: 8px 0px;
+      margin: 16px 0px;
       margin-left: 10px;
     }
   }
