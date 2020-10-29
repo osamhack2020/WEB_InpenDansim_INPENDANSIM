@@ -4,7 +4,7 @@
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
           <router-link to="/" class="logo title">
-            <img src="../../public/favicon.png" alt="logo" width="24px">
+            <img src="../../public/favicon.png" alt="logo" width="24px" />
             <div style="white-space:nowrap;">인편단심</div>
           </router-link>
           <span style="margin: 0 0.7rem;">|</span>
@@ -15,53 +15,62 @@
         </div>
       </div>
     </div>
-    <div class="content-area" v-if="pageNumber">
-       <transition name="alert" v-if="show" style="margin 0px auto" >
-          <div class="alert alert-success" role="alert" :class="{show:isShow}">
-            <h4 class="alert-heading">편지 내용이 클립보드에 복사되었습니다!</h4>
-            <p>이제 훈련소 페이지로 이동합니다.</p>
-            <hr>
-            <p class="mb-0">붙여넣기(ctrl+v)를 해서 편지보내기를 완료하세요.</p>
-        </div>
-       </transition>
+    <div class="content-area" v-if="pageNumber == 1">
       <div class="wrapper send-now">
-        <div class="content content-main">
-          편지를 누르면 <br>{{armyType}}훈련소로 이동합니다.
+        <textarea style="display: none;" v-model="mailText"></textarea>   
+        <div class="title-container">
+          <div class="eng">SEND</div>
+          <div class="kor">마음을 전하러 가는 길.</div>
         </div>
-        <textarea name="" id="" cols="30" rows="10" v-model='mailText' @click="showPopup"></textarea>
-        <!-- 클립보드에 복사되었습니다. -->
-       
-        <!-- 테스트영영 -->
-
-        <div class="clipboard">
-          <span> <br>붙여넣기(ctrl+v) 하시면 내용이 복사됩니다.</span>
+        <div class="article-container">
+          <div class="text">작성한 편지가 클립보드에 복사되고,</div>
+          <div class="text">훈련소 페이지로 이동합니다.</div>
+          <div class="text">훈련병을 찾아 소중한 마음을 전하세요!</div>
+        </div>
+        <div class="btn-container">
+          <div class="btn" @click="handleSend">지금 보내러 가기</div>
         </div>
       </div>
-      <div class="wrapper send-later">
-        <div class="content content-middle">
-          로그인하고 작성한 편지를 보관하세요.
+      <div class="wrapper send-latter">
+        <div class="title-container">
+          <div class="eng">SAVE</div>
+          <div class="kor">더 예쁜 말로 다듬기 위해서.</div>
         </div>
-        <div class="content content-sub">
-          언제든지 보내고 싶을 때 보낼 수 있어요.
+        <div class="article-container">
+          <div class="text">로그인하고 작성한 페이지를 보관하세요.</div>
+          <div class="text">언제든지 꺼내서 보낼 수 있어요!</div>
         </div>
-        <button type="button" class="btn btn-dark">편지 보관하기</button>
-        <div class="content content-middle">
-          편지 출력기능을 이용해서<br />
-          직접 우편으로 보낼 수 있어요.
+        <div class="btn-container">
+          <div class="btn">편지 보관하기</div>
         </div>
-        <button type="button" class="btn btn-dark">편지 출력하기</button>
       </div>
     </div>
-    <div v-else class="send-done">
-      <div class="h1">편지 보내기를 <br>완료하셨습니다!</div>
-      <div class="btn-select">
-        <button type="button" class="btn btn-outline-primary" @click="backToSend">
-        뒤로가기
-      </button>
-      <button type="button" class="btn btn-primary" @click="backToSend">
-        마이페이지
-      </button>
+    <div class="done-area" v-if="pageNumber == 2">
+      <div class="wrapper done">
+        
+        <div class="title-container">
+          <div class="eng">DONE!</div>
+          <div class="kor">기다리는 시간마저 즐거운.</div>
+        </div>
+        <div class="article-container">
+          <div class="text">인편단심을 찾아 주셔서 감사합니다.</div>
+          <div class="text">또 오세요!</div>
+        </div>
+        <div class="btn-container">
+          <textarea style="display:none;" v-model="mailText"></textarea>
+          <div class="btn" @click="handleSend">
+            다시 복사하기
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="alert-popup__wrap">
+      <transition name="popup">
+        <div class="alert-popup" v-if="showAlert">
+          <span>{{ alertMessage }}</span>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -70,18 +79,38 @@
 export default {
   data() {
     return {
-      show:false,
-      pageNumber: true,
+      showAlert: false,
+      pageNumber: 1,
       mailText: this.$route.params.mailText,
-      armyType: this.$route.params.armyType
+      armyType: this.$route.params.armyType,
+      reciever: this.$route.params.reciever,
+      // myInput: '123'
     };
   },
   methods: {
+    handleSend() {
+      this.doCopy();
+      this.handleShowAlert('복사되었습니다!\n잠시후 훈련소 페이지로 연결됩니다.');
+      // this.pageNumber = 2;
+      //   this.showPopup();
+
+      setTimeout(() => {
+        this.pageNumber = 2;
+        this.showPopup();
+      }, 3000);
+    },
     toggleSend() {
       this.pageNumber = !this.pageNumber;
     },
     handleBack() {
-      this.$router.push({ path: "/write/mail" });
+      this.$router.push({
+        name: "WriteMail",
+        params: {
+          mailText: this.mailText,
+          armyType: this.armyType,
+          receiver: this.reciever
+        }
+      });
     },
     copyText: function() {
       var agt = navigator.userAgent.toLowerCase();
@@ -94,31 +123,41 @@ export default {
       document.body.removeChild(textField);
     },
     showPopup: function() {
-      // this.show = !this.show;
-        alert("내용이 복사되었습니다!\n 팝업을 닫으면 훈련소 페이지로 이동합니다.");
-        window.open(
+      window.open(
+        // 추후 각 훈련소 링크로 대체가능하게 추가 지금은 공군만
         "http://www.airforce.mil.kr:8081/user/indexSub.action?codyMenuSeq=156893223&siteId=last2&menuUIType=sub#searchName",
         "팝업창기능",
         "width=1440, height=900, left=720, top=330"
       );
-      this.pageNumber = !this.pageNumber;
-
-      
     },
     backToSend: function() {
       this.pageNumber = !this.pageNumber;
+    },
+    handleShowAlert(message) {
+      this.alertMessage = message;
+      this.showAlert = true;
+      var that = this;
+      setTimeout(() => {
+        that.showAlert = false;
+        that.alertMessage = "";
+      }, 2000);
+    },
+    doCopy() {
+      this.$copyText(this.mailText);
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+
 .navigation {
-   .logo{
-    display:flex;
+  .logo {
+    display: flex;
     align-items: center;
-    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
-    Latin font, sans-serif;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum,
+      Apple Gothic, Latin font, sans-serif;
   }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
@@ -169,97 +208,160 @@ export default {
   }
 }
 
-.alert-success{
-  position:absolute;
-  top:80px;
-}
 // contents
 .send__wrap {
   background-color: #ffbfb9;
+  height: 100vh;
 }
-.content-area {
-  margin: 0px auto;
-  max-width: 1200px;
+.content-area,
+.done-area {
+  width: 100%;
+  height: calc(100vh - 64px);
   display: flex;
   justify-content: center;
-  flex-flow: wrap;
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+.wrapper {
+  width: 30%;
+  height: 60%;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  justify-items: center;
   justify-content: center;
-  padding: 20px;
-  max-width: 96%;
-  margin: 16px auto;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 4px 0 rgba(45, 51, 58, 0.16);
-  .content {
-    margin: 10px;
-    text-align: center;
+  padding: 3%;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px -2px #000;
+  transition: box-shadow 0.3s ease;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  .content-main {
-    line-height: 120%;
-    font-size: 48px;
+
+  .title-container {
+    .eng {
+      font-family: "Shrikhand", cursive;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .kor {
+      font-family: "maruburi";
+      font-size: 2rem;
+      font-weight: bolder;
+    }
   }
-  .content-middle {
-    line-height: 130%;
-    margin-top: 80px;
-    font-size: 36px;
+  .article-container {
+    font-family: "nanum square";
+    font-weight: lighter;
+    font-size: 1.3rem;
+    line-height: 150%;
   }
-  .content-sub {
-    font-size: 20px;
-  }
-  button {
-    margin-top: 16px;
-    width: 80%;
+  .btn {
+    font-family: "nanum square";
+    font-weight: lighter;
+    font-size: 1.3rem;
+    color: #fff;
+    height: 4rem;
+    padding: 0 3rem;
+    border-radius: 2rem;
+    transition: background 0.3s ease;
+    background: #135fa1;
+    box-shadow: 0 2px 4px 0 #ccc;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba($color: #135fa1, $alpha: 0.6);
+    }
+    &:active {
+      box-shadow: none;
+    }
   }
 }
+
+.alert-popup__wrap {
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  top: 15vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert-popup {
+  background: rgba($color: #fff, $alpha: 0.7);
+  height: 3rem;
+  width: 550px;
+  padding: 0 2rem;
+  font-family: "nanum square";
+  font-size: 15pt;
+  border-radius: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-enter-active,
+.popup-leave-active {
+  transition: all 0.5s;
+}
+.popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  width: 0;
+  opacity: 0;
+}
+
 @media (max-width: 814px) {
   .content-area {
-    display: block;
+    flex-flow: column wrap;
   }
   .wrapper {
-    width: 100vw;
-    .content-main {
-      line-height: 120%;
-      font-size: 25px;
+    width: 80%;
+    height: 40%;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 3%;
+    .title-container {
+      .eng {
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+      }
+      .kor {
+        font-size: 1.5rem;
+        letter-spacing: -2px;
+      }
     }
-    .content-middle {
-      line-height: 130%;
-      margin-top: 80px;
-      font-size: 20px;
+    .article-container {
+      font-size: 1rem;
     }
-    .content-sub {
-      font-size: 16px;
+    .btn {
+      height: 3rem;
+      border-radius: 1.5rem;
+    }
+    &.send-now {
+      margin-bottom: 10%;
     }
   }
-  .send-done{
-    .h1{
-      font-size: 25px;
-    }
+  .alert-popup {
+    width: 400px;
   }
 }
-.send-done{
-  margin:20px auto;
-  min-width:320px;
-  .h1{
-    text-align: center;
-    font-family: "nanum square";
-  font-size: 36px;
+@media (min-width: 815px) {
+  .wrapper {
+    &:hover {
+      background: #fefefe;
+      box-shadow: 0 2px 15px 0px #000;
+    }
+    &.send-now {
+      margin-right: 6rem;
+    }
   }
-  .btn-select{
-    display:flex;
-    justify-content: center;
-  }
-  .btn{
-    margin:20px 30px;
-  }
-}
-.alert-enter-active, .alert-leave-active {
-  transition: opacity .5s;
-}
-.alert-enter, .alert-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }
 </style>

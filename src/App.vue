@@ -35,6 +35,7 @@ export default {
   src: local("BinggraeTaom-Bold"),
     url(./assets/fonts/BinggraeTaom-Bold.ttf) format("truetype");
 }
+
 html,
 body {
   margin: 0;

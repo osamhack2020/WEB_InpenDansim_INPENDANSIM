@@ -3,8 +3,8 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title"> 
-           <img src="../../public/favicon.png" alt="logo" width="24px">
+          <router-link to="/" class="logo title">
+            <img src="../../public/favicon.png" alt="logo" width="24px" />
             <div style="white-space:nowrap;">인편단심</div>
           </router-link>
           <span style="margin: 0 0.7rem;">|</span>
@@ -65,9 +65,27 @@
                 :key="index"
                 class="headline"
               >
-                <div class='title' @click="handleShowNews(newsCategoryNum, index)">{{ headline.title }}</div>
-                <div class='content'>{{ headline.content.slice(0, 60) + " ..." }}</div>
-                <div class='add-btn' @click='handleAdd(headline.title+"\n"+headline.content.replace(/&lt;br&gt;/gi, " "))'>추가하기 >></div>
+                <div
+                  class="title"
+                  @click="handleShowNews(newsCategoryNum, index)"
+                >
+                  {{ headline.title }}
+                </div>
+                <div class="content">
+                  {{ headline.content.slice(0, 60) + " ..." }}
+                </div>
+                <div
+                  class="add-btn"
+                  @click="
+                    handleAdd(
+                      headline.title +
+                        '\n' +
+                        headline.content.replace(/&lt;br&gt;/gi, ' ')
+                    )
+                  "
+                >
+                  추가하기 >>
+                </div>
               </div>
             </div>
             <div v-else class="article-container">
@@ -77,21 +95,14 @@
           </div>
           <div v-if="utilityContentName == 'novel'">
             novel
-            <div class="hashtag">
-              <span>#짧은 글 시리즈 #괴담 #유머</span>
-              <div class='title'>오늘은 내가 DJ</div>
-            </div>
           </div>
           <div v-if="utilityContentName == 'words'">
-            <div class="hashtag">
-              <span>#고된훈련 #힘이되는 #글귀</span>
-              <div class='title'>오늘의 명언</div>
-            </div>
+            words
           </div>
           <div v-if="utilityContentName == 'music'">
             <div class="hashtag">
               <span>#들려주진 #못하지만 #읽어줄게</span>
-              <div class='title'>오늘은 내가 DJ</div>
+              <div class="title">오늘은 내가 DJ</div>
             </div>
             <div class="playlists_container">
               <div
@@ -105,61 +116,76 @@
                   v-for="(song, index) in playlist.songs"
                   :key="index"
                 >
-                  <span class="title">{{ song.title }}</span>
+                  💿
+                  <span class="title"> {{ song.title }} </span>
                   <span class="artist">{{ song.artist }}</span>
+                  <div class="add-btn" @click="handleAdd(song.lyrics)">
+                    추가하기 >>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div v-if="utilityContentName == 'sudoku'">
-            <div class="hashtag">
-              <span>#퍼즐 #스도쿠 #쉬움보통어려움</span>
-              <div class='title'>스도쿠 자동생성</div>
-            </div>
+            sudoku
           </div>
         </div>
       </div>
-      <div class="writing-area" style="background-color:this.bgColor">
-        <div class="writing-area__wrap" >
+      <div class="writing-area">
+        <div class="writing-area__wrap">
           <div class="writing-area__meta">
             <select class="reciever-type" v-model="armyType">
-              <option value="육군">육군</option>
-              <option value="해군">해군</option>
-              <option value="공군">공군</option>
-              <option value="해병대">해병대</option>
+              <option value="army">육군</option>
+              <option value="navy">해군</option>
+              <option value="air">공군</option>
+              <option value="marine">해병대</option>
             </select>
             <input class="reciever-name" type="text" />
-            <span class="reciever-name-label">에게</span>
+            <span
+              class="reciever-name-label"
+              :value="reciever"
+              @input="reciever = $event.target.value"
+              >에게</span
+            >
           </div>
           <div class="writing-area__text">
             <textarea
+              id="writing-area"
               :value="mailText"
               @input="mailText = $event.target.value"
               :maxlength="textMaxLength"
               spellcheck="false"
+              @keydown.ctrl.90="mailText = mailText.slice(0, cursor)"
+              :class="{ bigger: armyType == 'army' }"
             ></textarea>
-            <span class="writing-area__couter">{{ `${textMaxLength}자 중 ${textCounter}자` }}</span>
+            <span class="writing-area__couter">{{
+              `${textMaxLength}자 중 ${textCounter}자`
+            }}</span>
           </div>
         </div>
       </div>
     </div>
-    <div class='alert-popup__wrap'>
-      <transition name='popup'>
-        <div class='alert-popup' v-if="showAlert"><span>{{ alertMessage }}</span></div>
+    <div class="alert-popup__wrap">
+      <transition name="popup">
+        <div class="alert-popup" v-if="showAlert">
+          <span>{{ alertMessage }}</span>
+        </div>
       </transition>
     </div>
-    
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      cursor: 0,
       showAlert: false,
-      alertMessage: '',
-      mailText: "",
-      armyType: "육군",
-      bgColor:"#6C963C",
+      alertMessage: "",
+      mailText: this.$route.params.mailText ? this.$route.params.mailText : "",
+      armyType: this.$route.params.armyType
+        ? this.$route.params.armyType
+        : "army",
+      reciever: this.$route.params.reciever ? this.$route.params.reciever : "",
       showHeadlines: true,
       newsDetails: {
         title: "",
@@ -195,34 +221,32 @@ export default {
           {
             title: '[단독]"인육 먹고싶다"는 외교관을 모범 공무원 추천한 외교부',
             content:
-              '공관 직원들에게 “인육 고기를 먹어보려 한다” 등 엽기적 폭언은 물론 예산 유용 의혹까지 불거진 외교관에 대해 외교부가 ‘2019년 상반기 모범 공무원’ 추천 후보자 명단에 올렸던 것으로 확인됐다.<br><br>20일 중앙일보 취재를 종합하면 외교부는 지난해 4~5월 모범 공무원 표창을 위한 20여 명의 후보자 명단에 미국 주재 총영사관에 근무하는 외무영사 A씨를 포함했다. A씨의 당시 공적 사항으로는 “재외 공관에서 예산 낭비를 막았다”는 내용이 포함됐다.<br><br>그러나 국회 외교통일위원회 이태규 국민의당 의원실이 확보한 A씨에 대한 비위 제보는 외교부 추천 내용과는 딴판이었다.<br><br>이태규 의원실에 따르면 A씨는 “인육 고기가 맛있을 것 같다. 인육을 먹어보려 한다”고 하거나, ”일본인 할머니 덕분에 조선인들이 빵을 먹고 살 수 있었다” “네가 퇴사하더라도 끝까지 괴롭힐 거다” 등의 폭언을 했다는 의혹이 지난해 10월 현지 직원들의 신고로 공관에 정식으로 접수됐다.<br><br>당시 신고 내용에는 직원들을 향한 폭언 외에도 사문서위조, 물품 단가 조작, 이중장부 지시, 예산 유용, 특근 매식비 집행서류 허위 작성 등 16건에 달하는 비위가 접수됐다고 한다.<br><br>사문서위조 건과 관련해선 지난해 4월 총영사관이 신청사 이전을 위해 가구와 집기를 구매하는 과정에서 A씨가 직원에 현지 업체명을 도용해 물품 구매 허위 견적서를 쓰게 한 뒤 국고를 부풀려 배정받은 것으로 나타났다. 이로 인해 총영사관이 ‘자산취득 업무 부적정’을 이유로 별도의 ‘기관 주의’ 처분까지 받았다.<br><br>문제가 불거진 시기는 외교부가 A씨를 “예산 집행을 우수하게 했다”며 포상 후보자 명단에 올린 시기와 일치한다. 외교부는 이와 관련 “포상 후보자 명단 공개는 검증을 위한 것으로, 최종적으로 A씨는 포상에서 제외됐다”는 입장을 밝혔다.<br><br>직원들의 신고가 잇따르면서 외교부 감사담당관실은 그해 11월 현지 공관에 대한 감사에 착수했고, A씨에 대해선 사문서위조 등 일부를 인정해 ‘장관 경고‘라는 서면 경고 처분을 내렸다.<br><br>이태규 의원실 관계자는 “A씨는 총영사관 부임 직전 감사담당관실에 근무했다”며 “막말 외에 예산 유용 등 중한 비위 의혹이 제기됐는데도 감사관실이 인사상 불이익이 없는 경고를 한 것은 ‘동료 봐주기 징계’를 했다는 비판을 받을 수밖에 없다”고 지적했다.<br><br>외교부는 이에 대해 "제보 내용에 대해 담당 부서에서 정밀조사를 벌였고 그 결과에 따라 적절한 조치를 취했다"라고 입장을 내놨다.<br><br>하지만 문제가 된 A씨의 인육 발언과 관련해선 외교부 내에서도 “상식을 벗어난 발언”이라며 술렁이는 분위기다.<br><br>다만 한 소식통은“문제가 되는 인육 발언은 감사 시점에서는 제기되지 않았던 것으로 안다”고 말했다.<br><br>정효식·이유정 기자 uuu@joongang.co.kr'
-          },
+              '공관 직원들에게 “인육 고기를 먹어보려 한다” 등 엽기적 폭언은 물론 예산 유용 의혹까지 불거진 외교관에 대해 외교부가 ‘2019년 상반기 모범 공무원’ 추천 후보자 명단에 올렸던 것으로 확인됐다.'  },
           {
             title: '공군 사병 ‘치료 휴가‘ 내고 무단출국…"여친 만나려"',
             content:
-              '[앵커]한 공군 병사가 몸이 아프다며 휴가를 나갔는데 제때 복귀하지 않고 해외로 무단 출국했습니다. 일종의 ‘탈영‘인데요. 닷새 만인 오늘(20일) 귀국하긴 했는데, 여자친구를 만나러 가려고 출국했다고 합니다.<br><br>이한길 기자입니다.<br><br>[기자]<br><br>충북 청주의 한 공군부대에서 근무하는 A상병은 지난 14일 1박 2일로 청원 휴가를 나갔습니다.<br><br>침샘 수술을 위해 병원을 다녀오겠다며 휴가를 낸 겁니다.<br><br>하지만 A상병은 다음날 부대에 복귀하지 않고 인천공항을 통해 카타르를 거쳐 이탈리아 밀라노로 무단 출국했습니다.<br><br>규정상 병사가 해외여행을 가려면 보름 전 지휘관의 승인을 받아야 하는데, A씨는 이런 절차를 밟지 않았습니다.<br><br>출국심사는 정상적으로 받았지만 출입국관리사무소는 A씨가 현역 병사라는 사실을 전혀 알지 못했습니다.<br><br>군 관계자는 "법무부 출입국관리시스템에는 만 25세가 넘은 병역기피 우려자 명단만 표시된다"고 했습니다.<br><br>A상병이 복귀하지 않자 해당 부대는 소재 파악에 나섰고 뒤늦게 출국 사실을 확인했습니다.<br><br>군은 가족을 통해 A상병과 연락을 시도했고 설득 끝에 출국 닷새 만인 오늘 오후 한국으로 돌아왔습니다.<br><br>A상병은 여자친구를 만나기 위해 출국했다고 주장한 걸로 알려졌습니다.<br><br>군사경찰은 코로나19 검사 등이 끝나는 대로 A상병을 탈영 등의 혐의로 조사할 방침입니다.<br><br>(영상디자인 : 박성현 / 영상그래픽 : 김정은)<br><br>이한길 기자 (oneway@jtbc.co.kr) [영상편집: 이지훈]'
-          },
+              '[앵커]한 공군 병사가 몸이 아프다며 휴가를 나갔는데 제때 복귀하지 않고 해외로 무단 출국했습니다. 일종의 ‘탈영‘인데요. 닷새 만인 오늘(20일) 귀국하긴 했는데, 여자친구를 만나러 가려고 출국했다고 합니다.  이한길 기자입니다.' },
           {
             title: "“재산세 완화 추진…종부세는 유지” ‘부동산 늪’에 빠진 민주당",
             content:
-              "더불어민주당 한정애 정책위의장이 20일 “재산세 부담을 최소화하겠다”면서 재산세 완화 가능성을 내비쳤다. 다만 “종합부동산세 완화 계획은 없다”고 일축했다. 집값 상승과 전세난 심화로 악화된 여론을 달래기 위해 재산세를 일부 낮추면서도 대상자가 많지 않은 종부세는 유지하겠다는 뜻이다.<br><br>8월 초 임대차 3법의 국회 통과 이후 전세난 등으로 민심의 역풍을 맞고 있는 민주당이 ‘부동산 늪’에서 벗어나기 위해 안간힘을 쓰는 모습이다. 전세난이 내년 초까지 이어질 것으로 예상되는 만큼, 자칫 그 여파가 4월 서울·부산시장 보궐선거까지 미칠 수 있다는 우려 때문이다.<br><br>한 정책위의장은 이날 국정감사 대책회의에서 “공시가격 현실화를 고려해 재산세를 조정해야 한다는 의견을 정부에 전달했다”며 “추후 당정협의를 통해 결론 낼 것”이라고 밝혔다. 한 정책위의장은 회의 직후 기자들과 만난 자리에서 “공시가격 현실화를 통해 세금이 올라가는데, 정부가 세금을 더 받으려고 한 건 아니기 때문에 조정을 통해 재산세 부담을 최소화하겠다”고 설명했다. 당 관계자는 “재산세율을 조정할지, 공시가격 현실화의 속도를 늦출지 등 구체적인 방법은 당정이 추가로 협의해야 한다”고 말했다.<br><br>이는 전날(19일) 이낙연 대표가 당 최고위원회의에서 “1가구 장기보유 실거주자에게 세금 등에서 안심을 드리는 방안을 중심으로 정책을 마련하겠다”고 언급한 것과도 일맥상통한다. 올 7, 9월 재산세 고지서가 발송된 후 ‘재산세가 30%까지 뛰었다’는 불만이 쏟아지자 조정에 나선 것으로 풀이된다.<br><br>다만 일각에서 요구하고 있는 종부세 완화에 대해 한 정책위의장은 “민주당과 정부는 이를 전혀 검토한 바도 없고 계획도 없다”고 일축했다. 이 대표가 4·15총선 유세 기간에 강남 3구 유세 현장에서 종부세 완화를 암시했지만 다시 선을 그은 것. 하지만 같은 당 정일영 의원은 이날 과세표준 3억 원 이하(기준시가 약 12억 원)인 1가구 1주택자, 특히 만 60세 이상의 세 부담을 완화하는 내용의 종부세법 개정안을 발의하기도 했다.<br><br>세금 완화와 함께 민주당은 전월세와 주택 정책을 다룰 ‘미래 주거 추진단’도 출범시켰다. 이 대표는 전날 최고위원회의에서 “우리는 예전의 부동산 정책에 대한 반성에서 새로운 접근을 시작해야 한다”면서 추진단을 공식화했다.<br><br>민주당이 이처럼 부동산 관련 추가 대책을 속속 내놓고 있는 것은 부동산 민심이 계속 악화되는 데다 전셋값 상승세가 내년 초까지 이어질 수 있다는 판단 때문이다. 한국감정원에 따르면 10월 둘째 주 서울의 전셋값 상승률은 첫째 주 대비 0.08% 올라 68주 연속 상승했다. 김현미 국토교통부 장관은 16일 국회 국정감사에서 “전세시장 불안이 내년 초까지 계속될 것으로 보느냐”는 민주당 김회재 의원의 질문에 “불안정하다기보다는 시장이 안정을 찾을 때까지 일정 시간이 걸릴 것으로 생각한다”고 했다.<br><br>여기에 내년 4월 서울·부산시장 보궐선거를 치러야 하는 민주당으로선 마음이 급할 수밖에 없다. 한 민주당 관계자는 “(박원순 전 시장 사건으로) 안 그래도 어려운 서울시장 선거에 전세난까지 악재로 더해질 수 있어 우려가 큰 상황”이라며 “대안을 고민하고 있다”고 말했다.<br><br>최혜령 기자 herstory@donga.com"
+              "더불어민주당 한정애 정책위의장이 20일 “재산세 부담을 최소화하겠다”면서 재산세 완화 가능성을 내비쳤다. 다만 “종합부동산세 완화 계획은 없다”고 일축했다. 집값 상승과 전세난 심화로 악화된 여론을 달래기 위해 재산세를 일부 낮추면서도 대상자가 많지 않은 종부세는 유지하겠다는 뜻이다."
           },
           {
             title: "윤석열 거취 어디로? 영입론 부상도…셈법 복잡해진 야권",
             content:
-              "추미애 법무부 장관이 윤석열 검찰총장 가족을 겨냥한 수사지휘권을 발동하며 거취를 놓고 다양한 관측이 나오자 보수야권의 시선이 다시 한 번 윤 총장에게 쏠리고 있다.<br><br>국민의힘 핵심 관계자는 20일 “윤 총장이 더 버티기 힘든 상황이 올 것을 대비해 ‘윤석열 변수’가 서울시장 선거 등에 미칠 영향을 준비해야 한다”고 말했다. 추 장관의 윤 총장 압박은 윤 총장의 정치권 데뷔를 앞당기는 ‘동전의 양면’과 같다는 인식에 따른 것이다. 이날 국민의힘에선 “법무부 장관이 검찰총장을 제거한 사건”(최형두 의원) “검찰총장이 사퇴하라는 얘기”(전주혜 의원) 등 윤 총장의 거취를 둘러싼 발언이 이어지기도 했다.<br><br>하지만 윤 총장 영입이 가시화되더라도 여전히 다양한 변수가 남아있다. 윤 총장 부친의 고향인 충청권 의원들을 중심으로 현 시점에서 각종 여론조사에서 범야권 인사 중 가장 높은 지지율을 보이는 윤 총장을 대선주자로 삼아야 한다는 주장이 나오지만, 국민의힘의 옛 주류였던 친박(친박근혜) 친이(친이명박)계 출신들 사이엔 “보수의 씨를 말린 사람이 대선 후보가 되는 건 부적절하다”는 반론이 많다. 서울중앙지검장 시절 윤 총장이 문재인 정부의 이른바 ‘적폐수사’에 앞장서면서 전 정권 인사들을 무리하게 수사했다는 것이다. 김용판 의원은 “윤 총장을 영입하면 보수 분열이 온다. 이명박 박근혜 전 대통령을 평가하는 보수 진영에서는 절대 지지하지 않을 것”이라고 공개 반대를 선언했다.<br><br>윤 총장과 함께 현 정부에 각을 세워온 김동연 전 경제부총리 겸 기획재정부 장관과 최재형 감사원장에 대한 관심도 본격적으로 달아오르고 있다. 하지만 이들에 대해서도 “김 전 부총리는 박근혜 정부 국무조정실장으로 재직할 때 알려지지 않은 실책이 있었다. 반기문 전 유엔 사무총장 등 정치적 검증이 되지 않은 판검사, 관료 출신을 바로 대선주자로 내세웠다가 망한 케이스를 잊었느냐”는 얘기가 나오는 등 당내 반대가 없지는 않다. 김종인 비상대책위원장은 윤 총장에 대해선 “검찰총장으론 괜찮은 사람”, 김 전 부총리에 대해선 “본인이 원해야 받고(영입) 말고 할 것”이라는 등 여지를 남기는 발언을 내놓은 바 있다.<br><br>최우열 기자 dnsp@donga.com<br>"
+              "추미애 법무부 장관이 윤석열 검찰총장 가족을 겨냥한 수사지휘권을 발동하며 거취를 놓고 다양한 관측이 나오자 보수야권의 시선이 다시 한 번 윤 총장에게 쏠리고 있다."
           },
           {
             title: '조국 "룸살롱 접대비 5인 1000만원? …양주 만으론 힘들어"',
             content:
-              '[아시아경제 임주형 기자] 조국 전 법무부 장관이 ‘검사 접대 의혹‘ 사건과 관련, 단순히 술접대에 그치지 않았을 수 있다는 의혹을 제기했다. 김봉현 전 스타모빌리티 회장이 현직 검사들에게 접대를 하며 치른 양주 가격이 지나치게 높다는 것이다.<br><br>조 전 장관은 20일 자신의 트위터에 쓴 글에서 "김봉현이 청담동 룸살롱에서 특수부 검사 출신 A 변호사와 함께 접대한 현직 검사들이 법무부 감찰과 남부지검 수사에 의해 특정되고 있다"며 김봉현의 편지에 따르면 접대비가 5인 1000만원이다"라고 밝혔다.<br><br>이어 "고급 양주 여러 병 마셨더라도 1000만원이 되기는 어렵다"고 지적했다. 술접대 이상이 있었을 가능성을 제기한 것이다.<br><br><br>조국 전 법무부 장관은 20일 자신의 트위터를 통해 ‘검사 접대 의혹‘ 사건 관련, 해당 검사들이 성접대만 받지 않았을 가능성을 제기했다. / 사진=트위터 캡처<br><br><br>조 전 장관은 "룸살롱 조사를 하면 바로 나올 것"이라고 덧붙였다.<br><br>일부 누리꾼들은 조 전 장관의 글에 답글을 달아 술집에서의 성매매, 혹은 다른 뇌물 등이 오갔을 가능성을 거론하기도 했다.<br><br>앞서 김 전 회장은 지난 16일 발표한 옥중 입장문에서 "지난해 7월 검찰 전관 출신 A 변호사를 통해 현직 검사 3명에게 1000만원 상당의 술 접대를 했다"고 주장한 바 있다.<br><br>이어 "회식 참석 당시 추후 라임 수사팀에 합류할 검사들이라고 소개를 받았는데, 실제 1명은 수사팀에 참가했다"고 덧붙였다.<br><br>임주형 기자 skepped@asiae.co.kr'
+              '[아시아경제 임주형 기자] 조국 전 법무부 장관이 ‘검사 접대 의혹‘ 사건과 관련, 단순히 술접대에 그치지 않았을 수 있다는 의혹을 제기했다. 김봉현 전 스타모빌리티 회장이 현직 검사들에게 접대를 하며 치른 양주 가격이 지나치게 높다는 것이다.'
           }
         ],
         [
           {
             title: '무섭게 추락하는 환율…"바이든 당선 땐 1100원 무너질 수도"',
             content:
-              "다음달 3일 열리는 미국 대통령 선거에서 바이든 후보가 승리할 경우 원화와 위안화의 동반 초강세 흐름이 이어질 것이라는 분석이 많다.<br><br>바이든 후보는 임기 4년 동안 기후변화에 대응하기 위해 2조달러를 투자한다는 대선 공약을 발표했다. 미국 재정적자가 늘어날 수 있고 이는 달러가치에는 부정적 영향을 줄 것으로 전망된다. 달러가치가 떨어지면 상대적으로 원화와 위안화 가치는 뛴다.<br><br>바이든 후보가 대통령이 된 이후 미·중 갈등이 완화될 가능성이 높은 점도 원화와 위안화 강세 요인이 될 것으로 예상된다. 바이든 후보는 평소 도널드 트럼프 정부의 대중(對中) 관세 정책에 부정적이었기 때문이다.<br><br>이런 상황에서 코로나19 백신이 조만간 등장할 것이라는 기대도 커지고 있어 원화 가치에 긍정적인 재료로 작용하고 있다. 코로나19 백신을 개발하는 글로벌 제약업체인 화이자와 모더나는 최근 연내 미국 식품의약국(FDA)에 백신 긴급사용 신청을 할 수 있다고 밝혔다.<br><br>시장 전문가들은 달러당 1120원 선에서 환율의 1차 지지선이 형성될 것으로 보고 있다. 하지만 내달 미 대선에서 바이든이 당선되거나 코로나19 백신이 등장하면 1100원 선까지 떨어질 가능성도 있다고 예상한다.<br><br>박상현 연구위원은 “외환당국의 시장 개입 가능성도 있지만 미 대선 이후 하락세가 이어지면서 1120원 선 밑으로 하락할 수 있다”며 “백신이 등장할 경우 위험자산 선호도가 올라가면서 달러 약세가 연말까지 이어질 수 있다”고 말했다.<br><br>김익환 기자 lovepen@hankyung.com"
+              "다음달 3일 열리는 미국 대통령 선거에서 바이든 후보가 승리할 경우 원화와 위안화의 동반 초강세 흐름이 이어질 것이라는 분석이 많다.  바이든 후보는 임기 4년 동안 기후변화에 대응하기 위해 2조달러를 투자한다는 대선 공약을 발표했다."
           },
           {
             title: "‘그래도 오를 거야!‘...2030 세대 ‘영끌‘ 매수 최고",
@@ -232,7 +256,7 @@ export default {
           {
             title: "세계 D램 70%, 낸드 56% 장악…K메모리 `압도적 투톱`",
             content:
-              '삼성전자가 인공지능(AI)·머신러닝 등에 특화된 고대역폭 메모리(HBM2E) 제품을 올 2월 최초로 선보이자 SK하이닉스는 이달 차세대 D램인 DDR5를 세계 최초로 출시하는 등 삼성전자와 SK하이닉스는 앞서거니 뒤서거니 하며 글로벌 반도체 시장, 나아가 정보통신기술(ICT) 산업 발전을 이끌어 왔다.<br><br>이번 빅딜로 낸드플래시 분야에서도 D램과 비슷한 혁신 경쟁이 이뤄질 것으로 업계는 보고 있다. 낸드의 경우 D램 공정 미세화 경쟁과 마찬가지로 집적도를 높이는 경쟁이 치열하다. 삼성전자가 2013년 8월 세계 최초로 3차원(3D) 수직구조를 적용한 24단 낸드플래시(1세대 3D V낸드)를 개발한 이후 초격차를 유지하고 있는 가운데 SK하이닉스 역시 삼성전자를 추격하며 2018년 11월 세계 최초로 96단 4D 낸드플래시 개발에 성공하는 등 기술력을 대폭 끌어올렸다.<br><br>반도체 업계에서는 SK하이닉스의 인텔 사업 인수가 한국 기업들의 낸드 경쟁력 강화에 새 전기가 될 것으로 기대한다. 낸드플래시 성능을 개선하기 위해서는 집적도를 높이는 것뿐만 아니라 데이터 처리 순서 등을 결정하는 두뇌 역할의 ‘컨트롤러‘와 이를 제어하는 소프트웨어인 ‘펌웨어‘ 등 솔루션 성능을 개선해야 하는데, 인텔은 낸드플래시 솔루션 분야에서 세계 최고 수준의 기술력을 보유하고 있기 때문이다.<br><br>전문가들은 국내 기업들의 메모리 시장 석권이 국내 반도체 생태계 육성에도 도움이 될 것으로 기대한다. K-메모리 생산 확대는 국내 소부장(소재·부품·장비) 기업들의 판로 확대와 연구개발(R&D) 강화, 투자 확대에 긍정적 영향을 미치게 된다. K-메모리를 통해 검증된 소부장 기업들은 글로벌 강소기업으로 발돋움할 수 있다는 지적이다. 노근창 현대차증권 애널리스트는 "(SK하이닉스의 낸드 시장 점유율 확대가) 장기적으로 한국 메모리 반도체 소재 및 부품 산업의 성장에도 긍정적 영향을 줄 것"으로 내다봤다<br><br>‘K-메모리‘ 시대의 개막은 일자리 창출과 국내 경기 활성화에도 큰 도움을 줄 전망이다. 올 상반기 사업보고서에 따르면 삼성전자의 반도체 인력은 5만6022명에 달한다. SK하이닉스의 경우 SK그룹 편입 이전인 2011년 직원 수가 1만9600명으로 2만명이 채 안됐으나 올해 상반기 2만8609명으로 늘었다.<br><br>올 9월 말 기준 전체 수출에서 반도체가 차지하는 비중은 19.8%에 달할 정도로 반도체 기업들이 국내 경제에서 차지하는 비중도 막강하다. 삼성전자와 SK하이닉스는 지난해 9조1000억원의 법인세를 납부했는데, 이는 시가총액 상위 50개 기업 중 연결포괄손익계산서를 공시한 18개사 법인세 비용 합계의 59%에 달한다. 산업통상자원부에 따르면 2018년 반도체 수출액이 1000억달러를 돌파했는데, 역사상 단일 완성품 수출이 1000억달러를 넘어선 사례는 독일의 자동차(2004년), 미국의 항공기(2013년) 등 총 6개에 불과하다.<br><br>[노현 기자]'
+              '삼성전자가 인공지능(AI)·머신러닝 등에 특화된 고대역폭 메모리(HBM2E) 제품을 올 2월 최초로 선보이자 SK하이닉스는 이달 차세대 D램인 DDR5를 세계 최초로 출시하는 등 삼성전자와 SK하이닉스는 앞서거니 뒤서거니 하며 글로벌 반도체 시장, 나아가 정보통신기술(ICT) 산업 발전을 이끌어 왔다.'
           },
           {
             title: '"집없어? 결혼안해" 월세거주시 결혼 가능성 65% `뚝`',
@@ -269,7 +293,7 @@ export default {
       ],
       musicPlaylists: [
         {
-          title: "고된 훈련에 힘이 될 힐링곡 추천",
+          title: "💕 고된 훈련에 힘이 될 힐링곡 추천",
           songs: [
             {
               title: "이름에게",
@@ -299,31 +323,66 @@ export default {
           ]
         },
         {
-          title: "국군장병이라면 역시! 군가 모듬세트",
+          title: "👮‍♂️ 군인이라면 역시! 군가 모듬세트",
           songs: [
             {
               title: "멋진 사나이",
               artist: "",
-              lyrics: "가사"
+              lyrics:
+                "멋있는 사나이 많고 많지만 바로 내가 사나이 멋진 사나이 싸움에는 천하무적 사랑 뜨겁게 사랑 뜨겁게 바로 내가 사나이다 멋진 일등병\n멋있는 사나이 많고 많지만 분대장 사나이 멋진 사나이 명령에는 호랑이 대화는 정답게 대화는 정답게 바로 내가 사나이다 멋진 분대장"
             },
             {
               title: "전선을 간다",
               artist: "",
-              lyrics: "가사가사"
+              lyrics:
+                "높은산 깊은골 적막한 산하 눈내린전선을 우리는 간다 젊은넋 숨져 - 간 그때그자리 상처입은 노송 - 은 말을 잊었네 전우여 들리는가 그 성난 목소리 전우여 보이는가 한맺힌 눈동자\n푸른숲 맑은물 숨쉬는 산하 봄이 온 전선을 우리는 간다 젊은피 스며 - 든 그때그자리 이끼낀- 바위-는 말을잊었네 전우여 들리는가 그 성난 목소리 전우여 보이는가 한맺힌 눈동자"
             },
             {
               title: "진짜 사나이",
               artist: "",
-              lyrics: ""
+              lyrics:
+                "사나이로 태어나서 할 일도 많다만 너와 나 나라지키는 영광에 살았다 전투와 전투속에 맺어진 전우야 산봉우리에 해뜨고 해가 질 적에 부모형제 나를 믿고 단잠을 이룬다\n입으로만 큰 소리쳐 사나이 라느냐 너와 나 겨레지키는 결심에 살았다 훈련과 훈련 속에 맺어진 전우야 국군 용사의 자랑을 가슴에 안고 내 고향에 돌아갈땐 농군의 용사다"
             },
             {
               title: "멸공의 횃불",
               artist: "",
-              lyrics: ""
+              lyrics:
+                "아름다운 이 강산을 지키는 우리 사나이 기백으로 오늘을 산다 포탄의 불바다를 무릎 쓰면서 고향땅 부모형제 나라를 위해 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n조국의 푸른 바다 지키는 우리 젊음의 정령 바쳐 오늘을 산다 함포의 벼락불을 쏘아 붙이며 겨레의 생명선에 내일을 걸고 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n자유의 푸른 하늘 지키는 우리 충정과 투지로써 오늘을 산다 번갯불 은빛 날개 구름을 뚫고 찬란한 사명감에 날개를 폈다 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n조국의 빛난 얼을 지키는 우리 자랑과 보람으로 오늘을 산다 새 역사 창조하는 번영의 이 땅 지키고 싸워 이겨 잘 살아가자 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다"
             },
             {
               title: "푸른 소나무",
               artist: "",
+              lyrics:
+                "이 강산은 내가 지키노라 당신의 그 충정 하늘보며 힘껏 흔들었던 평화의 깃발 아아 다시 선 이땅에 당신 닮은 푸른 소나무 이 목숨 바쳐 큰나라 위해 끝까지 싸우리라\n이 강산은 내가 지키노라 당신의 그 맹세 만주향해 힘껏 포효하던 백두산 호랑이 아아 다시 선 이땅에 당신 닮은 푸른 소나무 이 목숨 바쳐 큰나라 위해 끝까지 싸우리라"
+            }
+          ]
+        },
+        {
+          title: "👏 빠빠 빨간맛~ 신나는 아이돌 음악!",
+          songs: [
+            {
+              title: "빨간 맛",
+              artist: "Red Velvet(레드벨벳)",
+              lyrics: "가사"
+            },
+            {
+              title: "FIESTA",
+              artist: "IZ*ONE(아이즈원)",
+              lyrics: "가사가사"
+            },
+            {
+              title: "CHEER UP",
+              artist: "TWICE(트와이스)",
+              lyrics: ""
+            },
+            {
+              title: "에잇",
+              artist: "아이유(IU)",
+              lyrics: ""
+            },
+            {
+              title: "살짝 설렜어",
+              artist: "오마이걸(OH MY GIRL)",
               lyrics: ""
             }
           ]
@@ -337,18 +396,38 @@ export default {
     },
     textMaxLength: function() {
       switch (this.armyType) {
-        case "육군":
+        case "army":
           return 120;
-        case "해군":
+        case "navy":
           return 1000;
-        case "공군":
+        case "air":
           return 1200;
-        case "해병대":
+        case "marine":
           return 500;
       }
       return 0;
     },
-  
+    armyTypeKorean: function() {
+      switch (this.armyType) {
+        case "army":
+          return "육군";
+        case "navy":
+          return "해군";
+        case "air":
+          return "공군";
+        case "marine":
+          return "해병대";
+      }
+      return 0;
+    }
+  },
+  watch: {
+    armyType: function() {
+      this.handleShowAlert(
+        `${this.armyTypeKorean} 훈련소로 편지를 씁니다. ${this.textMaxLength}자까지 쓸 수 있습니다.`
+      );
+      this.mailText = this.mailText.slice(0, this.textMaxLength);
+    }
   },
   methods: {
     getImgUrl(pic, hover) {
@@ -366,19 +445,33 @@ export default {
     },
     handleSend() {
       this.$router.push({
-        name:'Send',
-        params: { mailText: this.mailText, armyType: this.armyType }
+        name: "Send",
+        params: {
+          mailText: this.mailText,
+          armyType: this.armyType,
+          receiver: this.reciever
+        }
       });
     },
     handleAdd(text) {
-      this.mailText = (this.mailText + text).slice(0, this.textMaxLength);
-      this.handleShowAlert('추가되었습니다!');
+      this.cursor = this.mailText.length;
+      this.mailText = (this.mailText + "\n" + text).slice(
+        0,
+        this.textMaxLength
+      )+"..";
+      this.handleShowAlert(
+        "추가되었습니다! Ctrl+Z 키를 눌러 취소할 수 있습니다."
+      );
+      document.getElementById("writing-area").focus();
     },
     handleShowAlert(message) {
       this.alertMessage = message;
       this.showAlert = true;
-      var that=this;
-      setTimeout(() => {that.showAlert = false; that.alertMessage = '';}, 2000);
+      var that = this;
+      setTimeout(() => {
+        that.showAlert = false;
+        that.alertMessage = "";
+      }, 2000);
     }
   }
 };
@@ -387,17 +480,23 @@ export default {
 <style scoped lang="scss">
 // header
 .navigation {
-  .logo{
-    display:flex;
+  .logo {
+    display: flex;
     align-items: center;
-    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
-    Latin font, sans-serif;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum,
+      Apple Gothic, Latin font, sans-serif;
   }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;
   top: 0;
   z-index: 1;
+  .logo {
+    display: flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum,
+      Apple Gothic, Latin font, sans-serif;
+  }
   .nav-div {
     display: flex;
     padding: 0px 24px;
@@ -440,7 +539,6 @@ export default {
   }
 }
 
-
 .mail__wrap {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -466,6 +564,7 @@ export default {
   border-right: 1px solid #ddd;
   min-width: 54px;
   height: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -511,12 +610,12 @@ export default {
 
 .utility-bar__content {
   height: 100%;
-  min-width:276px;
   width: 100%;
-  font-family: 'nanum square';
+  min-width: 276px;
+  font-family: "nanum square";
   .hashtag {
     margin: 20px 10px;
-    
+    font-family: "nanum square";
     .title {
       margin-top: 10px;
       font-size: 22pt;
@@ -551,9 +650,11 @@ export default {
 .utility-bar__content .navigation .navigation__button.focus {
   background: #b5bfd4;
 }
-.btn-group{
-  width:98%;
+
+.btn-group {
+  width: 98%;
 }
+
 .headlines-container {
   min-height: 10rem;
   padding: 0.5rem 0.5rem;
@@ -561,29 +662,33 @@ export default {
 }
 
 .headline {
-   font-family: "maruburi";
+  font-family: "maruburi";
   position: relative;
   padding: 0.5rem 0;
   border-bottom: 1px solid #ddd;
   // &:last-child { border: none; }
   line-height: 110%;
-  .title { 
-    font-weight: bold; 
+  .title {
+    font-weight: bold;
     margin-bottom: 4px;
-    &:hover{ text-decoration: underline; }
+    &:hover {
+      text-decoration: underline;
+    }
   }
-  .content { font-size: 10pt; }
+  .content {
+    font-size: 10pt;
+  }
   .add-btn {
     position: absolute;
-    bottom:0.5rem;
+    bottom: 0.5rem;
     right: 0.5rem;
     height: 2rem;
     padding: 0 1rem;
     border-radius: 1rem;
-    background: rgba(#0067a3,0.8);
+    background: rgba(#0067a3, 0.8);
     color: #fff;
-    font-family: 'nanum square';
-    font-weight:bold;
+    font-family: "nanum square";
+    font-weight: bold;
 
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -609,9 +714,71 @@ export default {
   }
 }
 
+.playlists_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.5rem;
+}
+.playlist {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding: 0.8rem 0.5rem 0 0.5rem;
+  margin-bottom: 1rem;
+  &__title {
+    font-family: "nanum square";
+    font-weight: lighter;
+    font-size: 15pt;
+    margin-bottom: 0.7rem;
+  }
+  &__song {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.3rem;
+    &:last-child {
+      border: none;
+      padding: none;
+      margin: none;
+    }
+    .add-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0.5rem;
+      height: 1.6rem;
+      padding: 0 1rem;
+      border-radius: 0.8rem;
+      background: rgba(#0067a3, 0.8);
+      color: #fff;
+      font-family: "nanum square";
+      font-weight: bold;
+
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    &:hover {
+      cursor: pointer;
+      .add-btn {
+        opacity: 1;
+      }
+    }
+  }
+  .title {
+    font-weight: bolder;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  .artist {
+    font-size: 10pt;
+  }
+}
+
 .writing-area {
   padding: 5rem 8rem;
-
 }
 
 .writing-area__wrap {
@@ -628,7 +795,7 @@ export default {
   padding-bottom: 1rem;
   border-bottom: 2px solid #ddd;
   margin-bottom: 1rem;
-  font-family: 'maruburi';
+  font-family: "maruburi";
   font-size: 12pt;
 }
 
@@ -638,11 +805,11 @@ export default {
   border-bottom: 2px solid #ddd;
   outline: none;
   transition: border-color 0.3s ease;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: #135fa1;
   }
 }
-
 
 .reciever-type {
   padding: 0.5rem 1rem;
@@ -665,7 +832,11 @@ export default {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   font-size: 20px;
-  line-height: 110%;
+  line-height: 120%;
+  &.bigger {
+    font-size: 30px;
+    line-height: 140%;
+  }
 }
 
 .writing-area__text textarea::selection {
@@ -674,32 +845,32 @@ export default {
 
 .writing-area__text span {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
 }
 .writing-area__couter {
-  font-family: 'maruburi';
-  font-size: 14pt;
+  font-family: "maruburi";
+  font-size: 16pt;
   font-weight: bold;
   color: #135fa1;
 }
-
 
 .alert-popup__wrap {
   position: absolute;
   z-index: 100;
   width: 100vw;
-  top:10vh;
+  top: 10vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .alert-popup {
-  background: #ddd;
+  background: rgba($color: #ccc, $alpha: 0.7);
   height: 3rem;
-  width: 200px;
-  font-family: 'nanum square';
+  width: 550px;
+  padding: 0 2rem;
+  font-family: "nanum square";
   font-size: 15pt;
   border-radius: 1.5rem;
   white-space: nowrap;
@@ -709,16 +880,12 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.popup-enter-active, .popup-leave-active {
-  transition: opacity 1s transform 1s;
+.popup-enter-active,
+.popup-leave-active {
+  transition: all 0.5s;
 }
-.popup-enter /* .fade-leave-active below version 2.1.8 */ {
- 
+.popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  width: 3rem;
   opacity: 0;
-  transform: translateY(-10px);
-}
-.popup-leave-to{
-  opacity: 0;
-  transform: translateY(10px);
 }
 </style>

@@ -10,12 +10,11 @@
         <i class="fas fa-bars fa-2x"></i>
       </button>
       <!-- logo -->
-    
+
       <nav role="navigation" class="nav-menu">
-        <router-link to="/" class="logo title">  
-          <img src="../../public/favicon.png" alt="logo" width="24px">
+        <router-link to="/" class="logo title">
+          <img src="../../public/favicon.png" alt="logo" width="24px" />
           <div style="white-space:nowrap;">인편단심</div>
-   
         </router-link>
         <router-link
           to="/write/mail"
@@ -61,26 +60,11 @@
         <a href="#" class="both">회원가입</a>
       </div>
     </transition>
-
-    <!-- <div
-      class="menu-shadow"
-      :class="{ shadow: isActive }"
-      style="opacity: 1; display: block;"
-    ></div> -->
-
-    <!-- <router-link to="/">인편단심</router-link>
-    <div>
-      <router-link to="/write/mail">편지 쓰기</router-link>
-      <router-link to="/mypage">마이페이지</router-link>
-      <router-link v-if="!loggedIn" to="/login">Log-In</router-link>
-      <button v-else @click="handleLogOut">Log-Out</button>
-    </div> -->
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-
 export default {
   data() {
     return {
@@ -103,11 +87,6 @@ export default {
     toggle() {
       this.isActive = !this.isActive;
     },
-    // showNav: function() {
-    //   let navToggle = document.querySelector(".nav__toggle");
-
-    //   let navWrapper = document.querySelector(".nav__wrapper");
-    // },
     open: function(event) {
       // 메소드 안에서 사용하는 `this` 는 Vue 인스턴스를 가리킵니다
       alert("Hello " + this.name + "!");
@@ -123,11 +102,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .navigation {
-  .logo{
-    display:flex;
+  .logo {
+    display: flex;
     align-items: center;
-    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
-    Latin font, sans-serif;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum,
+      Apple Gothic, Latin font, sans-serif;
   }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
@@ -135,10 +114,8 @@ export default {
   position: -webkit-sticky;
   top: 0px;
 }
-
 .nav-div {
   display: flex;
-
   z-index: 1;
   padding: 0px 24px;
   height: 64px;
@@ -233,7 +210,6 @@ export default {
     text-align: center;
     z-index: 100;
   }
-
   .side-menu-enter-active,
   .side-menu-leave-active {
     transition: transform 0.5s, opacity 0.5s;
@@ -244,9 +220,9 @@ export default {
     transform: translateX(-103%);
   }
 }
-
-.alert-enter-active, .alert-leave-active {
-  transition: opacity .5s;
+.alert-enter-active,
+.alert-leave-active {
+  transition: opacity 0.5s;
 }
 .alert-enter, .alert-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
