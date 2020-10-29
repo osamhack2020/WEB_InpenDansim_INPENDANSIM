@@ -3,7 +3,9 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">인편단심</router-link>
+          <router-link to="/" class="logo title"><img class="logo title" src="../assets/images/logo.png" width="100" alt=""></router-link>
+
+          
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 전송</span>
         </nav>
@@ -293,7 +295,8 @@ button {
 /* chat */
 
 .chat-screen {
-  background-color: #6c83aa;
+  background-color: #f08d85;
+  // #6c83aa;
 }
 
 .chats-body {

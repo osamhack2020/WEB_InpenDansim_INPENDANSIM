@@ -3,7 +3,10 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">인편단심</router-link>
+          <router-link to="/" class="logo title"> 
+           <img src="../../public/favicon.png" alt="logo" width="24px">
+            인편단심
+          </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 작성</span>
         </nav>
@@ -74,9 +77,16 @@
           </div>
           <div v-if="utilityContentName == 'novel'">
             novel
+            <div class="hashtag">
+              <span>#짧은 글 시리즈 #괴담 #유머</span>
+              <div class='title'>오늘은 내가 DJ</div>
+            </div>
           </div>
           <div v-if="utilityContentName == 'words'">
-            words
+            <div class="hashtag">
+              <span>#고된훈련 #힘이되는 #글귀</span>
+              <div class='title'>오늘의 명언</div>
+            </div>
           </div>
           <div v-if="utilityContentName == 'music'">
             <div class="hashtag">
@@ -102,18 +112,21 @@
             </div>
           </div>
           <div v-if="utilityContentName == 'sudoku'">
-            sudoku
+            <div class="hashtag">
+              <span>#퍼즐 #스도쿠 #쉬움보통어려움</span>
+              <div class='title'>스도쿠 자동생성</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="writing-area">
-        <div class="writing-area__wrap">
+      <div class="writing-area" style="background-color:this.bgColor">
+        <div class="writing-area__wrap" >
           <div class="writing-area__meta">
             <select class="reciever-type" v-model="armyType">
-              <option value="army">육군</option>
-              <option value="navy">해군</option>
-              <option value="air">공군</option>
-              <option value="marine">해병대</option>
+              <option value="육군">육군</option>
+              <option value="해군">해군</option>
+              <option value="공군">공군</option>
+              <option value="해병대">해병대</option>
             </select>
             <input class="reciever-name" type="text" />
             <span class="reciever-name-label">에게</span>
@@ -145,7 +158,8 @@ export default {
       showAlert: false,
       alertMessage: '',
       mailText: "",
-      armyType: "army",
+      armyType: "육군",
+      bgColor:"#6C963C",
       showHeadlines: true,
       newsDetails: {
         title: "",
@@ -323,17 +337,18 @@ export default {
     },
     textMaxLength: function() {
       switch (this.armyType) {
-        case "army":
+        case "육군":
           return 120;
-        case "navy":
+        case "해군":
           return 1000;
-        case "air":
+        case "공군":
           return 1200;
-        case "marine":
+        case "해병대":
           return 500;
       }
       return 0;
-    }
+    },
+  
   },
   methods: {
     getImgUrl(pic, hover) {
@@ -372,6 +387,12 @@ export default {
 <style scoped lang="scss">
 // header
 .navigation {
+  .logo{
+    display:flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
+    Latin font, sans-serif;
+  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
   position: sticky;
@@ -445,7 +466,6 @@ export default {
   border-right: 1px solid #ddd;
   min-width: 54px;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -491,10 +511,12 @@ export default {
 
 .utility-bar__content {
   height: 100%;
+  min-width:276px;
   width: 100%;
+  font-family: 'nanum square';
   .hashtag {
     margin: 20px 10px;
-    font-family: 'nanum square';
+    
     .title {
       margin-top: 10px;
       font-size: 22pt;
@@ -522,15 +544,16 @@ export default {
 }
 
 .utility-bar__content .navigation .navigation__button {
-  font-family: "maruburi";
-  padding: 0.5rem;
-  // border-radius: 20% 20% 0 0;
+  font-family: "nanum square";
+  padding: 5px;
 }
 
 .utility-bar__content .navigation .navigation__button.focus {
   background: #b5bfd4;
 }
-
+.btn-group{
+  width:98%;
+}
 .headlines-container {
   min-height: 10rem;
   padding: 0.5rem 0.5rem;
@@ -538,6 +561,7 @@ export default {
 }
 
 .headline {
+   font-family: "maruburi";
   position: relative;
   padding: 0.5rem 0;
   border-bottom: 1px solid #ddd;
@@ -587,6 +611,7 @@ export default {
 
 .writing-area {
   padding: 5rem 8rem;
+
 }
 
 .writing-area__wrap {
@@ -685,10 +710,15 @@ export default {
   align-items: center;
 }
 .popup-enter-active, .popup-leave-active {
-  transition: all .5s;
+  transition: opacity 1s transform 1s;
 }
-.popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  width: 3rem;
+.popup-enter /* .fade-leave-active below version 2.1.8 */ {
+ 
   opacity: 0;
+  transform: translateY(-10px);
+}
+.popup-leave-to{
+  opacity: 0;
+  transform: translateY(10px);
 }
 </style>
