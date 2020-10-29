@@ -146,7 +146,7 @@ export default {
 .input-area {
   width: 60%;
   box-sizing: content-box;
-  font-size: 34px;
+  font-size: 25px;
   border: 0px;
   outline: none;
   display: inline-block;
@@ -172,7 +172,7 @@ export default {
   font-weight: bold;
   line-height: 60px;
   & > div {
-    width:70%;
+    width: 70%;
     display: flex;
     flex-direction: column;
   }

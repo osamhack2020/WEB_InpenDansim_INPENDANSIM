@@ -2,7 +2,6 @@
   <div class="home">
     <Navigation></Navigation>
     <div class="cover-page  page-1">
-      
       <!-- <textarea :value="text" @input="text = $event.target.value"></textarea>
       <div>{{ text.replace(/\n\n/gi, "\\n").replace(/\n/gi, " ") }}</div>  -->
 

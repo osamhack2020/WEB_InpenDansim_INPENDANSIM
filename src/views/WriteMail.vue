@@ -62,9 +62,27 @@
                 :key="index"
                 class="headline"
               >
-                <div class='title' @click="handleShowNews(newsCategoryNum, index)">{{ headline.title }}</div>
-                <div class='content'>{{ headline.content.slice(0, 60) + " ..." }}</div>
-                <div class='add-btn' @click='handleAdd(headline.title+"\n"+headline.content.replace(/&lt;br&gt;/gi, " "))'>추가하기 >></div>
+                <div
+                  class="title"
+                  @click="handleShowNews(newsCategoryNum, index)"
+                >
+                  {{ headline.title }}
+                </div>
+                <div class="content">
+                  {{ headline.content.slice(0, 60) + " ..." }}
+                </div>
+                <div
+                  class="add-btn"
+                  @click="
+                    handleAdd(
+                      headline.title +
+                        '\n' +
+                        headline.content.replace(/&lt;br&gt;/gi, ' ')
+                    )
+                  "
+                >
+                  추가하기 >>
+                </div>
               </div>
             </div>
             <div v-else class="article-container">
@@ -81,7 +99,7 @@
           <div v-if="utilityContentName == 'music'">
             <div class="hashtag">
               <span>#들려주진 #못하지만 #읽어줄게</span>
-              <div class='title'>오늘은 내가 DJ</div>
+              <div class="title">오늘은 내가 DJ</div>
             </div>
             <div class="playlists_container">
               <div
@@ -94,10 +112,13 @@
                   class="playlist__song"
                   v-for="(song, index) in playlist.songs"
                   :key="index"
-                >💿
-                  <span class="title"> {{ song.title }}  </span>
+                >
+                  💿
+                  <span class="title"> {{ song.title }} </span>
                   <span class="artist">{{ song.artist }}</span>
-                  <div class='add-btn' @click='handleAdd(song.lyrics)'>추가하기 >></div>
+                  <div class="add-btn" @click="handleAdd(song.lyrics)">
+                    추가하기 >>
+                  </div>
                 </div>
               </div>
             </div>
@@ -117,29 +138,37 @@
               <option value="marine">해병대</option>
             </select>
             <input class="reciever-name" type="text" />
-            <span class="reciever-name-label" :value="reciever" @input="reciever = $event.target.value">에게</span>
+            <span
+              class="reciever-name-label"
+              :value="reciever"
+              @input="reciever = $event.target.value"
+              >에게</span
+            >
           </div>
           <div class="writing-area__text">
             <textarea
-              id = 'writing-area'
+              id="writing-area"
               :value="mailText"
               @input="mailText = $event.target.value"
               :maxlength="textMaxLength"
               spellcheck="false"
-               @keydown.ctrl.90="mailText = mailText.slice(0,cursor)"
-               :class="{bigger: armyType == 'army'}"
+              @keydown.ctrl.90="mailText = mailText.slice(0, cursor)"
+              :class="{ bigger: armyType == 'army' }"
             ></textarea>
-            <span class="writing-area__couter">{{ `${textMaxLength}자 중 ${textCounter}자` }}</span>
+            <span class="writing-area__couter">{{
+              `${textMaxLength}자 중 ${textCounter}자`
+            }}</span>
           </div>
         </div>
       </div>
     </div>
-    <div class='alert-popup__wrap'>
-      <transition name='popup'>
-        <div class='alert-popup' v-if="showAlert"><span>{{ alertMessage }}</span></div>
+    <div class="alert-popup__wrap">
+      <transition name="popup">
+        <div class="alert-popup" v-if="showAlert">
+          <span>{{ alertMessage }}</span>
+        </div>
       </transition>
     </div>
-    
   </div>
 </template>
 <script>
@@ -148,10 +177,12 @@ export default {
     return {
       cursor: 0,
       showAlert: false,
-      alertMessage: '',
+      alertMessage: "",
       mailText: this.$route.params.mailText ? this.$route.params.mailText : "",
-      armyType: this.$route.params.armyType ? this.$route.params.armyType : 'army',
-      reciever: this.$route.params.reciever ? this.$route.params.reciever : '',
+      armyType: this.$route.params.armyType
+        ? this.$route.params.armyType
+        : "army",
+      reciever: this.$route.params.reciever ? this.$route.params.reciever : "",
       showHeadlines: true,
       newsDetails: {
         title: "",
@@ -296,27 +327,32 @@ export default {
             {
               title: "멋진 사나이",
               artist: "",
-              lyrics: "멋있는 사나이 많고 많지만 바로 내가 사나이 멋진 사나이 싸움에는 천하무적 사랑 뜨겁게 사랑 뜨겁게 바로 내가 사나이다 멋진 일등병\n멋있는 사나이 많고 많지만 분대장 사나이 멋진 사나이 명령에는 호랑이 대화는 정답게 대화는 정답게 바로 내가 사나이다 멋진 분대장"
+              lyrics:
+                "멋있는 사나이 많고 많지만 바로 내가 사나이 멋진 사나이 싸움에는 천하무적 사랑 뜨겁게 사랑 뜨겁게 바로 내가 사나이다 멋진 일등병\n멋있는 사나이 많고 많지만 분대장 사나이 멋진 사나이 명령에는 호랑이 대화는 정답게 대화는 정답게 바로 내가 사나이다 멋진 분대장"
             },
             {
               title: "전선을 간다",
               artist: "",
-              lyrics: "높은산 깊은골 적막한 산하 눈내린전선을 우리는 간다 젊은넋 숨져 - 간 그때그자리 상처입은 노송 - 은 말을 잊었네 전우여 들리는가 그 성난 목소리 전우여 보이는가 한맺힌 눈동자\n푸른숲 맑은물 숨쉬는 산하 봄이 온 전선을 우리는 간다 젊은피 스며 - 든 그때그자리 이끼낀- 바위-는 말을잊었네 전우여 들리는가 그 성난 목소리 전우여 보이는가 한맺힌 눈동자"
+              lyrics:
+                "높은산 깊은골 적막한 산하 눈내린전선을 우리는 간다 젊은넋 숨져 - 간 그때그자리 상처입은 노송 - 은 말을 잊었네 전우여 들리는가 그 성난 목소리 전우여 보이는가 한맺힌 눈동자\n푸른숲 맑은물 숨쉬는 산하 봄이 온 전선을 우리는 간다 젊은피 스며 - 든 그때그자리 이끼낀- 바위-는 말을잊었네 전우여 들리는가 그 성난 목소리 전우여 보이는가 한맺힌 눈동자"
             },
             {
               title: "진짜 사나이",
               artist: "",
-              lyrics: "사나이로 태어나서 할 일도 많다만 너와 나 나라지키는 영광에 살았다 전투와 전투속에 맺어진 전우야 산봉우리에 해뜨고 해가 질 적에 부모형제 나를 믿고 단잠을 이룬다\n입으로만 큰 소리쳐 사나이 라느냐 너와 나 겨레지키는 결심에 살았다 훈련과 훈련 속에 맺어진 전우야 국군 용사의 자랑을 가슴에 안고 내 고향에 돌아갈땐 농군의 용사다"
+              lyrics:
+                "사나이로 태어나서 할 일도 많다만 너와 나 나라지키는 영광에 살았다 전투와 전투속에 맺어진 전우야 산봉우리에 해뜨고 해가 질 적에 부모형제 나를 믿고 단잠을 이룬다\n입으로만 큰 소리쳐 사나이 라느냐 너와 나 겨레지키는 결심에 살았다 훈련과 훈련 속에 맺어진 전우야 국군 용사의 자랑을 가슴에 안고 내 고향에 돌아갈땐 농군의 용사다"
             },
             {
               title: "멸공의 횃불",
               artist: "",
-              lyrics: "아름다운 이 강산을 지키는 우리 사나이 기백으로 오늘을 산다 포탄의 불바다를 무릎 쓰면서 고향땅 부모형제 나라를 위해 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n조국의 푸른 바다 지키는 우리 젊음의 정령 바쳐 오늘을 산다 함포의 벼락불을 쏘아 붙이며 겨레의 생명선에 내일을 걸고 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n자유의 푸른 하늘 지키는 우리 충정과 투지로써 오늘을 산다 번갯불 은빛 날개 구름을 뚫고 찬란한 사명감에 날개를 폈다 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n조국의 빛난 얼을 지키는 우리 자랑과 보람으로 오늘을 산다 새 역사 창조하는 번영의 이 땅 지키고 싸워 이겨 잘 살아가자 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다"
+              lyrics:
+                "아름다운 이 강산을 지키는 우리 사나이 기백으로 오늘을 산다 포탄의 불바다를 무릎 쓰면서 고향땅 부모형제 나라를 위해 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n조국의 푸른 바다 지키는 우리 젊음의 정령 바쳐 오늘을 산다 함포의 벼락불을 쏘아 붙이며 겨레의 생명선에 내일을 걸고 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n자유의 푸른 하늘 지키는 우리 충정과 투지로써 오늘을 산다 번갯불 은빛 날개 구름을 뚫고 찬란한 사명감에 날개를 폈다 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다\n조국의 빛난 얼을 지키는 우리 자랑과 보람으로 오늘을 산다 새 역사 창조하는 번영의 이 땅 지키고 싸워 이겨 잘 살아가자 전우여 내 나라는 내가 지킨다 멸공의 횃불 아래 목숨을 건다"
             },
             {
               title: "푸른 소나무",
               artist: "",
-              lyrics: "이 강산은 내가 지키노라 당신의 그 충정 하늘보며 힘껏 흔들었던 평화의 깃발 아아 다시 선 이땅에 당신 닮은 푸른 소나무 이 목숨 바쳐 큰나라 위해 끝까지 싸우리라\n이 강산은 내가 지키노라 당신의 그 맹세 만주향해 힘껏 포효하던 백두산 호랑이 아아 다시 선 이땅에 당신 닮은 푸른 소나무 이 목숨 바쳐 큰나라 위해 끝까지 싸우리라"
+              lyrics:
+                "이 강산은 내가 지키노라 당신의 그 충정 하늘보며 힘껏 흔들었던 평화의 깃발 아아 다시 선 이땅에 당신 닮은 푸른 소나무 이 목숨 바쳐 큰나라 위해 끝까지 싸우리라\n이 강산은 내가 지키노라 당신의 그 맹세 만주향해 힘껏 포효하던 백두산 호랑이 아아 다시 선 이땅에 당신 닮은 푸른 소나무 이 목숨 바쳐 큰나라 위해 끝까지 싸우리라"
             }
           ]
         },
@@ -370,23 +406,25 @@ export default {
       }
       return 0;
     },
-    armyTypeKorean:function() {
+    armyTypeKorean: function() {
       switch (this.armyType) {
         case "army":
-          return '육군';
+          return "육군";
         case "navy":
-          return '해군';
+          return "해군";
         case "air":
-          return '공군';
+          return "공군";
         case "marine":
-          return '해병대';
+          return "해병대";
       }
       return 0;
     }
   },
   watch: {
     armyType: function() {
-      this.handleShowAlert(`${this.armyTypeKorean} 훈련소로 편지를 씁니다. ${this.textMaxLength}자까지 쓸 수 있습니다.`);
+      this.handleShowAlert(
+        `${this.armyTypeKorean} 훈련소로 편지를 씁니다. ${this.textMaxLength}자까지 쓸 수 있습니다.`
+      );
       this.mailText = this.mailText.slice(0, this.textMaxLength);
     }
   },
@@ -406,21 +444,33 @@ export default {
     },
     handleSend() {
       this.$router.push({
-        name:'Send',
-        params: { mailText: this.mailText, armyType: this.armyType, receiver: this.reciever }
+        name: "Send",
+        params: {
+          mailText: this.mailText,
+          armyType: this.armyType,
+          receiver: this.reciever
+        }
       });
     },
     handleAdd(text) {
       this.cursor = this.mailText.length;
-      this.mailText = (this.mailText + '\n' + text).slice(0, this.textMaxLength);
-      this.handleShowAlert('추가되었습니다! Ctrl+Z 키를 눌러 취소할 수 있습니다.');
-      document.getElementById('writing-area').focus();
+      this.mailText = (this.mailText + "\n" + text).slice(
+        0,
+        this.textMaxLength
+      );
+      this.handleShowAlert(
+        "추가되었습니다! Ctrl+Z 키를 눌러 취소할 수 있습니다."
+      );
+      document.getElementById("writing-area").focus();
     },
     handleShowAlert(message) {
       this.alertMessage = message;
       this.showAlert = true;
-      var that=this;
-      setTimeout(() => {that.showAlert = false; that.alertMessage = '';}, 2000);
+      var that = this;
+      setTimeout(() => {
+        that.showAlert = false;
+        that.alertMessage = "";
+      }, 2000);
     }
   }
 };
@@ -475,7 +525,6 @@ export default {
     }
   }
 }
-
 
 .mail__wrap {
   display: grid;
@@ -551,7 +600,7 @@ export default {
   width: 100%;
   .hashtag {
     margin: 20px 10px;
-    font-family: 'nanum square';
+    font-family: "nanum square";
     .title {
       margin-top: 10px;
       font-size: 22pt;
@@ -600,23 +649,27 @@ export default {
   border-bottom: 1px solid #ddd;
   // &:last-child { border: none; }
   line-height: 110%;
-  .title { 
-    font-weight: bold; 
+  .title {
+    font-weight: bold;
     margin-bottom: 4px;
-    &:hover{ text-decoration: underline; }
+    &:hover {
+      text-decoration: underline;
+    }
   }
-  .content { font-size: 10pt; }
+  .content {
+    font-size: 10pt;
+  }
   .add-btn {
     position: absolute;
-    bottom:0.5rem;
+    bottom: 0.5rem;
     right: 0.5rem;
     height: 2rem;
     padding: 0 1rem;
     border-radius: 1rem;
-    background: rgba(#0067a3,0.8);
+    background: rgba(#0067a3, 0.8);
     color: #fff;
-    font-family: 'nanum square';
-    font-weight:bold;
+    font-family: "nanum square";
+    font-weight: bold;
 
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -670,28 +723,28 @@ export default {
       margin: none;
     }
     .add-btn {
-    position: absolute;
-    bottom: 0;
-    right: 0.5rem;
-    height: 1.6rem;
-    padding: 0 1rem;
-    border-radius: 0.8rem;
-    background: rgba(#0067a3,0.8);
-    color: #fff;
-    font-family: 'nanum square';
-    font-weight:bold;
+      position: absolute;
+      bottom: 0;
+      right: 0.5rem;
+      height: 1.6rem;
+      padding: 0 1rem;
+      border-radius: 0.8rem;
+      background: rgba(#0067a3, 0.8);
+      color: #fff;
+      font-family: "nanum square";
+      font-weight: bold;
 
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-  }
-  &:hover {
-    cursor: pointer;
-    .add-btn {
-      opacity: 1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
     }
-  }
+    &:hover {
+      cursor: pointer;
+      .add-btn {
+        opacity: 1;
+      }
+    }
   }
   .title {
     font-weight: bolder;
@@ -703,12 +756,7 @@ export default {
   .artist {
     font-size: 10pt;
   }
-  
 }
-
-
-
-
 
 .writing-area {
   padding: 5rem 8rem;
@@ -728,7 +776,7 @@ export default {
   padding-bottom: 1rem;
   border-bottom: 2px solid #ddd;
   margin-bottom: 1rem;
-  font-family: 'maruburi';
+  font-family: "maruburi";
   font-size: 12pt;
 }
 
@@ -738,11 +786,11 @@ export default {
   border-bottom: 2px solid #ddd;
   outline: none;
   transition: border-color 0.3s ease;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: #135fa1;
   }
 }
-
 
 .reciever-type {
   padding: 0.5rem 1rem;
@@ -766,7 +814,10 @@ export default {
     Latin font, sans-serif;
   font-size: 20px;
   line-height: 120%;
-  &.bigger {font-size: 30px; line-height: 140%;}
+  &.bigger {
+    font-size: 30px;
+    line-height: 140%;
+  }
 }
 
 .writing-area__text textarea::selection {
@@ -779,18 +830,17 @@ export default {
   right: 1.5rem;
 }
 .writing-area__couter {
-  font-family: 'maruburi';
+  font-family: "maruburi";
   font-size: 16pt;
   font-weight: bold;
   color: #135fa1;
 }
 
-
 .alert-popup__wrap {
   position: absolute;
   z-index: 100;
   width: 100vw;
-  top:10vh;
+  top: 10vh;
 
   display: flex;
   justify-content: center;
@@ -801,7 +851,7 @@ export default {
   height: 3rem;
   width: 550px;
   padding: 0 2rem;
-  font-family: 'nanum square';
+  font-family: "nanum square";
   font-size: 15pt;
   border-radius: 1.5rem;
   white-space: nowrap;
@@ -811,8 +861,9 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.popup-enter-active, .popup-leave-active {
-  transition: all .5s;
+.popup-enter-active,
+.popup-leave-active {
+  transition: all 0.5s;
 }
 .popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
   width: 3rem;

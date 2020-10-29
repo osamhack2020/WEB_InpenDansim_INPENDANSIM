@@ -158,7 +158,9 @@ export default {
         this.newAuthor.name = "";
         this.newAuthor.comment = "";
         this.listCount++;
-        setTimeout(()=>{window.scrollBy(0,1000);},0);
+        setTimeout(() => {
+          window.scrollBy(0, 1000);
+        }, 0);
       }
     },
     handleSend() {
@@ -377,5 +379,4 @@ button {
     font-weight: 600;
   }
 }
-
 </style>

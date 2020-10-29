@@ -12,54 +12,58 @@
         </div>
       </div>
     </div>
-    <div class="content-area" v-if="pageNumber==1">
+    <div class="content-area" v-if="pageNumber == 1">
       <div class="wrapper send-now">
         <div class="title-container">
           <div class="eng">SEND</div>
-          <div class='kor'>마음을 전하러 가는 길.</div>
+          <div class="kor">마음을 전하러 가는 길.</div>
         </div>
         <div class="article-container">
-          <div class='text'>작성한 편지가 클립보드에 복사되고,</div>
-          <div class='text'>훈련소 페이지로 이동합니다.</div>
-          <div class='text'>훈련병을 찾아 소중한 마음을 전하세요!</div>
+          <div class="text">작성한 편지가 클립보드에 복사되고,</div>
+          <div class="text">훈련소 페이지로 이동합니다.</div>
+          <div class="text">훈련병을 찾아 소중한 마음을 전하세요!</div>
         </div>
         <div class="btn-container">
-          <div class='btn' @click='handleSend'>지금 보내러 가기</div>
+          <div class="btn" @click="handleSend">지금 보내러 가기</div>
         </div>
       </div>
       <div class="wrapper send-latter">
         <div class="title-container">
           <div class="eng">SAVE</div>
-          <div class='kor'>더 예쁜 말로 다듬기 위해서.</div>
+          <div class="kor">더 예쁜 말로 다듬기 위해서.</div>
         </div>
         <div class="article-container">
-          <div class='text'>로그인하고 작성한 페이지를 보관하세요.</div>
-          <div class='text'>언제든지 꺼내서 보낼 수 있어요!</div>
+          <div class="text">로그인하고 작성한 페이지를 보관하세요.</div>
+          <div class="text">언제든지 꺼내서 보낼 수 있어요!</div>
         </div>
         <div class="btn-container">
-          <div class='btn'>편지 보관하기</div>
+          <div class="btn">편지 보관하기</div>
         </div>
       </div>
     </div>
-    <div class='done-area' v-if="pageNumber==2">
+    <div class="done-area" v-if="pageNumber == 2">
       <div class="wrapper done">
         <div class="title-container">
           <div class="eng">DONE!</div>
-          <div class='kor'>기다리는 시간마저 즐거운.</div>
+          <div class="kor">기다리는 시간마저 즐거운.</div>
         </div>
         <div class="article-container">
-          <div class='text'>인편단심을 찾아 주셔서 감사합니다.</div>
-          <div class='text'>또 오세요!</div>
+          <div class="text">인편단심을 찾아 주셔서 감사합니다.</div>
+          <div class="text">또 오세요!</div>
         </div>
         <div class="btn-container">
-          <div class='btn' @click='handleShowAlert("복사되었습니다!")'>다시 복사하기</div>
+          <div class="btn" @click="handleShowAlert('복사되었습니다!')">
+            다시 복사하기
+          </div>
         </div>
       </div>
     </div>
-    
-    <div class='alert-popup__wrap'>
-      <transition name='popup'>
-        <div class='alert-popup' v-if="showAlert"><span>{{ alertMessage }}</span></div>
+
+    <div class="alert-popup__wrap">
+      <transition name="popup">
+        <div class="alert-popup" v-if="showAlert">
+          <span>{{ alertMessage }}</span>
+        </div>
       </transition>
     </div>
   </div>
@@ -79,15 +83,19 @@ export default {
   methods: {
     handleSend() {
       this.pageNumber = 2;
-      showPopup();
+      this.showPopup();
     },
     toggleSend() {
       this.pageNumber = !this.pageNumber;
     },
     handleBack() {
       this.$router.push({
-        name:'WriteMail',
-        params: { mailText: this.mailText, armyType: this.armyType, receiver: this.reciever }
+        name: "WriteMail",
+        params: {
+          mailText: this.mailText,
+          armyType: this.armyType,
+          receiver: this.reciever
+        }
       });
     },
     copyText: function() {
@@ -114,15 +122,18 @@ export default {
     handleShowAlert(message) {
       this.alertMessage = message;
       this.showAlert = true;
-      var that=this;
-      setTimeout(() => {that.showAlert = false; that.alertMessage = '';}, 2000);
+      var that = this;
+      setTimeout(() => {
+        that.showAlert = false;
+        that.alertMessage = "";
+      }, 2000);
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 
 .navigation {
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
@@ -179,7 +190,8 @@ export default {
   background-color: #ffbfb9;
   height: 100vh;
 }
-.content-area, .done-area {
+.content-area,
+.done-area {
   width: 100%;
   height: calc(100vh - 64px);
   display: flex;
@@ -190,11 +202,11 @@ export default {
 .wrapper {
   width: 30%;
   height: 60%;
-  display:grid;
+  display: grid;
   grid-template-rows: 1fr 2fr 1fr;
   justify-items: center;
   justify-content: center;
-  padding: 5% 1%;
+  padding: 3%;
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0 2px 10px -2px #000;
@@ -205,59 +217,58 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .eng { 
-      font-family: 'Shrikhand', cursive; 
+    .eng {
+      font-family: "Shrikhand", cursive;
       font-size: 3rem;
       margin-bottom: 0.5rem;
     }
-    .kor { 
-      font-family: 'maruburi';  
+    .kor {
+      font-family: "maruburi";
       font-size: 2rem;
       font-weight: 900;
     }
-    
   }
   .article-container {
-      font-family: 'nanum square';
-      font-weight: lighter;
-      font-size: 1.3rem;
-      line-height: 150%;
+    font-family: "nanum square";
+    font-weight: lighter;
+    font-size: 1.3rem;
+    line-height: 150%;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .btn {
-      font-family: 'nanum square';
-      font-weight: lighter;
-      font-size: 1.3rem;
-      color:#fff;
-      height: 4rem;
-      padding: 0 3rem;
-      border-radius: 2rem;
-      transition: background 0.3s ease;
-      background: #135fa1;
-      box-shadow: 0 2px 4px 0 #ccc;
-      display: flex;
-      align-items: center;
-      font-size: 1.2rem;
-      cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    font-family: "nanum square";
+    font-weight: lighter;
+    font-size: 1.3rem;
+    color: #fff;
+    height: 4rem;
+    padding: 0 3rem;
+    border-radius: 2rem;
+    transition: background 0.3s ease;
+    background: #135fa1;
+    box-shadow: 0 2px 4px 0 #ccc;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
 
-      &:hover {
-        background: rgba($color: #135fa1, $alpha: 0.6);
-      }
-      &:active {
-        box-shadow: none;
-      }
+    &:hover {
+      background: rgba($color: #135fa1, $alpha: 0.6);
     }
+    &:active {
+      box-shadow: none;
+    }
+  }
 }
 
 .alert-popup__wrap {
   position: absolute;
   z-index: 100;
   width: 100vw;
-  top:15vh;
+  top: 15vh;
 
   display: flex;
   justify-content: center;
@@ -268,7 +279,7 @@ export default {
   height: 3rem;
   width: 550px;
   padding: 0 2rem;
-  font-family: 'nanum square';
+  font-family: "nanum square";
   font-size: 15pt;
   border-radius: 1.5rem;
   white-space: nowrap;
@@ -278,46 +289,47 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.popup-enter-active, .popup-leave-active {
-  transition: all .5s;
+.popup-enter-active,
+.popup-leave-active {
+  transition: all 0.5s;
 }
 .popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
   width: 0;
   opacity: 0;
 }
-    
 
 @media (max-width: 814px) {
-  // .content-area {
-  //   display: block;
-  // }
-  // .wrapper {
-  //   width: 100vw;
-  //   .content-main {
-  //     line-height: 120%;
-  //     font-size: 25px;
-  //   }
-  //   .content-middle {
-  //     line-height: 130%;
-  //     margin-top: 80px;
-  //     font-size: 20px;
-  //   }
-  //   .content-sub {
-  //     font-size: 16px;
-  //   }
-    
-  // }
   .content-area {
     flex-flow: column wrap;
   }
   .wrapper {
     width: 80%;
     height: 40%;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 3%;
+    .title-container {
+      .eng {
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+      }
+      .kor {
+        font-size: 1.5rem;
+      }
+    }
+    .article-container {
+      font-size: 1rem;
+    }
+    .btn {
+      height: 3rem;
+      border-radius: 1.5rem;
+    }
     &.send-now {
       margin-bottom: 10%;
     }
   }
-  .alert-popup {width: 400px;}
+  .alert-popup {
+    width: 400px;
+  }
 }
 @media (min-width: 815px) {
   .wrapper {
@@ -330,7 +342,4 @@ export default {
     }
   }
 }
-
-
-
 </style>
