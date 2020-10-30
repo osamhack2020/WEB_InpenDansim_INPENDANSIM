@@ -22,9 +22,9 @@
  ### 데스크탑 버전
  <img src="/img/desktop1.png" height="450px" title="desktop1" alt="desktop"></img>
  ![desktop2](img/desktop2.png)
+ ![desktop3](img/desktop3.png)
  
 ### 모바일 버전
- ![mobile1](img/mobile1.png)
  ![mobile2](img/mobile4.png)
 
  -----
