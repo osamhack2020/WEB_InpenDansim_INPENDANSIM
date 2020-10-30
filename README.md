@@ -6,28 +6,32 @@
 # Sample Logo
 ![Logo](img/logo.png)
 
-로고는 '단순함'을 뜻하는 simple의 S와, 육,해,공,해병대 서로다른 4색의 훈련소를 연결시킨다는 의미를 담고 있음.
+로고는 '단순함'을 뜻하는 simple의 S와, 육,해,공,해병대 서로다른 4색의 훈련소를 연결시킨다는 의미를 담고 있습니다.
 
- -----
 ## 프로젝트 설명
 <p><b>인편단심</b>은 훈련소에 편지를 보내는 사용자들이 보다 간단한 절차를 밟을 수 있고, 사용자들이 편지에 쓰는 내용과 패턴에
 기반하여 만들어진 기능을 사용할 수 있는 웹 플랫폼입니다.</p>
 ## 팀소개 및 프로잭트 설명 동영상(제작중)
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
- -----
+## 팀소개 및 프로젝트 설명 동영상(제작중)
+![poster](img/poster.png)
+* __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
+* __[설명영상]()__
+* __[시연영상]()__
+
 
 ## 기능 설계
  
  - 사용 목업 프레임워크: figma
 
  ### 데스크탑 버전
- ![desktop1](img/desktopprototype.png)
- ![desktop2](img/desktopprototype2.png)
+ <img src="/img/desktop1.png" height="450px" title="desktop1" alt="desktop"></img>
+ ![desktop2](img/desktop2.png)
+ ![desktop3](img/desktop3.png)
  
 ### 모바일 버전
- ![mobile1](img/mobileprototype.png)
- ![mobile2](img/mobileprototype2.png)
+ ![mobile](img/mobile.gif)
 
  -----
  
@@ -59,12 +63,26 @@
 ![npm](https://user-images.githubusercontent.com/64683286/97729124-b2070600-1b15-11eb-88eb-012db18c664f.jpg)
 
 
-## 설치 안내 (Installation Process) (1차 수정)
+## 설치 및 실행 안내 (Installation & Execution Process)
+1. 인편단심 원격 저장소를 클론합니다.
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM.git
-$ yarn or npm install
-$ yarn start or npm run start
 ```
+2. 생성된 로컬 저장소로 이동 후 yarn을 설치합니다.
+```bash
+$ cd WEB_InpenDansim_INPENDANSIM
+$ yarn install
+```
+3. yarn을 실행 후 serve를 입력합니다.
+```bash
+$ yarn run
+yarn run v1.17.3
+info Commands available from binary scripts: acorn, ansi-html, atob,
+...
+question Which command would you like to run?: serve
+```
+4. 브라우저에 http://localhost:8080/ 를 입력하여 사이트에 접속 할 수 있습니다.
+
  -----
 
 ## 프로젝트 사용법 (Getting Started)(제작중)
