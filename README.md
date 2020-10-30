@@ -20,12 +20,12 @@
  - 사용 목업 프레임워크: figma
 
  ### 데스크탑 버전
- ![desktop1](img/desktopprototype.png)
- ![desktop2](img/desktopprototype2.png)
+ <img src="/img/desktop1.png" height="450px" title="desktop1" alt="desktop"></img>
+ ![desktop2](img/desktop2.png)
  
 ### 모바일 버전
- ![mobile1](img/mobileprototype.png)
- ![mobile2](img/mobileprototype2.png)
+ ![mobile1](img/mobile1.png)
+ ![mobile2](img/mobile4.png)
 
  -----
  
