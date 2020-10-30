@@ -11,6 +11,7 @@
  -----
 
 ## 팀소개 및 프로젝트 설명 동영상(제작중)
+![poster](img/poster.png)
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
  -----
