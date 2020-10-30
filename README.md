@@ -8,7 +8,11 @@
 
 로고는 '단순함'을 뜻하는 simple의 S와, 육,해,공,해병대 서로다른 4색의 훈련소를 연결시킨다는 의미를 담고 있습니다.
 
- -----
+## 프로젝트 설명
+<p><b>인편단심</b>은 훈련소에 편지를 보내는 사용자들이 보다 간단한 절차를 밟을 수 있고, 사용자들이 편지에 쓰는 내용과 패턴에
+기반하여 만들어진 기능을 사용할 수 있는 웹 플랫폼입니다.</p>
+## 팀소개 및 프로잭트 설명 동영상(제작중)
+[![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
 ## 팀소개 및 프로젝트 설명 동영상(제작중)
 ![poster](img/poster.png)
@@ -16,7 +20,6 @@
 * __[설명영상]()__
 * __[시연영상]()__
 
- -----
 
 ## 기능 설계
  
@@ -43,24 +46,22 @@
  
  -----
 
-## 기술 스택 (Technique Used) (예시)(1차 수정)
-### Server(back-end)
- -  nodejs, php, java 등 서버 언어 버전 
- - express, laravel, sptring boot 등 사용한 프레임워크 
- - DB 등 사용한 다른 프로그램
- 
- 계획상으로는 구현을 할 것이기에 작성을 하는 것이 맞는지, 제출 시점엔 구현을 안 할 것이므로 작성을 안하는 것이 맞는지, 멘토에게 물어볼 필요 있음.
- 
-### front-end(1차 수정)
- - react.js, vue.js 등 사용한 front-end 프레임워크
- -  UI framework
- - 기타 사용한 라이브러리
- 
- - 사용한 front-end 프레임워크: vue.js
- 
- 추가로 필요한거 있으면 작성 부탁합니다
+## 기술 스택 (Technique Used) (예시)(2차 수정)
 
- -----
+![firebase](https://user-images.githubusercontent.com/64683286/97729721-52f5c100-1b16-11eb-945f-0bfc4bade62a.jpg)
+![github pages2](https://user-images.githubusercontent.com/64683286/97729848-73be1680-1b16-11eb-8578-5e666184a124.jpg)
+![webpack1](https://user-images.githubusercontent.com/64683286/97729782-63a63700-1b16-11eb-8547-8e3d4abd59d0.png)
+
+![javascript-logo](https://user-images.githubusercontent.com/64683286/97729644-42dde180-1b16-11eb-8872-7ef6ef10f4d9.png)
+![nodejs](https://user-images.githubusercontent.com/64683286/97729592-335e9880-1b16-11eb-8efb-564687c6939b.jpg)
+![vue](https://user-images.githubusercontent.com/64683286/97729232-d662e280-1b15-11eb-83ad-c124454fd82d.jpg)
+
+![sass](https://user-images.githubusercontent.com/64683286/97729410-0dd18f00-1b16-11eb-98a2-cd42a06e50c1.png)
+![vuex](https://user-images.githubusercontent.com/64683286/97729354-fdb9af80-1b15-11eb-894f-0fba4f31a954.png)
+![bootstrap](https://user-images.githubusercontent.com/64683286/97729481-22158c00-1b16-11eb-9132-cde8995de45a.jpg)
+
+![npm](https://user-images.githubusercontent.com/64683286/97729124-b2070600-1b15-11eb-88eb-012db18c664f.jpg)
+
 
 ## 설치 및 실행 안내 (Installation & Execution Process)
 1. 인편단심 원격 저장소를 클론합니다.
