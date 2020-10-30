@@ -12,9 +12,9 @@
 
 ## 팀소개 및 프로젝트 설명 동영상(제작중)
 ![poster](img/poster.png)
-__* [데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
-__* [설명영상]()__
-__* [시연영상]()__
+* __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
+* __[설명영상]()__
+* __[시연영상]()__
 
  -----
 
