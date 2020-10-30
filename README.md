@@ -46,23 +46,7 @@
  
  -----
 
-## 기술 스택 (Technique Used) (예시)(2차 수정)
-
-
-![firebase](https://user-images.githubusercontent.com/64683286/97729721-52f5c100-1b16-11eb-945f-0bfc4bade62a.jpg)
-![github pages2](https://user-images.githubusercontent.com/64683286/97729848-73be1680-1b16-11eb-8578-5e666184a124.jpg)
-![webpack1](https://user-images.githubusercontent.com/64683286/97729782-63a63700-1b16-11eb-8547-8e3d4abd59d0.png)
-
-![javascript-logo](https://user-images.githubusercontent.com/64683286/97729644-42dde180-1b16-11eb-8872-7ef6ef10f4d9.png)
-![nodejs](https://user-images.githubusercontent.com/64683286/97729592-335e9880-1b16-11eb-8efb-564687c6939b.jpg)
-![vue](https://user-images.githubusercontent.com/64683286/97729232-d662e280-1b15-11eb-83ad-c124454fd82d.jpg)
-
-![sass](https://user-images.githubusercontent.com/64683286/97729410-0dd18f00-1b16-11eb-98a2-cd42a06e50c1.png)
-![vuex](https://user-images.githubusercontent.com/64683286/97729354-fdb9af80-1b15-11eb-894f-0fba4f31a954.png)
-![bootstrap](https://user-images.githubusercontent.com/64683286/97729481-22158c00-1b16-11eb-9132-cde8995de45a.jpg)
-
-![npm](https://user-images.githubusercontent.com/64683286/97729124-b2070600-1b15-11eb-88eb-012db18c664f.jpg)
-
+## 기술 스택 (Technique Used)
 <table><tbody>
  <tr>
   <td>
