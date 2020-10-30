@@ -48,6 +48,7 @@
 
 ## 기술 스택 (Technique Used) (예시)(2차 수정)
 
+
 ![firebase](https://user-images.githubusercontent.com/64683286/97729721-52f5c100-1b16-11eb-945f-0bfc4bade62a.jpg)
 ![github pages2](https://user-images.githubusercontent.com/64683286/97729848-73be1680-1b16-11eb-8578-5e666184a124.jpg)
 ![webpack1](https://user-images.githubusercontent.com/64683286/97729782-63a63700-1b16-11eb-8547-8e3d4abd59d0.png)
@@ -62,6 +63,55 @@
 
 ![npm](https://user-images.githubusercontent.com/64683286/97729124-b2070600-1b15-11eb-88eb-012db18c664f.jpg)
 
+<table><tbody>
+ <tr>
+  <td>
+   <div align="center"><a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a><br>Git</div>
+  </td>
+  <td>
+   <div align="center"><a href="https://firebase.google.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-ar21.svg" alt="Firebase"  height="40"/> </a><br>Firebase</div>
+  </td>
+  
+   <td width="60">
+   <div align="center"><a href="https://nodejs.org" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="80" height="40"/> </a><br>Node.js</div>
+  </td>
+  <td width="60">
+   <div align="center"><a href="https://expressjs.com" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/express/express-original-wordmark.svg" alt="express" width="60" height="40"/> </a><br>Express</div>
+  </td>
+  <td>
+   <div align="center"><a href="https://www.npmjs.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/npmjs/npmjs-ar21.svg" alt="npm" width="60" height="40"/> </a><br>npm</div>
+  </td>
+ </tr>
+ <tr>
+  <td width="60">
+   <div align="center"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a><br>Javascript</div>
+  </td>
+  <td width="60">
+   <div align="center"><a href="https://www.linux.org/" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a><br>Linux</div>
+  </td>
+  <td>
+   <div align="center"><a href="https://www.w3.org/html/" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a><br>Html5</div>
+  </td>
+  <td>
+   <div align="center"><a href="https://sass-lang.com" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/sass/sass-original.svg" alt="sass" width="40" height="40"/> </a><br>SCSS</div>
+  </td>
+
+ </tr>
+     <td>
+   <div align="center"><a href="https://babeljs.io/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/babeljs/babeljs-icon.svg" alt="babel" width="40" height="40"/> </a><br>Babel</div>
+  </td>
+  <td>
+   <div align="center"><a href="https://webpack.js.org" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/webpack/webpack-original.svg" alt="webpack" width="40" height="40"/> </a><br>Webpack</div>
+  </td>
+  
+  <td>
+   <div align="center"><a href="https://vuejs.org/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/vuejs/vuejs-icon.svg" alt="Vue.js" width="40" height="40"/> </a><br>Vue.js</div>
+  </td>
+  <td>
+   <div align="center"><a href="http://bootstrapk.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-icon.svg" alt="Bootstrap" width="40" height="40"/> </a><br>Bootstrap</div>
+  </td>
+ </tbody></table>
+ 
 
 ## 설치 및 실행 안내 (Installation & Execution Process)
 1. 인편단심 원격 저장소를 클론합니다.
@@ -98,10 +148,10 @@ question Which command would you like to run?: serve
  -----
 
 ## 팀 정보 (Team Information)
-- Kim tae yoon (chokokty0816@gmail.com), Github Id: Chokoty
-- Lee eun sang (dmstkdrmatkd@naver.com), Github Id: jxchlee
-- Yu jeong ho (dbwjdgh03@ajou.ac.kr), Github Id: WebPr0grammer
-- Ji woo suk (woosukji@snu.ac.kr), Github Id: woosukji
+- 김태윤(팀장) (chokokty0816@gmail.com), Github Id: Chokoty
+- 이은상(팀원) (dmstkdrmatkd@naver.com), Github Id: jxchlee
+- 유정호(팀원) (dbwjdgh03@ajou.ac.kr),   Github Id: WebPr0grammer
+- 지우석(팀원) (woosukji@snu.ac.kr),     Github Id: woosukji
 
  -----
 
