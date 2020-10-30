@@ -26,7 +26,7 @@
  ![desktop3](img/desktop3.png)
  
 ### 모바일 버전
- ![mobile2](img/mobile4.png)
+ ![mobile](img/mobile.gif)
 
  -----
  
