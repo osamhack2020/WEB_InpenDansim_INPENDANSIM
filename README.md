@@ -45,15 +45,16 @@
 
  ### <img src="https://www.gstatic.com/images/branding/product/1x/hh_jamboard_64dp.png" width=40/> Google Jamboard를 사용하여 원거리 회의로 디자인, 컨셉 등 구상
 > 그림으로 그렸던 요소들을 최대한 최종 완성본에 가깝게 디자인 후 프로토타입으로 제작<br/>
-![design](./readme/figma.png)<br/>
-
  ![design](./documents/개발과정/jamboard디자인구상.jpg)<br/>
 <br/>
  
 ### <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" width=40/>사용 목업 프레임워크: Figma 사용하여 데스크톱, 모바일 프로토타입 제작
 > 그림으로 그렸던 요소들을 최대한 최종 완성본에 가깝게 디자인 후 프로토타입으로 제작
+figma 데스크톱 프로토타입
  ![design](./documents/개발과정/figma-desktop.PNG)<br/>
- ![design](./documents/개발과정/figma-mobile-prototype.PNG)<br/>
+figma 모바일 프로토타입
+
+![design](./documents/개발과정/figma-mobile-prototype.PNG)<br/>
 
 <br/>
 
