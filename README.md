@@ -19,7 +19,7 @@
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 * __[설명영상]()__
 * __[시연영상]()__
-
+{ % youtube https://youtu.be/Li7epsTU2LI % }
 
 ## 기능 설계
  
