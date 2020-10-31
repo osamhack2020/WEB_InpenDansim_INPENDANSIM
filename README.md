@@ -9,15 +9,15 @@
  <a href='https://www.facebook.com/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC-%EB%8B%A8%EC%88%9C%ED%95%98%EA%B3%A0-%EC%8B%AC%ED%94%8C%ED%95%98%EA%B2%8C-104789958104175'><img width='20%' src='https://img.shields.io/static/v1?label=page&message=CONTACT%20US&color=blue&logo=facebook&style=social'></a>
 </p>
 
-로고는 '단순함'을 뜻하는 simple의 S와, 육군,해군,공군,해병대를 서로다른 4색으로 표현하여 인터넷 편지 서비스로 전군을 하나로 연결시킨다는 의미를 담고 있습니다.
+로고는 '단순함'을 뜻하는 simple의 S와, 육 · 해 · 공 · 해병대를 상징하는 4색이 어우러져 인터넷 편지 서비스로 전군을 하나로 연결시킨다는 의미를 담고 있습니다.
 
-## 프로젝트 설명
+## 📝 프로젝트 설명
 <p><b>인편단심</b>은 훈련소에 편지를 보내는 지인들이 보다 쉽고 간편하게 편지를 쓸 수 있도록 기존 인편 서비스들의 복잡한 절차를 개선하고 사용자들이 편지에 담는 내용과 작성 패턴을 기반으로 다양한 컨텐츠와 편의기능을 제공하는 웹 서비스입니다.<br>
  또한 사용자들에게 쉽고 편리한 서비스에서 나아가 전군통합의 민간인을 대상으로 소통할 수 있는 플랫폼을 목표로 하고 있습니다.</p>
 ## 팀소개 및 프로잭트 설명 동영상(제작중)
 [![Watch the video](https://img.youtube.com/vi/LjX3eVQdIyk/0.jpg)](https://www.youtube.com/watch?time_continue=117&v=LjX3eVQdIyk)
 
-## 팀소개 및 프로젝트 설명 동영상(제작중)
+## 🎬 팀소개 및 프로젝트 설명 동영상(제작중)
 ![poster](img/poster.png)
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 * __[설명영상]()__
@@ -26,7 +26,7 @@
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Li7epsTU2LI/0.jpg)](https://www.youtube.com/watch?v=Li7epsTU2LI)
 구글드라이브 업로드 https://drive.google.com/file/d/1JoCIkkanZq3_YQhAfLsmyy-4Bv-nbpzn/view?usp=sharing
 
-## 기능 설계
+## 📐 기능 설계
  
  - 사용 목업 프레임워크: figma
 
@@ -40,7 +40,7 @@
 
  -----
  
-## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
+## 🖥 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * ECMAScript 6 지원 브라우저 사용
 * 권장: Google Chrome 버젼 77 이상
 * __IE환경에서 작동이 안될 수도 있습니다.__
@@ -51,7 +51,7 @@
  
  -----
 
-## 기술 스택 (Technique Used)
+## 💡 기술 스택 (Technique Used)
 <table><tbody>
  <tr>
   <td>
@@ -102,7 +102,7 @@
  </tbody></table>
  
 
-## 설치 및 실행 안내 (Installation & Execution Process)
+## ✍ 설치 및 실행 안내 (Installation & Execution Process)
 1. 인편단심 원격 저장소를 클론합니다.
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM.git
@@ -136,7 +136,7 @@ question Which command would you like to run?: serve
 
  -----
 
-## 팀 정보 (Team Information)
+## 👨‍👨‍👦‍👦 팀 정보 (Team Information)
 - 김태윤(팀장) (chokokty0816@gmail.com), Github Id: Chokoty
 - 이은상(팀원) (dmstkdrmatkd@naver.com), Github Id: jxchlee
 - 유정호(팀원) (dbwjdgh03@ajou.ac.kr),   Github Id: WebPr0grammer
