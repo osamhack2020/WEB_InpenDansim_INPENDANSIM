@@ -21,6 +21,7 @@
 * __[시연영상]()__
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Li7epsTU2LI/0.jpg)](https://www.youtube.com/watch?v=Li7epsTU2LI)
+구글드라이브 업로드 https://drive.google.com/file/d/1JoCIkkanZq3_YQhAfLsmyy-4Bv-nbpzn/view?usp=sharing
 
 ## 기능 설계
  
