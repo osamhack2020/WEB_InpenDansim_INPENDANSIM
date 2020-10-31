@@ -17,9 +17,8 @@
  또한 사용자들에게 쉽고 편리한 서비스에서 나아가 전군통합의 민간인을 대상으로 소통할 수 있는 플랫폼을 목표로 하고 있습니다.</p>
 
 <br><br>
-# 🎬 팀소개 및 프로젝트 설명 동영상(제작중)
+# 🎬 팀소개 및 프로젝트 설명 동영상
 
-## 팀소개 및 프로젝트 설명 동영상
  <img src="/img/poster.png" height="450px" title="poster" alt="poster"></img>
 
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
