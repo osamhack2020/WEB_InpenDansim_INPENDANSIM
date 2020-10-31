@@ -156,12 +156,12 @@
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM.git
 ```
-2. 생성된 로컬 저장소로 이동 후 yarn을 설치합니다.
+2. 생성된 로컬 저장소로 이동 후 필요한 라이브러리를 설치합니다.
 ```bash
 $ cd WEB_InpenDansim_INPENDANSIM
 $ yarn install
 ```
-3. yarn을 실행 후 serve를 입력합니다.
+3. 테스트 서버를 실행합니다.
 ```bash
 $ yarn run
 yarn run v1.17.3
