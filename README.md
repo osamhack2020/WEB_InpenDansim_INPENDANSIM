@@ -1,4 +1,4 @@
-<p align="center"><img width='50%' src="/img/logo.png"></p>
+<p align="center"><img width='500px' src="/img/logo.png"></p>
 <p align='center'>
  <img src='https://img.shields.io/github/package-json/v/osamhack2020/WEB_InpenDansim_INPENDANSIM'>
  <a href="https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/graphs/contributors"><img src='https://img.shields.io/github/contributors/osamhack2020/WEB_InpenDansim_INPENDANSIM'></a>
@@ -6,7 +6,7 @@
  <a href='https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/'><img src='https://img.shields.io/badge/Test%20on-gh--pages-yellow'></a>
 </p>
 <p align='center'>
- <a href='https://www.facebook.com/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC-%EB%8B%A8%EC%88%9C%ED%95%98%EA%B3%A0-%EC%8B%AC%ED%94%8C%ED%95%98%EA%B2%8C-104789958104175'><img width='20%' src='https://img.shields.io/static/v1?label=page&message=CONTACT%20US&color=blue&logo=facebook&style=social'></a>
+ <a href='https://www.facebook.com/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC-%EB%8B%A8%EC%88%9C%ED%95%98%EA%B3%A0-%EC%8B%AC%ED%94%8C%ED%95%98%EA%B2%8C-104789958104175'><img width='200px' src='https://img.shields.io/static/v1?label=page&message=CONTACT%20US&color=blue&logo=facebook&style=social'></a>
 </p>
 <br>
 
@@ -35,7 +35,9 @@
 <p align='center'>
  <a href='https://www.youtube.com/watch?v=mg5sbkWaqNY'><image src="https://img.youtube.com/vi/mg5sbkWaqNY/0.jpg"></a>
 <br>
-  <a href='https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/raw/main/%EC%A0%9C%EC%B6%9C%EC%9E%90%EB%A3%8C/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC%20%EB%B0%9C%ED%91%9C%EC%98%81%EC%83%81.mp4'>Download link</a>
+  <a href='https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/raw/main/%EC%A0%9C%EC%B6%9C%EC%9E%90%EB%A3%8C/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC%20%EB%B0%9C%ED%91%9C%EC%98%81%EC%83%81.mp4'>Download Link</a>
+  <br>
+  <a href='https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/raw/main/PPT/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pptx'>PPT Link</a>
 </p>
  
 * __[시연영상 보러가기](https://www.youtube.com/watch?v=Li7epsTU2LI)__
