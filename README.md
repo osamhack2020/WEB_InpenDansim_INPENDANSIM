@@ -3,7 +3,7 @@
  <img src='https://img.shields.io/github/package-json/v/osamhack2020/WEB_InpenDansim_INPENDANSIM'>
  <a href="https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/graphs/contributors"><img src='https://img.shields.io/github/contributors/osamhack2020/WEB_InpenDansim_INPENDANSIM'></a>
  <a href='https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/blob/main/LICENSE'><img src='https://img.shields.io/github/license/osamhack2020/WEB_InpenDansim_INPENDANSIM'></a>
- <a href='https://woosukji.github.io/WEB_InpenDansim_INPENDANSIM/'><img src='https://img.shields.io/badge/Test%20on-gh--pages-yellow'></a>
+ <a href='https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/'><img src='https://img.shields.io/badge/Test%20on-gh--pages-yellow'></a>
 </p>
 <p align='center'>
  <a href='https://www.facebook.com/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC-%EB%8B%A8%EC%88%9C%ED%95%98%EA%B3%A0-%EC%8B%AC%ED%94%8C%ED%95%98%EA%B2%8C-104789958104175'><img width='200px' src='https://img.shields.io/static/v1?label=page&message=CONTACT%20US&color=blue&logo=facebook&style=social'></a>
