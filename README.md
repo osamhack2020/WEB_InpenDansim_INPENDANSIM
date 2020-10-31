@@ -17,6 +17,7 @@
  또한 사용자들에게 쉽고 편리한 서비스에서 나아가 전군통합의 민간인을 대상으로 소통할 수 있는 플랫폼을 목표로 하고 있습니다.</p>
 
 <br><br>
+
 # 🎬 팀소개 및 프로젝트 설명 동영상
 
  <img src="/img/poster.png" height="450px" title="poster" alt="poster"></img>
@@ -34,6 +35,7 @@
 
 
 <br><br>
+
 # 📐 기능 설계
  
  - 사용 목업 프레임워크: figma
@@ -47,6 +49,7 @@
 
  
 <br><br>
+
 # 🖥 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * ECMAScript 6 지원 브라우저 사용
 * 권장: Google Chrome 버젼 77 이상
@@ -59,7 +62,9 @@
 
 
 <br><br>
+
 # 💡 기술 스택 (Technique Used)
+
 <table><tbody>
  <tr>
   <td>
@@ -112,6 +117,7 @@
 
 
 <br><br>
+
 # ✍ 설치 및 실행 안내 (Installation & Execution Process)
 1. 인편단심 원격 저장소를 클론합니다.
 ```bash
