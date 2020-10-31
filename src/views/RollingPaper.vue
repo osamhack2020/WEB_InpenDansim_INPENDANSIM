@@ -8,7 +8,7 @@
             <div style="white-space:nowrap;">인편단심</div>
           </router-link>
           <span style="margin: 0 0.7rem;">|</span>
-          <span>편지 전송</span>
+          <span>롤링페이퍼</span>
         </nav>
         <div class="nav-send" @click="handleSend">
           <span>보내기</span>
