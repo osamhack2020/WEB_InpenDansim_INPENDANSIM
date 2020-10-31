@@ -1,4 +1,13 @@
-![Logo](img/logo.png)
+<p align="center"><img width='50%' src="/img/logo.png"></p>
+<p align='center'>
+ <img src='https://img.shields.io/github/package-json/v/osamhack2020/WEB_InpenDansim_INPENDANSIM'>
+ <a href="https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/graphs/contributors"><img src='https://img.shields.io/github/contributors/osamhack2020/WEB_InpenDansim_INPENDANSIM'></a>
+ <a href='https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/blob/main/LICENSE'><img src='https://img.shields.io/github/license/osamhack2020/WEB_InpenDansim_INPENDANSIM'></a>
+ <a href='https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/'><img src='https://img.shields.io/badge/Test%20on-gh--pages-yellow'></a>
+</p>
+<p align='center'>
+ <a href='https://www.facebook.com/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC-%EB%8B%A8%EC%88%9C%ED%95%98%EA%B3%A0-%EC%8B%AC%ED%94%8C%ED%95%98%EA%B2%8C-104789958104175'><img width='20%' src='https://img.shields.io/static/v1?label=page&message=CONTACT%20US&color=blue&logo=facebook&style=social'></a>
+</p>
 
 로고는 '단순함'을 뜻하는 simple의 S와, 육군,해군,공군,해병대를 서로다른 4색으로 표현하여 인터넷 편지 서비스로 전군을 하나로 연결시킨다는 의미를 담고 있습니다.
 
