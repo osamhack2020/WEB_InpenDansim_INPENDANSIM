@@ -60,13 +60,13 @@
  ![design](documents/design_process/design1.jpg)<br/>
 ![design](documents/design_process/design2.jpg)
 
- ### <img src="https://www.gstatic.com/images/branding/product/1x/hh_jamboard_64dp.png" width=40/> Google Jamboard를 사용하여 원거리 회의로 디자인, 컨셉 등 구상
-> 그림으로 그렸던 요소들을 최대한 최종 완성본에 가깝게 디자인 후 프로토타입으로 제작<br/>
+ ### <img src="https://www.gstatic.com/images/branding/product/1x/hh_jamboard_64dp.png" width=40/> Google Jamboard를 사용하여 원거리 회의로 디자인 구상
+> 단순, 심플이라는 인편단심의 컨셉을 구체화 시키기 위한 노력들<br/>
 ![design](documents/design_process/jamboard.jpg)<br/>
 
 <br/>
  
-### <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" width=40/>사용 목업 프레임워크: Figma 사용하여 데스크톱, 모바일 프로토타입 제작
+### <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" width=40/>목업 프레임워크인 Figma를 사용하여 데스크톱, 모바일 프로토타입 제작
 > 그림으로 그렸던 요소들을 최대한 최종 완성본에 가깝게 디자인 후 프로토타입으로 제작
 ![design](documents/design_process/figma-desktop.PNG)
 ![design](documents/design_process/figma-mobile-prototype.PNG)
