@@ -17,7 +17,7 @@
     </div>
     <div class="content-area" v-if="pageNumber == 1">
       <div class="wrapper send-now">
-        <textarea style="display: none;" v-model="mailText"></textarea>   
+        <textarea style="display: none;" v-model="mailText"></textarea>
         <div class="title-container">
           <div class="eng">SEND</div>
           <div class="kor">마음을 전하러 가는 길.</div>
@@ -47,7 +47,6 @@
     </div>
     <div class="done-area" v-if="pageNumber == 2">
       <div class="wrapper done">
-        
         <div class="title-container">
           <div class="eng">DONE!</div>
           <div class="kor">기다리는 시간마저 즐거운.</div>
@@ -83,14 +82,16 @@ export default {
       pageNumber: 1,
       mailText: this.$route.params.mailText,
       armyType: this.$route.params.armyType,
-      reciever: this.$route.params.reciever,
+      receiver: this.$route.params.receiver
       // myInput: '123'
     };
   },
   methods: {
     handleSend() {
       this.doCopy();
-      this.handleShowAlert('복사되었습니다!\n잠시후 훈련소 페이지로 연결됩니다.');
+      this.handleShowAlert(
+        "복사되었습니다!\n잠시후 훈련소 페이지로 연결됩니다."
+      );
       this.pageNumber = 2;
       this.showPopup();
 
@@ -108,7 +109,7 @@ export default {
         params: {
           mailText: this.mailText,
           armyType: this.armyType,
-          receiver: this.reciever
+          receiver: this.receiver
         }
       });
     },

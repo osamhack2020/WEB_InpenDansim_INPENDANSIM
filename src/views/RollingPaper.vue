@@ -1,24 +1,4 @@
 <template>
-    <div class="rolling-paper">
-    rolling paper page
-    <router-link to="/write/send">보내기</router-link>
-    <input type="text" id="inputField" style="width:200px">
-    <button onclick="copyText()">복사하기</button>
-    <br><br>
-    <p><input type="text" style="width:200px"></p>
-	  </div>
-</template>
-
-<script>
-  var copyText = function(){
-   var textField = document.getElementById("inputField");
-   textField.select();
-   document.execCommand('copy');
- }
-</script>
-
-<style>
-
   <div class="rolling-paper">
     <div class="navigation app-header">
       <div class="nav-div">
@@ -112,7 +92,7 @@
         <div class="chat__icon-right chat__icon"></div>
         </div>
       <!-- 메시지 쓰는부분 -->
-          
+
     </div>
     <div v-else>
       <!-- 롤링페이퍼 새로 만들기 -->
@@ -224,12 +204,12 @@ export default {
   }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
-  
+
   position: sticky;
   position: -webkit-sticky;
   top: 0px;
   z-index: 1;
-  
+
 }
 
 .nav-div {
@@ -427,7 +407,7 @@ button {
     line-height: 150%;
     font-weight: 600;
   }
-  
+
 }
 .alert-popup__wrap {
   position: absolute;

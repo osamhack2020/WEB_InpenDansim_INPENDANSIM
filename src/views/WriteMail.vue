@@ -143,8 +143,8 @@
             <input class="reciever-name" type="text" />
             <span
               class="reciever-name-label"
-              :value="reciever"
-              @input="reciever = $event.target.value"
+              :value="receiver"
+              @input="receiver = $event.target.value"
               >에게</span
             >
           </div>
@@ -185,7 +185,7 @@ export default {
       armyType: this.$route.params.armyType
         ? this.$route.params.armyType
         : "army",
-      reciever: this.$route.params.reciever ? this.$route.params.reciever : "",
+      receiver: this.$route.params.receiver ? this.$route.params.receiver : "",
       showHeadlines: true,
       newsDetails: {
         title: "",
@@ -221,11 +221,13 @@ export default {
           {
             title: '[단독]"인육 먹고싶다"는 외교관을 모범 공무원 추천한 외교부',
             content:
-              '공관 직원들에게 “인육 고기를 먹어보려 한다” 등 엽기적 폭언은 물론 예산 유용 의혹까지 불거진 외교관에 대해 외교부가 ‘2019년 상반기 모범 공무원’ 추천 후보자 명단에 올렸던 것으로 확인됐다.'  },
+              "공관 직원들에게 “인육 고기를 먹어보려 한다” 등 엽기적 폭언은 물론 예산 유용 의혹까지 불거진 외교관에 대해 외교부가 ‘2019년 상반기 모범 공무원’ 추천 후보자 명단에 올렸던 것으로 확인됐다."
+          },
           {
             title: '공군 사병 ‘치료 휴가‘ 내고 무단출국…"여친 만나려"',
             content:
-              '[앵커]한 공군 병사가 몸이 아프다며 휴가를 나갔는데 제때 복귀하지 않고 해외로 무단 출국했습니다. 일종의 ‘탈영‘인데요. 닷새 만인 오늘(20일) 귀국하긴 했는데, 여자친구를 만나러 가려고 출국했다고 합니다.  이한길 기자입니다.' },
+              "[앵커]한 공군 병사가 몸이 아프다며 휴가를 나갔는데 제때 복귀하지 않고 해외로 무단 출국했습니다. 일종의 ‘탈영‘인데요. 닷새 만인 오늘(20일) 귀국하긴 했는데, 여자친구를 만나러 가려고 출국했다고 합니다.  이한길 기자입니다."
+          },
           {
             title: "“재산세 완화 추진…종부세는 유지” ‘부동산 늪’에 빠진 민주당",
             content:
@@ -239,7 +241,7 @@ export default {
           {
             title: '조국 "룸살롱 접대비 5인 1000만원? …양주 만으론 힘들어"',
             content:
-              '[아시아경제 임주형 기자] 조국 전 법무부 장관이 ‘검사 접대 의혹‘ 사건과 관련, 단순히 술접대에 그치지 않았을 수 있다는 의혹을 제기했다. 김봉현 전 스타모빌리티 회장이 현직 검사들에게 접대를 하며 치른 양주 가격이 지나치게 높다는 것이다.'
+              "[아시아경제 임주형 기자] 조국 전 법무부 장관이 ‘검사 접대 의혹‘ 사건과 관련, 단순히 술접대에 그치지 않았을 수 있다는 의혹을 제기했다. 김봉현 전 스타모빌리티 회장이 현직 검사들에게 접대를 하며 치른 양주 가격이 지나치게 높다는 것이다."
           }
         ],
         [
@@ -256,7 +258,7 @@ export default {
           {
             title: "세계 D램 70%, 낸드 56% 장악…K메모리 `압도적 투톱`",
             content:
-              '삼성전자가 인공지능(AI)·머신러닝 등에 특화된 고대역폭 메모리(HBM2E) 제품을 올 2월 최초로 선보이자 SK하이닉스는 이달 차세대 D램인 DDR5를 세계 최초로 출시하는 등 삼성전자와 SK하이닉스는 앞서거니 뒤서거니 하며 글로벌 반도체 시장, 나아가 정보통신기술(ICT) 산업 발전을 이끌어 왔다.'
+              "삼성전자가 인공지능(AI)·머신러닝 등에 특화된 고대역폭 메모리(HBM2E) 제품을 올 2월 최초로 선보이자 SK하이닉스는 이달 차세대 D램인 DDR5를 세계 최초로 출시하는 등 삼성전자와 SK하이닉스는 앞서거니 뒤서거니 하며 글로벌 반도체 시장, 나아가 정보통신기술(ICT) 산업 발전을 이끌어 왔다."
           },
           {
             title: '"집없어? 결혼안해" 월세거주시 결혼 가능성 65% `뚝`',
@@ -449,16 +451,14 @@ export default {
         params: {
           mailText: this.mailText,
           armyType: this.armyType,
-          receiver: this.reciever
+          receiver: this.receiver
         }
       });
     },
     handleAdd(text) {
       this.cursor = this.mailText.length;
-      this.mailText = (this.mailText + "\n" + text).slice(
-        0,
-        this.textMaxLength
-      )+"..";
+      this.mailText =
+        (this.mailText + "\n" + text).slice(0, this.textMaxLength) + "..";
       this.handleShowAlert(
         "추가되었습니다! Ctrl+Z 키를 눌러 취소할 수 있습니다."
       );

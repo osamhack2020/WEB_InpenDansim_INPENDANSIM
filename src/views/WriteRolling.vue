@@ -1,18 +1,5 @@
 <template>
   <div class="rolling">
-    <div v-if="pageNumber">
-      <div class="wrap__container">
-      <div>내가 찾는 훈련병은 <input />에요.</div>
-      <div>우리만의 암구호는 <input />에요.</div>
-    <div v-if="pageNumber" class="wrapper search-roll">
-      <div class="find">
-        내가 찾는 훈련병은 <br />
-        <input
-          maxlength="6"
-          placeholder="ㅇㅇㅇ"
-          value=""
-          style="box-sizing: content-box; width: 200px; border: 0px; font-size: 34px; outline: none; display: inline-block; font-weight: lighter; padding: 10px; text-align:right"
-        />에요.
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
@@ -25,7 +12,7 @@
         </nav>
       </div>
     </div>
-    <div v-if="pageNumber" class="search-wrapper ">
+    <div v-if="pageNumber" class="search-wrapper">
       <div class="find-target">
         <span>받을 훈련병은</span>
         <input class="input-area" maxlength="6" placeholder="ㅇㅇㅇ" value="" />
@@ -84,7 +71,6 @@
       >
     </div>
   </div>
-  </div>
 </template>
 
 <script>
@@ -119,7 +105,6 @@ export default {
     border:1px solid #ffffff;
   }
 </style>
-<style scoped>
 <style scoped lang="scss">
 .navigation {
   .logo {
