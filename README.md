@@ -12,15 +12,15 @@
 로고는 '단순함'을 뜻하는 simple의 S와, 육 · 해 · 공 · 해병대를 상징하는 4색이 어우러져 인터넷 편지 서비스로 전군을 하나로 연결시킨다는 의미를 담고 있습니다.
 <br><br>
 
-# 📝 프로젝트 설명
+# 📝 프로젝트 소개 및 설명(Introduction & Explanation)
+
+ <img src="/img/poster.png" height="450px" title="poster" alt="poster"></img>
+
 <p><b>인편단심</b>은 훈련소에 편지를 보내는 지인들이 보다 쉽고 간편하게 편지를 쓸 수 있도록 기존 인편 서비스들의 복잡한 절차를 개선하고 사용자들이 편지에 담는 내용과 작성 패턴을 기반으로 다양한 컨텐츠와 편의기능을 제공하는 웹 서비스입니다.<br>
  또한 사용자들에게 쉽고 편리한 서비스에서 나아가 전군통합의 민간인을 대상으로 소통할 수 있는 플랫폼을 목표로 하고 있습니다.</p>
 
 <br><br>
 
-# 🎬 팀소개 및 프로젝트 설명 동영상
-
- <img src="/img/poster.png" height="450px" title="poster" alt="poster"></img>
 
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 
@@ -36,7 +36,7 @@
 
 <br><br>
 
-# 📐 기능 설계
+# 📐 구상 과정(Design Process)
  
  
 ### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Microsoft_Office_OneNote_%282018%E2%80%93present%29.svg/1101px-Microsoft_Office_OneNote_%282018%E2%80%93present%29.svg.png" width=40/> 초기 인편단심 컨셉 구상 스케치
