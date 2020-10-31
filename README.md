@@ -25,11 +25,7 @@
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 
 * __[발표영상 보러가기](https://youtu.be/mg5sbkWaqNY)__
-
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/mg5sbkWaqNY/0.jpg)](https://www.youtube.com/watch?v=mg5sbkWaqNY)
-
-
-[![twice](https://img.youtube.com/vi/nVCubhQ454c/0.jpg)](https://youtu.be/fRmO3CGaeWQ)
 
 * __[시연영상 보러가기](https://www.youtube.com/watch?v=Li7epsTU2LI)__
 
