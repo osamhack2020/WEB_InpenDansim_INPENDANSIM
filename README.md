@@ -133,7 +133,7 @@ question Which command would you like to run?: serve
 4. 브라우저에 http://localhost:8080/ 를 입력하여 사이트에 접속 할 수 있습니다.
 
 
-## 팀 정보 (Team Information)
+# 팀 정보 (Team Information)
 - 김태윤(팀장) (chokokty0816@gmail.com), Github Id: Chokoty
 - 이은상(팀원) (dmstkdrmatkd@naver.com), Github Id: jxchlee
 - 유정호(팀원) (dbwjdgh03@ajou.ac.kr),   Github Id: WebPr0grammer
