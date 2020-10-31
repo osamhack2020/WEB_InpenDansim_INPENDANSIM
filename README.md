@@ -9,28 +9,42 @@
  <a href='https://www.facebook.com/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC-%EB%8B%A8%EC%88%9C%ED%95%98%EA%B3%A0-%EC%8B%AC%ED%94%8C%ED%95%98%EA%B2%8C-104789958104175'><img width='20%' src='https://img.shields.io/static/v1?label=page&message=CONTACT%20US&color=blue&logo=facebook&style=social'></a>
 </p>
 <br>
-로고는 '단순함'을 뜻하는 simple의 S와, 육 · 해 · 공 · 해병대를 상징하는 4색이 어우러져 인터넷 편지 서비스로 전군을 하나로 연결시킨다는 의미를 담고 있습니다.
+
+로고는 '단순함'을 뜻하는 simple의 'S' 형태를 띄며, 육 · 해 · 공 · 해병대를 상징하는 4색이 어우러져 **인터넷 편지 서비스로 전군을 하나로 연결시킨다**는 의미를 담고 있습니다.
+
 <br><br>
 
 # 📝 프로젝트 소개 및 설명(Introduction & Explanation)
-
+<p align='center'>
  <img src="/img/poster.png" height="450px" title="poster" alt="poster"></img>
+</p>
 
-<p><b>인편단심</b>은 훈련소에 편지를 보내는 지인들이 보다 쉽고 간편하게 편지를 쓸 수 있도록 기존 인편 서비스들의 복잡한 절차를 개선하고 사용자들이 편지에 담는 내용과 작성 패턴을 기반으로 다양한 컨텐츠와 편의기능을 제공하는 웹 서비스입니다.<br>
- 또한 사용자들에게 쉽고 편리한 서비스에서 나아가 전군통합의 민간인을 대상으로 소통할 수 있는 플랫폼을 목표로 하고 있습니다.</p>
+**인편단심**은 훈련소에 인터넷 편지를 보내는 지인들이 보다 **쉽고 간편하게 편지를 작성**할 수 있도록 디자인된 웹 서비스입니다.
+
+기존 인편 서비스의 **복잡한 절차를 개선**하고, 사용자들이 편지에 담는 내용과 작성 패턴을 기반으로 **다양한 컨텐츠와 편의기능**을 제공하고 있습니다.<br>
+
+또한, 사용자들에게 쉽고 편리한 서비스에서 나아가 **군과 민간이 소통할 수 있는 전군통합 플랫폼**을 목표로 하고 있습니다.
 
 <br>
 
-
+ 
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 
+
 * __[발표영상 보러가기](https://youtu.be/mg5sbkWaqNY)__
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/mg5sbkWaqNY/0.jpg)](https://www.youtube.com/watch?v=mg5sbkWaqNY)
-
+<p align='center'>
+ <a href='https://www.youtube.com/watch?v=mg5sbkWaqNY'><image src="https://img.youtube.com/vi/mg5sbkWaqNY/0.jpg"></a>
+<br>
+  <a href='https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/raw/main/%EC%A0%9C%EC%B6%9C%EC%9E%90%EB%A3%8C/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC%20%EB%B0%9C%ED%91%9C%EC%98%81%EC%83%81.mp4'>Download link</a>
+</p>
+ 
 * __[시연영상 보러가기](https://www.youtube.com/watch?v=Li7epsTU2LI)__
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Li7epsTU2LI/0.jpg)](https://www.youtube.com/watch?v=Li7epsTU2LI)
+<p align='center'>
+ <a href='https://www.youtube.com/watch?v=Li7epsTU2LI'><image src="https://img.youtube.com/vi/Li7epsTU2LI/0.jpg"></a>
+<br>
+  <a href='https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/raw/main/%EC%A0%9C%EC%B6%9C%EC%9E%90%EB%A3%8C/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC%20%EC%8B%9C%EC%97%B0%EC%98%81%EC%83%81.mp4'>Download link</a>
+</p>
 
 
 
