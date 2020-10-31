@@ -2,11 +2,8 @@
   <div class="home">
     <Navigation></Navigation>
     <div class="cover-page  page-1">
-      <!-- <router-link to="/write/mail" tag="a">인편쓰러가기</router-link>
-      <router-link to="/write/rolling">롤링페이퍼 쓰러가기~</router-link>
-      <div></div>
-      <textarea :value="text" @input="text = $event.target.value"></textarea>
-      <div>{{ text.replace(/\n/gi, "&lt;br&gt;").replace(/'/gi, "‘") }}</div> -->
+      <!-- <textarea :value="text" @input="text = $event.target.value"></textarea>
+      <div>{{ text.replace(/\n\n/gi, "\\n").replace(/\n/gi, " ") }}</div>  -->
 
       <div class="page-1__left">
         <div class="main-text">
@@ -21,7 +18,7 @@
           <span>인터넷 편지, 간단하게 작성해보세요.</span>
         </div>
         <div class="btn">
-          <div>지금 시작하기</div>
+          <div @click="$router.push('/write/mail')">지금 시작하기</div>
         </div>
       </div>
       <div class="page-1__right">
@@ -52,7 +49,7 @@
             <span>인터넷 편지, 간단하게 작성해보세요.</span>
           </div>
           <div class="btn">
-            <div>지금 시작하기</div>
+            <div @click="$router.push('/write/mail')">지금 시작하기</div>
           </div>
         </div>
         <div class="image">
@@ -157,9 +154,10 @@ export default {
   }
   color: #fff;
 
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s;
   &:hover {
     cursor: pointer;
+    box-shadow: 0 2px 8px -1px #000;
   }
   &:active {
     border: none;

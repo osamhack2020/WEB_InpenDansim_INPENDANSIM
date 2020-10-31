@@ -23,7 +23,10 @@
     <div class="navigation app-header">
       <div class="nav-div">
         <nav role="navigation" class="nav-menu">
-          <router-link to="/" class="logo title">인편단심</router-link>
+          <router-link to="/" class="logo title">
+            <img src="../../public/favicon.png" alt="logo" width="24px" />
+            <div style="white-space:nowrap;">인편단심</div>
+          </router-link>
           <span style="margin: 0 0.7rem;">|</span>
           <span>편지 전송</span>
         </nav>
@@ -55,7 +58,7 @@
           <button type="button" class="btn notice-badge">
             작성 <span class="badge badge-light">{{ listCount }} 명</span>
           </button>
-          <button type="button" class="btn btn-link share-button">
+          <button type="button" class="btn btn-link share-button" @click="handleShowAlert('링크가 복사되었습니다.')" >
             링크로 초대하기 <i class="far fa-share-square "></i>
           </button>
         </div>
@@ -107,8 +110,9 @@
           v-model="newAuthor.comment"
         ></textarea>
         <div class="chat__icon-right chat__icon"></div>
-      </div>
+        </div>
       <!-- 메시지 쓰는부분 -->
+          
     </div>
     <div v-else>
       <!-- 롤링페이퍼 새로 만들기 -->
@@ -127,6 +131,13 @@
         </div>
       </div>
     </div>
+    <div class="alert-popup__wrap">
+      <transition name="popup">
+        <div class="alert-popup" v-if="showAlert">
+          <span>{{ alertMessage }}</span>
+        </div>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -135,6 +146,7 @@ var name = 3;
 export default {
   data() {
     return {
+      showAlert: false,
       pageNumber: 0,
       people: name,
       haveRoll: true,
@@ -178,7 +190,19 @@ export default {
         this.newAuthor.name = "";
         this.newAuthor.comment = "";
         this.listCount++;
+        setTimeout(() => {
+          window.scrollBy(0, 1000);
+        }, 0);
       }
+    },
+    handleShowAlert(message) {
+      this.alertMessage = message;
+      this.showAlert = true;
+      var that = this;
+      setTimeout(() => {
+        that.showAlert = false;
+        that.alertMessage = "";
+      }, 2000);
     },
     handleSend() {
       this.$router.push({
@@ -192,12 +216,20 @@ export default {
 
 <style scoped lang="scss">
 .navigation {
+  .logo {
+    display: flex;
+    align-items: center;
+    font-family: "BinggraeTaom-Bold", Dotum, Baekmuk Dotum, Undotum,
+      Apple Gothic, Latin font, sans-serif;
+  }
   font-family: "maruburi", Dotum, Baekmuk Dotum, Undotum, Apple Gothic,
     Latin font, sans-serif;
+  
   position: sticky;
   position: -webkit-sticky;
   top: 0px;
   z-index: 1;
+  
 }
 
 .nav-div {
@@ -253,7 +285,7 @@ export default {
   .rolling-content {
     margin: 0 auto;
     max-width: 428px;
-    min-height: 200vh;
+    // min-height: 200vh;
   }
 }
 
@@ -357,12 +389,11 @@ button {
 }
 
 .chat-screen .chat__messages {
-  height: 200vh;
+  // height: 200vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 20px;
-  padding-top: 20px;
+  padding: 20px 20px 120px 20px;
 }
 
 .chat__messages .chat__timestamp {
@@ -381,16 +412,55 @@ button {
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
-}
 
-.message .message__bubble {
-  background-color: white;
-  margin: 8px;
-  width: 300px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  display: block;
-  line-height: 150%;
-  font-weight: 600;
+  &__author {
+    font-weight: bold;
+    color: #fff;
+  }
+  &__bubble {
+    background-color: white;
+    margin: 8px;
+    width: 300px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: block;
+    line-height: 150%;
+    font-weight: 600;
+  }
+  
 }
+.alert-popup__wrap {
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  top: 15vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .alert-popup {
+    background: rgba($color: #fff, $alpha: 0.7);
+    height: 3rem;
+    width: 80%;
+    padding: 0 2rem;
+    font-family: "nanum square";
+    font-size: 15pt;
+    border-radius: 1.5rem;
+    border:1px solid #333333;
+    white-space: nowrap;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .popup-enter-active,
+  .popup-leave-active {
+    transition: all 0.5s;
+  }
+  .popup-enter, .popup-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    width: 0;
+    opacity: 0;
+  }
 </style>

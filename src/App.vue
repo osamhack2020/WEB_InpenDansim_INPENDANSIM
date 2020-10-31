@@ -30,6 +30,11 @@ export default {
   src: local("nanum square"),
     url(./assets/fonts/NanumSquareEB.ttf) format("truetype");
 }
+@font-face {
+  font-family: "BinggraeTaom-Bold";
+  src: local("BinggraeTaom-Bold"),
+    url(./assets/fonts/BinggraeTaom-Bold.ttf) format("truetype");
+}
 
 html,
 body {
