@@ -24,9 +24,8 @@
 
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 
-* __[설명영상 보러가기](https://youtu.be/fRmO3CGaeWQ)__
-
-[![twice](https://img.youtube.com/vi/nVCubhQ454c/0.jpg)](https://youtu.be/fRmO3CGaeWQ)
+* __[발표영상 보러가기](https://youtu.be/mg5sbkWaqNY)__
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/mg5sbkWaqNY/0.jpg)](https://www.youtube.com/watch?v=mg5sbkWaqNY)
 
 * __[시연영상 보러가기](https://www.youtube.com/watch?v=Li7epsTU2LI)__
 
@@ -38,7 +37,24 @@
 
 # 📐 기능 설계
  
- - 사용 목업 프레임워크: figma
+ 
+### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Microsoft_Office_OneNote_%282018%E2%80%93present%29.svg/1101px-Microsoft_Office_OneNote_%282018%E2%80%93present%29.svg.png" width=40/> 초기 인편단심 컨셉 구상 스케치
+ > 여러번의 컨셉 수정 끝에 탄생한 인편단심
+ ![design](design/design1.jpg)<br/>
+![design](design/design2.jpg)
+
+ ### <img src="https://www.gstatic.com/images/branding/product/1x/hh_jamboard_64dp.png" width=40/> Google Jamboard를 사용하여 원거리 회의로 디자인, 컨셉 등 구상
+> 그림으로 그렸던 요소들을 최대한 최종 완성본에 가깝게 디자인 후 프로토타입으로 제작<br/>
+![design](design/jamboard.jpg)<br/>
+
+<br/>
+ 
+### <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" width=40/>사용 목업 프레임워크: Figma 사용하여 데스크톱, 모바일 프로토타입 제작
+> 그림으로 그렸던 요소들을 최대한 최종 완성본에 가깝게 디자인 후 프로토타입으로 제작
+![design](design/figma-desktop.PNG)
+![design](design/figma-mobile-prototype.PNG)
+
+<br/>
 
  ### 데스크탑 버전
  <img src="/img/desktop1.png" height="450px" title="desktop1" alt="desktop"></img>
@@ -139,7 +155,11 @@ question Which command would you like to run?: serve
 4. 브라우저에 http://localhost:8080/ 를 입력하여 사이트에 접속 할 수 있습니다.
 
 
+<<<<<<< HEAD
 # 팀 정보 (Team Information)
+=======
+# 👨‍👨‍👦‍👦 팀 정보 (Team Information)
+>>>>>>> upstream/main
 - 김태윤(팀장) (chokokty0816@gmail.com), Github Id: Chokoty
 - 이은상(팀원) (dmstkdrmatkd@naver.com), Github Id: jxchlee
 - 유정호(팀원) (dbwjdgh03@ajou.ac.kr),   Github Id: WebPr0grammer
