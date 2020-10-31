@@ -19,11 +19,12 @@
 <br><br>
 # 🎬 팀소개 및 프로젝트 설명 동영상(제작중)
 
-![poster](img/poster.png)
+## 팀소개 및 프로젝트 설명 동영상
+ <img src="/img/poster.png" height="450px" title="poster" alt="poster"></img>
 
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 
-* __[설명영상 보러가기]()__
+* __[설명영상 보러가기](https://youtu.be/fRmO3CGaeWQ)__
 
 [![twice](https://img.youtube.com/vi/nVCubhQ454c/0.jpg)](https://youtu.be/fRmO3CGaeWQ)
 
@@ -31,7 +32,7 @@
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Li7epsTU2LI/0.jpg)](https://www.youtube.com/watch?v=Li7epsTU2LI)
 
- -----
+
 
 <br><br>
 # 📐 기능 설계
@@ -109,7 +110,7 @@
   </td>
  </tbody></table>
  
- -----
+
 
 <br><br>
 # ✍ 설치 및 실행 안내 (Installation & Execution Process)
@@ -133,26 +134,7 @@ question Which command would you like to run?: serve
 4. 브라우저에 http://localhost:8080/ 를 입력하여 사이트에 접속 할 수 있습니다.
 
 
-<<<<<<< HEAD
 ## 팀 정보 (Team Information)
-=======
-
-<br><br>
-# 프로젝트 사용법 (Getting Started)(제작중)
-**마크다운 문법을 이용하여 자유롭게 기재**
- 
-잘 모를 경우
-구글 검색 - 마크다운 문법
-[https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017](https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017)
- 
- 편한 마크다운 에디터를 찾아서 사용
- 샘플 에디터 [https://stackedit.io/app#](https://stackedit.io/app#)
-
-
-
-<br><br>
-# 👨‍👨‍👦‍👦 팀 정보 (Team Information)
->>>>>>> upstream/main
 - 김태윤(팀장) (chokokty0816@gmail.com), Github Id: Chokoty
 - 이은상(팀원) (dmstkdrmatkd@naver.com), Github Id: jxchlee
 - 유정호(팀원) (dbwjdgh03@ajou.ac.kr),   Github Id: WebPr0grammer
