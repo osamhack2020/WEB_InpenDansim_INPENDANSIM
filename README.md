@@ -1,17 +1,26 @@
-![Logo](img/logo.png)
+<p align="center"><img width='50%' src="/img/logo.png"></p>
+<p align='center'>
+ <img src='https://img.shields.io/github/package-json/v/osamhack2020/WEB_InpenDansim_INPENDANSIM'>
+ <a href="https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/graphs/contributors"><img src='https://img.shields.io/github/contributors/osamhack2020/WEB_InpenDansim_INPENDANSIM'></a>
+ <a href='https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM/blob/main/LICENSE'><img src='https://img.shields.io/github/license/osamhack2020/WEB_InpenDansim_INPENDANSIM'></a>
+ <a href='https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/'><img src='https://img.shields.io/badge/Test%20on-gh--pages-yellow'></a>
+</p>
+<p align='center'>
+ <a href='https://www.facebook.com/%EC%9D%B8%ED%8E%B8%EB%8B%A8%EC%8B%AC-%EB%8B%A8%EC%88%9C%ED%95%98%EA%B3%A0-%EC%8B%AC%ED%94%8C%ED%95%98%EA%B2%8C-104789958104175'><img width='20%' src='https://img.shields.io/static/v1?label=page&message=CONTACT%20US&color=blue&logo=facebook&style=social'></a>
+</p>
+<br>
+로고는 '단순함'을 뜻하는 simple의 S와, 육 · 해 · 공 · 해병대를 상징하는 4색이 어우러져 인터넷 편지 서비스로 전군을 하나로 연결시킨다는 의미를 담고 있습니다.
+<br><br>
 
-로고는 '단순함'을 뜻하는 simple의 S와, 육군,해군,공군,해병대를 서로다른 4색으로 표현하여 인터넷 편지 서비스로 전군을 하나로 연결시킨다는 의미를 담고 있습니다.
-
- -----
-
-## 프로젝트 설명
+# 📝 프로젝트 설명
 <p><b>인편단심</b>은 훈련소에 편지를 보내는 지인들이 보다 쉽고 간편하게 편지를 쓸 수 있도록 기존 인편 서비스들의 복잡한 절차를 개선하고 사용자들이 편지에 담는 내용과 작성 패턴을 기반으로 다양한 컨텐츠와 편의기능을 제공하는 웹 서비스입니다.<br>
  또한 사용자들에게 쉽고 편리한 서비스에서 나아가 전군통합의 민간인을 대상으로 소통할 수 있는 플랫폼을 목표로 하고 있습니다.</p>
 
- -----
+<br><br>
+# 🎬 팀소개 및 프로젝트 설명 동영상(제작중)
 
-## 팀소개 및 프로젝트 설명 동영상(제작중)
 ![poster](img/poster.png)
+
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 
 * __[설명영상 보러가기]()__
@@ -24,7 +33,8 @@
 
  -----
 
-## 기능 설계
+<br><br>
+# 📐 기능 설계
  
  - 사용 목업 프레임워크: figma
 
@@ -35,9 +45,9 @@
 ### 모바일 버전
  ![mobile](img/mobile.gif)
 
- -----
  
-## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
+<br><br>
+# 🖥 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * ECMAScript 6 지원 브라우저 사용
 * 권장: Google Chrome 버젼 77 이상
 * __IE환경에서 작동이 안될 수도 있습니다.__
@@ -46,9 +56,10 @@
 --- | --- | --- | --- | --- |
  56+ ✔ | 32+ ✔ | 16+ ✔ | 42+ ✔ | 8+ ✔ |
  
- -----
 
-## 기술 스택 (Technique Used)
+
+<br><br>
+# 💡 기술 스택 (Technique Used)
 <table><tbody>
  <tr>
   <td>
@@ -100,7 +111,8 @@
  
  -----
 
-## 설치 및 실행 안내 (Installation & Execution Process)
+<br><br>
+# ✍ 설치 및 실행 안내 (Installation & Execution Process)
 1. 인편단심 원격 저장소를 클론합니다.
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_InpenDansim_INPENDANSIM.git
@@ -120,17 +132,35 @@ question Which command would you like to run?: serve
 ```
 4. 브라우저에 http://localhost:8080/ 를 입력하여 사이트에 접속 할 수 있습니다.
 
- -----
 
+<<<<<<< HEAD
 ## 팀 정보 (Team Information)
+=======
+
+<br><br>
+# 프로젝트 사용법 (Getting Started)(제작중)
+**마크다운 문법을 이용하여 자유롭게 기재**
+ 
+잘 모를 경우
+구글 검색 - 마크다운 문법
+[https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017](https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017)
+ 
+ 편한 마크다운 에디터를 찾아서 사용
+ 샘플 에디터 [https://stackedit.io/app#](https://stackedit.io/app#)
+
+
+
+<br><br>
+# 👨‍👨‍👦‍👦 팀 정보 (Team Information)
+>>>>>>> upstream/main
 - 김태윤(팀장) (chokokty0816@gmail.com), Github Id: Chokoty
 - 이은상(팀원) (dmstkdrmatkd@naver.com), Github Id: jxchlee
 - 유정호(팀원) (dbwjdgh03@ajou.ac.kr),   Github Id: WebPr0grammer
 - 지우석(팀원) (woosukji@snu.ac.kr),     Github Id: woosukji
 
- -----
 
-## 저작권 및 사용권 정보 (Copyleft / End User License)
+
+# 저작권 및 사용권 정보 (Copyleft / End User License)
  * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
  
 
