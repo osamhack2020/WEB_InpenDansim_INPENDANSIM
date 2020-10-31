@@ -19,7 +19,8 @@
 * __[데모 페이지 보기](https://osamhack2020.github.io/WEB_InpenDansim_INPENDANSIM/)__
 * __[설명영상]()__
 * __[시연영상]()__
-{ % youtube Li7epsTU2LI % }
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Li7epsTU2LI/0.jpg)](https://www.youtube.com/watch?v=Li7epsTU2LI)
 
 ## 기능 설계
  
